@@ -1,0 +1,433 @@
+:root {
+    /* variables */
+    --Color-Background-Page: #FFFFFF
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #D3DBDE;
+    background-color: var(--Color-Background-Page);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* ESTILOS NAVBAR */
+
+.layout__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-inline: 70px;
+    box-shadow: 0px 5px 5px -5px #60AD26;
+
+}
+
+.navbar_logo-CreaVida {
+    max-width: 80px;
+    max-height: 80px;
+
+}
+
+.container-lists__menu-list {
+    font-family: "Chivo Mono", monospace;
+    display: flex;
+}
+
+.menu-list__item {
+    list-style: none;
+}
+
+.menu-list__link {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    transition: 0.5s ease;
+    /* margin: 10px;
+    color: #000000;
+    border: 2px solid transparent;
+    transition: color  0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    position: relative; */
+}
+
+.container-lists__menu-list:hover li a {
+    color: #60AD26;
+    box-shadow: 0 0 20px 0px #60AD26;
+    border-radius: 20px;
+}
+
+.container-lists__menu-list:hover li a:not(:hover) {
+    color: #000000;
+    opacity: 1;
+    filter: blur(1px);
+    box-shadow: none;
+}
+
+/* ESTILOS DEL CONTENT */
+
+.layout__content {
+    margin-inline: 90px;
+    margin-top: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content_bienvenida {
+    height: 100px;
+    display: flex;
+    perspective: 10px;
+    transform: perspective(300px) rotateX(20deg);
+    will-change: perspective;
+     /* perspective-origin: center center;  */
+    transition: all 1.3s ease-out;
+    /* justify-content: center; */
+    transform-style: preserve-3d; 
+
+}
+
+.content_bienvenida:hover {
+    perspective: 1000px;
+    transition: all 1.3s ease-in;
+    transform: perspective(10000px) rotateX(0deg);
+
+}
+
+.content_bienvenida:hover .titulo__elemento {
+    opacity: 1;
+}
+
+.content_bienvenida:hover>div {
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.content_bienvenida:hover .titulo__inicial {
+    opacity: 0;
+}
+
+.elemento__2,
+.elemento__3,
+.elemento__4,
+.elemento__1,
+.elemento__5 {
+    width: 200px;
+    height: 100%;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 90px 5px #60AD26;
+    opacity: 0;
+    transition: all .3s ease;
+    transition-delay: 1s;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #f3f5f724;
+    cursor: pointer;
+    background-blend-mode: color-burn;
+
+}
+
+.elemento__2:hover,
+.elemento__3:hover,
+.elemento__4:hover,
+.elemento__1:hover,
+.elemento__5:hover {
+    box-shadow: 0 0 30px 10px #60AD26;
+    background-color: rgb(252, 252, 255, 0.5);
+}
+
+.titulo__elemento {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all .3s ease;
+    bottom: 0;
+    left: 5px;
+    position: absolute;
+    will-change: transform;
+    color: #000000;
+}
+
+.elemento__fotos {
+    background-position-y: 0px;
+    width: 350px;
+}
+
+.elemento__1 {
+    transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
+    background-image: url('../img/Bienvenida.png');
+}
+
+.elemento__2 {
+    transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
+    background-image: url('../img/MarcaFCV.jpg');
+}
+
+.elemento__3 {
+    opacity: 1;
+    background-image: url('../img/Bienvenida.png');
+    background-size: 100px;
+    background-position-y: 0px;
+}
+
+.elemento__4 {
+    transform: translateX(30px) translateZ(-25px) rotateY(5deg);
+    background-image: url('../img/MarcaFCV.jpg');
+}
+
+.elemento__5 {
+    transform: translateX(60px) translateZ(-50px) rotateY(10deg);
+    background-image: url('../img/Bienvenida.png');
+}
+
+.titulo__inicial {
+    font-weight: 300;
+    font-size: 2rem;
+    color: #000000;
+    text-transform: uppercase;
+    transition: all .6s ease;
+    width: 100%;
+    height: 100%;
+    background-color: #303050;
+    background-image: radial-gradient(circle at center top, #cce, #a3cf7f);
+    border-radius: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, .8);
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_bienvenida-tittle {
+    color: #000000;
+    text-transform: uppercase;
+    margin: 10px auto;
+    letter-spacing: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    align-items: center;
+    margin-bottom: 50px;
+
+}
+
+.content_bienvenida-tittle-secondpart {
+    margin-top: 30px;
+    display: flex;
+}
+
+.content_bienvenida-tittle-1 {
+    font-size: 50px;
+
+}
+
+.content_bienvenida-tittle-2 {
+    color: #3E7537;
+    font-size: 50px;
+
+}
+
+.content_bienvenida-tittle-3 {
+    color: #60AD26;
+    font-size: 50px;
+
+}
+
+/* ESTILOS SOBRE NOSOTROS */
+
+.content_SobreNosotros {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    align-items: center;
+}
+
+.sobreNosotros-tittle {
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.sobreNosotros-subtittle {
+    font-family: cursive;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    font-weight: 5;
+    font-size: 15px;
+    color: #000000;
+}
+
+.sobreNosotros-description {
+    font-family: Georgia;
+    color: #000000;
+    max-width: 600px;
+    letter-spacing: 2px;
+    text-align: justify;
+}
+
+/* CONTENIDO DE LOS EVENTOS */
+
+.content_eventos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    
+}
+
+.content_eventos-tittle {
+    display: flex;
+    color: #000000;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.eventos-tittle{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.eventos-subtittle{
+    font-family: cursive;
+    color: #000000;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    font-weight: 5;
+    font-size: 15px;
+
+}
+.card{
+    display: flex;
+    align-items: center;
+    width: 75vw;
+    max-width: 650px;
+    padding: 50px 30px 50px 20px;
+    margin: 50px;
+     background:
+     radial-gradient(circle at center top, #cce, #a3cf7f);
+        font-family: "Poppins"; 
+    border-radius: 24px;
+    color: #000000;
+    
+}
+.card img{
+    max-width: 280px;
+    width: 32vw;
+    height: 270px;
+    object-fit: cover;
+    margin-left: -60px;
+    margin-right: 40px;
+    border-radius: inherit;
+}
+h2, h3{
+    font-weight: 400;
+}
+h3{
+    opacity: 0.7;
+}
+.card h2{
+    font-size: 28px;
+    margin: 0;
+}
+.card h3{
+    font-size: 16px;
+    margin: 0 0 20px;
+}
+.card .buttons_evento{
+    display: inline-flex;
+    gap: 10px;
+}
+.card button{
+    border: 1px solid #a7a7a7;
+    background: transparent;
+    color: #000000;
+    font-family: inherit;
+    padding: 16px 20px;
+    font-size: 18px;
+    border-radius: 6px;
+    min-width: 80px;
+}
+.card button.primary{
+    background: #60AD26;
+    color: #f9f9f9;
+    border: 0;
+}
+.card button:hover{
+    cursor: pointer;
+}
+.card .data_evento{
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+}
+.card .data_evento var{
+    display: block;
+    font-style: normal;
+    font-size: 26px;
+}
+
+/*ESTILOS DE DONAR */
+.content_donar{
+    color: #000000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.donacion_tittle{
+    text-transform: uppercase;
+    font-size: 30px;
+
+}
+.donacion-subtittle{
+    font-family: cursive;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    font-weight: 5;
+    font-size: 15px;
+    color: #000000;
+}
+
+
+
+
+
+
+
+.content_footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.copyright{
+    padding-top: 300px;
+    color: #000000;
+}
