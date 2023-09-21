@@ -2,8 +2,13 @@ import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { AuthProvider } from '../Context/AuthProvider';
 import { PublicLayout } from '../Components/layout/public/PublicLayout';
 import { PrivateLayout } from '../Components/layout/private/PrivateLayout';
-import { Section } from '../Components/layout/inicio/Section';
+
 import { Donar } from '../Components/layout/donar/Donar';
+import { Events } from '../Components/layout/inicio/Events';
+import { Participar } from '../Components/layout/participar/Participar';
+import { AcercaDe } from '../Components/layout/acercaDe/AcercaDe';
+import { Bienvenida } from '../Components/layout/inicio/Bienvenida';
+
 
 export const Routing = () => {
     return (
@@ -11,9 +16,12 @@ export const Routing = () => {
             <AuthProvider>
                 <Routes>
                     <Route path='/' element={<PublicLayout />}>
-                         <Route index element={<Section />} />
-                        <Route path='donar' element={<Donar />} />
-                       {/* <Route path='registro' element={<Register />} /> */}
+                        <Route index element={<Bienvenida />} />
+                        <Route path='donar/:id' element={<Donar />} />
+                        <Route path='participa' element={<Participar />} />
+                        <Route path='eventos' element={<Events />} />
+                        <Route path='acercaDe' element={<AcercaDe />} />
+                        {/* <Route path='registro' element={<Register />} /> */}
                     </Route>
 
                     <Route path='/admin' element={<PrivateLayout />}>

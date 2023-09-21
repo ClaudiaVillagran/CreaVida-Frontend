@@ -1,13 +1,15 @@
-import { Bienvenida } from "./Bienvenida"
-import { Eventos } from "./Eventos"
 import { SobreNosotros } from "./SobreNosotros"
+import { SomosIcfa } from "../SomosIcfa/SomosIcfa"
+import { NearEventsInicio } from "./NearEventsInicio"
+
 
 export const Section = () => {
   return (
     <>
-      <Bienvenida/>
-      <Eventos/>
+      <SomosIcfa />
       <SobreNosotros/>
+
+      <NearEventsInicio/>
     </>
   )
 }

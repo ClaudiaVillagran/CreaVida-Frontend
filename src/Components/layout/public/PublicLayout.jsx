@@ -1,10 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom"
 import { Header } from "./Header"
 import useAuth from "../../../Hooks/useAuth"
+import { Footer } from "./Footer";
 
 export const PublicLayout = () => {
+
   const { auth } = useAuth();
-  console.log(auth)
   return (
     <>
       {/* layout */}
@@ -18,9 +19,7 @@ export const PublicLayout = () => {
           <Navigate to="/admin" />
         }
       </section>
-      {/* <footer className="content_footer">
-        <p className="copyright">&copy; 2023 Claudia Villagrán Leiva. Todos los derechos reservados.</p>
-      </footer> */}
+      <Footer />
     </>
   )
 }

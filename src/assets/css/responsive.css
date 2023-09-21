@@ -1,0 +1,245 @@
+ @media (max-width: 1010px) {
+
+     .somosicfa__info {
+         flex-direction: column;
+     }
+
+     .somosicfa__info-text {
+         order: 2;
+         width: 100%;
+         margin-left: 0;
+     }
+     .contenerdor__img-somosicfa{
+        width: 100%;
+        height: 450px;
+    }
+     .somosicfa-img {
+         order: 1;
+     }
+
+     .sobreNosotros__description {
+         flex-direction: column;
+     }
+
+     .sobreNosotros__description-text {
+         order: 2;
+         width: 100%;
+     }
+
+     .sobreNosotros__description-img {
+         height: 450px;
+         width: 90%;
+         order: 1;
+     }
+
+     .events__info {
+         flex-direction: column;
+     }
+
+     .events__info-text {
+         order: 2;
+         width: 100%;
+     }
+
+     .events-img {
+         order: 1;
+         height: 450px;
+         width: 90%;
+     }
+
+     .colaborador {
+         flex-direction: column;
+         padding-bottom: 0px;
+     }
+
+     .colaborador-description {
+         width: 90%;
+     }
+
+     .colaborador-reverse {
+         flex-direction: column;
+         
+         padding-bottom: 0px;
+     }
+ }
+
+ /*
+@media (max-width: 800px) {}
+
+
+@media (max-width: 703px) {
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100000px;
+        height: 100000px;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 40;
+        cursor: pointer;
+    }
+
+    .burger-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+    .layout__content{
+        margin-inline: 5%;
+    }
+    #menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 200;
+        margin-top: 18px;
+        right: -550px;
+        width: 250px;
+        height: 1000px;
+        background:
+            radial-gradient(circle at center top, #cce, #b7e790);
+        color: #000000;
+        transition: 0.4s;
+        border-radius: 5px;
+        z-index: 50;
+    }
+
+    #menu.open {
+        right: 0;
+    }
+
+    #menu.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    #menu.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .menu-list__item {
+        padding: 15px;
+    }
+
+    .icon-menu {
+        width: 30px;
+        height: 30px;
+        margin: 3px;
+        filter: drop-shadow(0px 0px 1px #4b4b50);
+        background-size: cover;
+        transition: background-image 0.3s;
+    }
+
+    .icon-menu {
+        background-image: url('../icons/menu.png');
+    }
+
+    .icon-menu:hover {
+        background-image: url('../icons/list.png');
+    }
+
+    #menu-button.open {
+        background-image: url('../icons/cross.png');
+    }
+    .content_bienvenida-tittle-1 {
+        font-size: 25px !important;
+        letter-spacing: 8px;
+    }
+    
+    .content_bienvenida-tittle-2 {
+        font-size: 25px !important;
+        letter-spacing: 8px;
+    
+    }
+    
+    .content_bienvenida-tittle-3 {
+        font-size: 25px !important;
+        letter-spacing: 8px;
+    
+    }
+    .content_bienvenida {
+        width: 350px;
+        height: 60px;
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 100px;
+
+
+    }
+    .card img{
+        max-height: 200px;
+        margin-top: -100px;
+        margin-inline: 5%;
+        max-width: 650px;
+        width: 250px;
+    }
+    .contain_data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .register-form{
+        margin: 0;
+    }
+}
+
+@media (max-width: 447px) {
+    .card-donation{
+        min-width: 198px;
+    }
+    .title_event_donation{
+        font-size: 15px;
+    }
+    .donacion_tittle{
+        font-size: 22px;
+    }
+    .eventos-tittle{
+        font-size: 25px;
+    }
+    .flex-form-2{
+        flex-direction: column;
+    }
+    .input-donation{
+        margin-bottom: 1px;
+    }
+    .input-message{
+        width: 178px;
+    }
+    .content_bienvenida-tittle-1 {
+        font-size: 22px !important;
+    }
+    
+    .content_bienvenida-tittle-2 {
+        font-size: 22px !important;
+    
+    }
+    
+    .content_bienvenida-tittle-3 {
+        font-size: 22px !important;
+    
+    }
+    .elemento__1{
+        display: none;
+    }
+    .elemento__5{
+        display: none;
+    }
+    .content_bienvenida {
+        width: 200px;
+        height: 60px;
+    }
+} */
