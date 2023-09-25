@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NearEvents } from "./NearEvents";
+import imgEvents from '../../../assets/img/leon_juda.jpg'
 
 export const Participar = () => {
   const [loaded, setLoaded] = useState(false);
@@ -14,19 +15,21 @@ export const Participar = () => {
 
 
   return (
-    <>
-      <div className="container__presentation">
+    <div className="container__participate">
+      <div className="background__events">
+        <img src={imgEvents} alt="image-background" className="image__background-participate" />
+        <div className='events-semitransparente'></div>
+      </div>
+      <div className="participate__content">
+        <div className={`participate__presentation ${loaded ? 'loaded' : ''}`}>
+          <button className="boton-animado">Eventos</button>
+          <h1>Tu granito hace un gran cambio</h1>
+        </div>
 
+        <div className="div__near-event-participation">
+          <NearEvents />
+        </div>
       </div>
-      <div className='events-semitransparente'></div>
-      <div className={`events__presentation participar_events ${loaded ? 'loaded' : ''}`}>
-        <button className="boton-animado">Participa</button>
-        <h1>Tu granito puede hacer un gran cambio</h1>
-      </div>
-      <div className="div__near-event-participation">
-        <h2 className="title-near-event-participation">Selecciona en cual evento vas a participar</h2>
-        <NearEvents />
-      </div>
-    </>
+    </div>
   )
 }

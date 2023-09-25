@@ -8,6 +8,7 @@ import { Events } from '../Components/layout/inicio/Events';
 import { Participar } from '../Components/layout/participar/Participar';
 import { AcercaDe } from '../Components/layout/acercaDe/AcercaDe';
 import { Bienvenida } from '../Components/layout/inicio/Bienvenida';
+import { Event } from '../Components/layout/participar/Event';
 
 
 export const Routing = () => {
@@ -21,6 +22,7 @@ export const Routing = () => {
                         <Route path='participa' element={<Participar />} />
                         <Route path='eventos' element={<Events />} />
                         <Route path='acercaDe' element={<AcercaDe />} />
+                        <Route path='event/:id' element={<Event/>}/>
                         {/* <Route path='registro' element={<Register />} /> */}
                     </Route>
 

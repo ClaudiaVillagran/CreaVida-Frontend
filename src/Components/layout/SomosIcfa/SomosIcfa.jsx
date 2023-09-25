@@ -39,7 +39,7 @@ export const SomosIcfa = () => {
                         </NavLink>
                     </div>
                 </div>
-                <div className="contenerdor__img-somosicfa">
+                <div className="contenedor__img-somosicfa">
 
                     <div className="somosicfa-img "></div>
                 </div>

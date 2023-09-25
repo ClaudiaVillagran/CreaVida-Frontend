@@ -9,12 +9,26 @@
          width: 100%;
          margin-left: 0;
      }
-     .contenerdor__img-somosicfa{
-        width: 100%;
-        height: 450px;
-    }
+
+     .somosicfa__info-text-p {
+         margin: 0;
+     }
+
+     .contenedor__img-somosicfa {
+         width: 100%;
+         height: 450px;
+
+         margin-bottom: 20px;
+
+     }
+
      .somosicfa-img {
          order: 1;
+     }
+
+     .seeMore button {
+         width: 35px;
+         height: 35px;
      }
 
      .sobreNosotros__description {
@@ -58,22 +72,200 @@
 
      .colaborador-reverse {
          flex-direction: column;
-         
+
          padding-bottom: 0px;
      }
+
+     .events__info-text-p {
+         margin-top: 15px;
+     }
+     .secondary-logo {
+        width: 30%;
+    }
+
  }
 
- /*
-@media (max-width: 800px) {}
+ @media (max-width: 500px) {
+     .container-lists__redes-list {
+         position: initial;
+         display: flex;
+         flex-direction: row;
+         justify-content: flex-end;
+         margin-bottom: 0px;
+         margin-top: 10px;
+     }
 
+     .somosicfa__tittle h2 {
+         font-size: 20px;
+     }
 
-@media (max-width: 703px) {
+     .contenedor__img-somosicfa {
+         height: auto;
+     }
+
+     .somosicfa-img {
+         height: 300px;
+     }
+
+     .seeMore {
+         padding-block: 10px;
+     }
+
+     .seeMore button {
+         width: 29px;
+         height: 29px;
+     }
+
+     .integrante__icfa {
+         margin: 5px 0;
+     }
+
+     .container__img-sobreNosotros {
+         height: 300px;
+     }
+
+     .sobreNosotros__description-img {
+         height: 100%;
+     }
+
+     .sobreNosotros__description-text-p {
+         margin-top: 15px;
+     }
+
+     .container__img-events {
+         height: 300px;
+     }
+
+     .events-img {
+         height: 100%;
+     }
+
+     .event__near {
+         margin-right: 0;
+     }
+
+     .container__img-colaborador {
+         height: 300px;
+         margin-bottom: 15px;
+     }
+
+     .colaborador-description p {
+         font-size: 4vw;
+     }
+
+     .acerca__eventosRealizados-description p {
+         font-size: 4vw;
+     }
+     .events__realized-tittle p {
+        font-size: 4vw;
+    }
+    .events__description p {
+        font-size: 4vw;
+    }
+    .container-description {
+        width: 98%;
+    }
+    .title-near-event-participation {
+        font-size: 5vw;
+    }
+    .title-event{
+        font-size: 8vw !important;
+    }
+    .frase-motivadora{
+        font-size: 4vw !important;
+    }
+    .first-description{
+        width: 40%;
+        font-size: 10px !important;
+        text-align: center;
+    }
+    .second-description{
+        width: 35%;
+        font-size: 10px !important;
+        text-align: center;
+    }
+
+    .description-donar {
+        width: 100%;
+        font-size: 2.5vw !important;
+    }
+    .background-white-secondpart{
+        margin-inline: 1%;
+    }
+    .background-white-secondpart p{
+        width: 85%;
+        font-size: 3.5vw;
+    }
+    .buttons-event{
+        width: 95%;
+    }
+    .donar-description{
+        margin-right: 1px;
+    }
+
+    .participation-box {
+        left: 47%;
+        width: 80vw;
+    }
+    .options-donate button {
+        width: 45%;
+    }
+    .footer-primary {
+        flex-direction: column;
+        align-items: center;
+    }
+    .primary__info-company {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .primary__info-company p {
+        width: 80%;
+    }
+    .primary__info-nosotros {
+        width: 100%;
+        align-items: center;
+        align-content: center;
+    }
+    .primary__info-contactanos{
+        width: 100%;
+        align-items: center;
+        align-content: center;
+    }
+    .footer-secondary{
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        margin-top: 20px;
+    }
+    .secondary-logo {
+       order: 1;
+    }
+    .secondary-copyright{
+        order: 3;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        padding-block: 20px;
+    }
+    .secondary-rrss{
+        order: 2;
+        padding-block: 20px;
+    }
+    .secondary-logo {
+        width: 50%;
+        padding-bottom: 20px;
+    }
+    .navbar__container-lists {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
     .overlay {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100000px;
-        height: 100000px;
+        width: 100vw;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 40;
         cursor: pointer;
@@ -84,34 +276,30 @@
         border: none;
         cursor: pointer;
         padding: 10px;
-    }
-
-    .bar {
+     }
+/*  .bar {
         width: 25px;
         height: 3px;
         background-color: #333;
         margin: 4px 0;
         transition: 0.4s;
-    }
-    .layout__content{
-        margin-inline: 5%;
-    }
+    } */
     #menu {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 200;
-        margin-top: 18px;
-        right: -550px;
-        width: 250px;
-        height: 1000px;
+        top: 130px;
+        width:100%;
+        height: 100vh;
         background:
-            radial-gradient(circle at center top, #cce, #b7e790);
+            radial-gradient(circle at  top, rgb(0, 0, 0), #000000);
         color: #000000;
-        transition: 0.4s;
+        transition: top 3s;
         border-radius: 5px;
+        border-top: 1px solid #60AD26;
         z-index: 50;
     }
+
 
     #menu.open {
         right: 0;
@@ -153,93 +341,6 @@
     #menu-button.open {
         background-image: url('../icons/cross.png');
     }
-    .content_bienvenida-tittle-1 {
-        font-size: 25px !important;
-        letter-spacing: 8px;
-    }
-    
-    .content_bienvenida-tittle-2 {
-        font-size: 25px !important;
-        letter-spacing: 8px;
-    
-    }
-    
-    .content_bienvenida-tittle-3 {
-        font-size: 25px !important;
-        letter-spacing: 8px;
-    
-    }
-    .content_bienvenida {
-        width: 350px;
-        height: 60px;
-    }
-    .card{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 100px;
+ }
 
-
-    }
-    .card img{
-        max-height: 200px;
-        margin-top: -100px;
-        margin-inline: 5%;
-        max-width: 650px;
-        width: 250px;
-    }
-    .contain_data{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .register-form{
-        margin: 0;
-    }
-}
-
-@media (max-width: 447px) {
-    .card-donation{
-        min-width: 198px;
-    }
-    .title_event_donation{
-        font-size: 15px;
-    }
-    .donacion_tittle{
-        font-size: 22px;
-    }
-    .eventos-tittle{
-        font-size: 25px;
-    }
-    .flex-form-2{
-        flex-direction: column;
-    }
-    .input-donation{
-        margin-bottom: 1px;
-    }
-    .input-message{
-        width: 178px;
-    }
-    .content_bienvenida-tittle-1 {
-        font-size: 22px !important;
-    }
-    
-    .content_bienvenida-tittle-2 {
-        font-size: 22px !important;
-    
-    }
-    
-    .content_bienvenida-tittle-3 {
-        font-size: 22px !important;
-    
-    }
-    .elemento__1{
-        display: none;
-    }
-    .elemento__5{
-        display: none;
-    }
-    .content_bienvenida {
-        width: 200px;
-        height: 60px;
-    }
-} */
+ 

@@ -4,6 +4,7 @@ import imagen1 from '../../../assets/img/carlos.png'
 import imagen2 from '../../../assets/img/Evento1.png'
 import imagen3 from '../../../assets/img/Evento1.png'
 import imagen4 from '../../../assets/img/Evento2.png'
+import { NavLink } from 'react-router-dom';
 
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -195,7 +196,7 @@ export const AcercaDe = () => {
           <div className="acerca__eventosRealizados-description">
             <div>
               <h1>Eventos realizados</h1>
-              <p>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>
+              <p><i>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</i></p>
               <button>/ Visita nuestra oficina</button>
             </div>
           </div>
@@ -221,7 +222,12 @@ export const AcercaDe = () => {
         </div>
         <div className="acerca__ayudanos">
           <h1>Se parte de nuestra comunidad</h1>
-          <button> <span>/ Ir a donar</span></button>
+          <button> <span>
+          <NavLink to="/participa" style={{ textDecoration: 'none', color: 'inherit' }}>
+            / Ir a donar
+            </NavLink>
+
+          </span></button>
         </div>
       </div>
       <div className='space'></div>

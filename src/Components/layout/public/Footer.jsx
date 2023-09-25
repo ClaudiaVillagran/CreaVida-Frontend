@@ -5,8 +5,8 @@ import iconCorreo from '../../../assets/icons/correo-electronico.jpg'
 import iconTelefono from '../../../assets/icons/telefono.png'
 
 export const Footer = () => {
-  
-  
+
+
     return (
         <footer className="footer__container" >
             <div className="footer-primary">
@@ -35,7 +35,7 @@ export const Footer = () => {
                     </ul>
                 </div>
                 <div className="primary__info-contactanos">
-                    <h3 id="contactanos">Contáctanos</h3>
+                    <h3>Contáctanos</h3>
                     <ul>
                         <li>
                             <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9'>
