@@ -6,9 +6,7 @@ import { NearEventsInicio } from "./NearEventsInicio"
 export const Section = () => {
   return (
     <>
-      <SomosIcfa />
       <SobreNosotros/>
-
       <NearEventsInicio/>
     </>
   )

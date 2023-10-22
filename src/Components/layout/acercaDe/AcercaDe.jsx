@@ -5,6 +5,9 @@ import imagen2 from '../../../assets/img/Evento1.png'
 import imagen3 from '../../../assets/img/Evento1.png'
 import imagen4 from '../../../assets/img/Evento2.png'
 import { NavLink } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -12,6 +15,7 @@ export const AcercaDe = () => {
   const [eventosVisibles, setEventosVisibles] = useState(2); // Número de eventos visibles a la vez
   const [eventoActual, setEventoActual] = useState(0);
 
+  const elemento = document.getElementById('nuestraMotivacion');
 
   const toggleElemento = (id) => {
     if (elementoAbierto === id) {
@@ -24,12 +28,47 @@ export const AcercaDe = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     // Simula una carga de página (puedes reemplazar esto con tu lógica real)
     setTimeout(() => {
       setLoaded(true);
     }, 200); // Retraso de 1 segundo para simular la carga
   }, []);
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
 
   const eventos = [
     {
@@ -83,12 +122,12 @@ export const AcercaDe = () => {
           <h1>Somos Esperanza</h1>
         </div>
         <div className="acerca__descripcion">
-          
+
           <p><span>CreaVida</span> <i>se fundo en AÑO para DESCRIPCION, realizamos nuestro primer evento de ayuda a EVENTO, desde ese entonces nos ha movido el amor
             por los demas llegando al punto de haber realizado mas de CANTIDAD de eventos de ayuda</i></p>
         </div>
         <div className="acerca__nuestraMotivacion">
-          <div className='nuestraMotivacion__container'>
+          <div className='nuestraMotivacion__container' id='nuestraMotivacion'>
             <div className='nuestraMotivacion-tittle'>
               <h1>Nuestra motivación</h1>
               <h2><i>Aspiramos a transformar vidas generando un impacto positivo a través de acciones y donaciones de nuestros colaboradores</i></h2>
@@ -160,38 +199,35 @@ export const AcercaDe = () => {
             </div>
           </div>
         </div>
-        <div className="acerca__colaboradores">
-          <div className="colaborador-1 colaborador">
-            <div className='container__img-colaborador'>
-              <div className="colaborador1-img colaborador-img"></div>
-            </div>
+        <div className="acerca__ayudanos">
+          <h1>Se parte de nuestra comunidad</h1>
+          <button> <span>
+            <NavLink to="/participa" style={{ textDecoration: 'none', color: 'inherit' }}>
+              / Ir a donar
+            </NavLink>
 
-            <div className="colaborador-description">
-              <h1>Barbara Veloso</h1>
-              <p>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>
-            </div>
-          </div>
-          <div className="colaborador-2 colaborador-reverse">
-            <div className='container__img-colaborador'>
-              <div className="colaborador2-img colaborador-img-reverse"></div>
-            </div>
-
-            <div className="colaborador-description">
-              <h1>Nombre Apellido</h1>
-              <p>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>
-            </div>
-          </div>
-
-          <div className="colaborador-3 colaborador">
-            <div className='container__img-colaborador'>
-              <div className="colaborador3-img colaborador-img"></div>
-            </div>
-            <div className="colaborador-description">
-              <h1>Nombre Apellido</h1>
-              <p>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</p>
-            </div>
-          </div>
+          </span></button>
         </div>
+        <div className="container__nuestro-equipo equipo_aboutUs">
+                    <h2>Nuestros Lideres</h2>
+                    <div className="container__lideres">
+                        <div className="container__lider">
+                            <div className="container__img-lider">
+                                <img src={imagen1} alt="Bárbara" />
+                            </div>
+                            <h3>Bárbara Veloso</h3>
+                            <p>Directora ejecutiva</p>
+                        </div>
+                        <div className="container__lider">
+                            <div className="container__img-lider">
+                                <img src={imagen2} alt="Rut" />
+                            </div>
+                            <h3>Ruth Alvarez</h3>
+                            <p>Trabajadora social</p>
+                        </div>
+                    </div>
+                </div>
+
         <div className='acerca__eventosRealizados__container'>
           <div className="acerca__eventosRealizados-description">
             <div>
@@ -202,7 +238,6 @@ export const AcercaDe = () => {
           </div>
 
           <div className="acerca__eventosRealizados">
-            <div className='border'></div>
             {eventos.slice(eventoActual, eventoActual + eventosVisibles).map((evento, index) => (
               <div key={index} className={`evento-card`}>
                 <div className={`acerca__eventosRealizados-${index + 1} event_realized`}>
@@ -213,25 +248,14 @@ export const AcercaDe = () => {
                   </div>
                   <p className='acercade_description'>{evento.descripcion}</p>
                 </div>
-                <div className='border'></div>
               </div>
             ))}
           </div>
 
           <div className='space'></div>
         </div>
-        <div className="acerca__ayudanos">
-          <h1>Se parte de nuestra comunidad</h1>
-          <button> <span>
-          <NavLink to="/participa" style={{ textDecoration: 'none', color: 'inherit' }}>
-            / Ir a donar
-            </NavLink>
-
-          </span></button>
-        </div>
+        
       </div>
-      <div className='space'></div>
-      <div className='space'></div>
     </div >
   )
 }

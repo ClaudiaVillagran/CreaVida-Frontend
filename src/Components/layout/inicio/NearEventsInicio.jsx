@@ -1,11 +1,49 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Global } from "../../../Helpers/Global";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import event1 from '../../../assets/img/event1.jpg'
 
 export const NearEventsInicio = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [events, setEvents] = useState([]);
   const contentRef = useRef(null);
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   const handleScroll = () => {
     const element = contentRef.current;
@@ -15,7 +53,6 @@ export const NearEventsInicio = () => {
       setIsVisible(elementTop < windowHeight && elementTop > -element.clientHeight);
     }
   };
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -47,38 +84,39 @@ export const NearEventsInicio = () => {
 
   return (
 
-    <article className={`container__events scroll_reveal ${isVisible ? 'visible' : ''}`} ref={contentRef}>
+    <article className="container__events ">
 
       <div className="events__title">
-        <h2 >Eventos cercanos</h2>
+        <h2>Eventos cercanos</h2>
       </div>
-      <div className="events__info white__card">
-        <div className="events__info-text white__card">
-          <p className="events__info-text-p ">Lorem ipsum dolor sit amet adipiscing elit, sed do eiusmod tempor incididunt ut la.</p>
-          <div className="events__info-seeMore seeMore seeMoreb">
-            <NavLink to="/participa">
-              <button >IR</button>
-              <p>Conocer más eventos</p>
-
-            </NavLink>
-
-          </div>
-        </div>
-        <div className="container__img-events">
-          <div className="events-img "></div>
-        </div>
-      </div>
-      <div className="events__near events">
-        {events.map((event) => {
+      <div className="container-event">
+        <Slider {...settings}>
+          {events.map((event) => {
+            return (
+              <div className="card__near-events" key={event._id}>
+                <div className="card-top">
+                  <img src={event1} alt="event1" />
+                </div>
+                <div className="card-bottom">
+                  <h2>{event.title}</h2>
+                  <p>aquí va la descripción</p>
+                  <h6>{event.date}</h6>
+                </div>
+                <button className="button-donar near-event-b">Ver información</button>
+              </div>
+            )
+          })}
+        </Slider>
+        {/* {events.map((event) => {
           return (
             <div className="event__near event-1" key={event._id}>
               <div className="event-1-img event-img "></div>
               <div className="event__near-description">
                 <h2 >{event.title}</h2>
-                <p>{'AQUI VA LA DESCRIPCION DEL EVENTO '+event.description}</p>
+                <p>{'AQUI VA LA DESCRIPCION DEL EVENTO ' + event.description}</p>
                 <p>{event.date}</p>
                 <div className="events__info-seeMore seeMore seeMoreb">
-                  <NavLink to={'/event/'+event._id}>
+                  <NavLink to={'/event/' + event._id}>
                     <button>IR</button>
                     <p>Conocer sobre este evento</p>
                   </NavLink>
@@ -87,7 +125,7 @@ export const NearEventsInicio = () => {
             </div>
 
           )
-        })}
+        })} */}
       </div>
     </article>
 

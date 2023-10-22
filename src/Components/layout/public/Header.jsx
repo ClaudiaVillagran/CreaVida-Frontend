@@ -20,12 +20,14 @@ export const Header = () => {
   };
   return (
     <header className={`layout__navbar  ${scrolling ? 'scrolled' : ''}`}>
+      <div className='container__header'>
+        <div className="navbar__header">
+          <img src={avatar} alt="Logo-CreaVida" className='navbar_logo-CreaVida logo' />
+        </div>
 
-      <div className="navbar__header">
-        <img src={avatar} alt="Logo-CreaVida" className='navbar_logo-CreaVida logo' />
+        <Nav />
       </div>
 
-      <Nav />
     </header>
   )
 }

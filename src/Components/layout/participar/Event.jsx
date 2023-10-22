@@ -8,6 +8,7 @@ export const Event = () => {
     const [event, setEvent] = useState({});
     const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
     const [modalOpenDonate, setModalOpenDonate] = useState(false);
+    const [formattedDate, setFormattedDate] = useState("")
 
 
     const participar = () => {
@@ -39,6 +40,13 @@ export const Event = () => {
             console.log('getEvents', data)
             setEvent(data.event)
             console.log(event)
+            const eventDate = new Date(data.event.date);
+            const day = eventDate.getDate();
+            const month = eventDate.getMonth() + 1; // Los meses comienzan desde 0
+            const year = eventDate.getFullYear();
+            const formatDate = `${day}-${month}-${year}`;
+            setFormattedDate(formatDate)
+            console.log(formatDate)
         }
 
     }
@@ -113,7 +121,7 @@ export const Event = () => {
                     <h2 className="title-event">{event.title}</h2>
                     <p className="frase-motivadora">Frase motivadora</p>
                     <div className="specific-description">
-                        <p className="first-description">{event.date}</p>
+                        <p className="first-description"  >{formattedDate}</p>
                         <p className="second-description">{'aqui va la ubicacion' + event.location}</p>
                         <div className="buttons-description last-description">
                             <button className="button-donar description-donar " onClick={donar}>Donar</button>

@@ -79,9 +79,90 @@
      .events__info-text-p {
          margin-top: 15px;
      }
+
      .secondary-logo {
-        width: 30%;
-    }
+         width: 30%;
+     }
+
+ }
+
+
+ @media (max-width:700px) {
+     .background__solidaridad {
+         display: none;
+     }
+
+     .principal__container {
+         height: 500px;
+     }
+
+     .presentation__inicio {
+         width: 100%;
+         align-items: center;
+         padding: 0px;
+     }
+
+     .presentation__tittle {
+         font-size: 7vw;
+     }
+
+     .presentation__logo {
+         width: 30vw;
+         height: 25vw;
+     }
+
+     .presentation__description-first {
+         font-size: 5vw;
+     }
+
+     .presentation__description {
+         font-size: 4vw;
+     }
+
+     .container__buttons-inicio {
+         width: 100%;
+
+     }
+
+     .button-donar {
+         padding: 10px;
+     }
+
+     .container__nuestro-equipo h2 {
+         font-size: 30px;
+     }
+
+     .container__img-lider {
+         border: 3px solid #60AD26;
+     }
+
+     .container__lider h3 {
+         font-size: 20px;
+     }
+
+     .container__sobreNosotros {
+         min-height: 50vh;
+     }
+
+     .container__ser-parte h2 {
+         font-size: 7vw;
+     }
+
+     .ser-parte__p {
+         font-size: 15px;
+     }
+
+     .container__specific-value {
+         width: 25vw;
+     }
+
+     .title__value {
+         font-size: 2.9vw;
+     }
+     .description__value{
+        font-size: 12px;
+      }
+      
 
  }
 
@@ -156,191 +237,215 @@
      .acerca__eventosRealizados-description p {
          font-size: 4vw;
      }
+
      .events__realized-tittle p {
-        font-size: 4vw;
-    }
-    .events__description p {
-        font-size: 4vw;
-    }
-    .container-description {
-        width: 98%;
-    }
-    .title-near-event-participation {
-        font-size: 5vw;
-    }
-    .title-event{
-        font-size: 8vw !important;
-    }
-    .frase-motivadora{
-        font-size: 4vw !important;
-    }
-    .first-description{
-        width: 40%;
-        font-size: 10px !important;
-        text-align: center;
-    }
-    .second-description{
-        width: 35%;
-        font-size: 10px !important;
-        text-align: center;
-    }
-
-    .description-donar {
-        width: 100%;
-        font-size: 2.5vw !important;
-    }
-    .background-white-secondpart{
-        margin-inline: 1%;
-    }
-    .background-white-secondpart p{
-        width: 85%;
-        font-size: 3.5vw;
-    }
-    .buttons-event{
-        width: 95%;
-    }
-    .donar-description{
-        margin-right: 1px;
-    }
-
-    .participation-box {
-        left: 47%;
-        width: 80vw;
-    }
-    .options-donate button {
-        width: 45%;
-    }
-    .footer-primary {
-        flex-direction: column;
-        align-items: center;
-    }
-    .primary__info-company {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .primary__info-company p {
-        width: 80%;
-    }
-    .primary__info-nosotros {
-        width: 100%;
-        align-items: center;
-        align-content: center;
-    }
-    .primary__info-contactanos{
-        width: 100%;
-        align-items: center;
-        align-content: center;
-    }
-    .footer-secondary{
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        margin-top: 20px;
-    }
-    .secondary-logo {
-       order: 1;
-    }
-    .secondary-copyright{
-        order: 3;
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        padding-block: 20px;
-    }
-    .secondary-rrss{
-        order: 2;
-        padding-block: 20px;
-    }
-    .secondary-logo {
-        width: 50%;
-        padding-bottom: 20px;
-    }
-    .navbar__container-lists {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-    }
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 40;
-        cursor: pointer;
-    }
-
-    .burger-icon {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
+         font-size: 4vw;
      }
-/*  .bar {
+
+     .events__description p {
+         font-size: 4vw;
+     }
+
+     .container-description {
+         width: 98%;
+     }
+
+     .title-near-event-participation {
+         font-size: 5vw;
+     }
+
+     .title-event {
+         font-size: 8vw !important;
+     }
+
+     .frase-motivadora {
+         font-size: 4vw !important;
+     }
+
+     .first-description {
+         width: 40%;
+         font-size: 10px !important;
+         text-align: center;
+     }
+
+     .second-description {
+         width: 35%;
+         font-size: 10px !important;
+         text-align: center;
+     }
+
+     .description-donar {
+         width: 100%;
+         font-size: 2.5vw !important;
+     }
+
+     .background-white-secondpart {
+         margin-inline: 1%;
+     }
+
+     .background-white-secondpart p {
+         width: 85%;
+         font-size: 3.5vw;
+     }
+
+     .buttons-event {
+         width: 95%;
+     }
+
+     .donar-description {
+         margin-right: 1px;
+     }
+
+     .participation-box {
+         left: 47%;
+         width: 80vw;
+     }
+
+     .options-donate button {
+         width: 45%;
+     }
+
+     .footer-primary {
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .primary__info-company {
+         width: 100%;
+         margin-bottom: 10px;
+     }
+
+     .primary__info-company p {
+         width: 80%;
+     }
+
+     .primary__info-nosotros {
+         width: 100%;
+         align-items: center;
+         align-content: center;
+     }
+
+     .primary__info-contactanos {
+         width: 100%;
+         align-items: center;
+         align-content: center;
+     }
+
+     .footer-secondary {
+         flex-direction: column;
+         align-items: center;
+         align-content: center;
+         margin-top: 20px;
+     }
+
+     .secondary-logo {
+         order: 1;
+     }
+
+     .secondary-copyright {
+         order: 3;
+         width: 100%;
+         display: inline-block;
+         text-align: center;
+         padding-block: 20px;
+     }
+
+     .secondary-rrss {
+         order: 2;
+         padding-block: 20px;
+     }
+
+     .secondary-logo {
+         width: 50%;
+         padding-bottom: 20px;
+     }
+
+     .navbar__container-lists {
+         display: flex;
+         flex-direction: column;
+         align-items: end;
+     }
+
+     .overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100vw;
+         height: 100vh;
+         background-color: rgba(0, 0, 0, 0.5);
+         z-index: 40;
+         cursor: pointer;
+     }
+
+     .burger-icon {
+         background: none;
+         border: none;
+         cursor: pointer;
+         padding: 10px;
+     }
+
+     /*  .bar {
         width: 25px;
         height: 3px;
         background-color: #333;
         margin: 4px 0;
         transition: 0.4s;
     } */
-    #menu {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        top: 130px;
-        width:100%;
-        height: 100vh;
-        background:
-            radial-gradient(circle at  top, rgb(0, 0, 0), #000000);
-        color: #000000;
-        transition: top 3s;
-        border-radius: 5px;
-        border-top: 1px solid #60AD26;
-        z-index: 50;
-    }
+     #menu {
+         position: absolute;
+         display: flex;
+         flex-direction: column;
+         top: 130px;
+         width: 100%;
+         height: 100vh;
+         background:
+             radial-gradient(circle at top, rgb(0, 0, 0), #000000);
+         color: #000000;
+         transition: top 3s;
+         border-radius: 5px;
+         border-top: 1px solid #60AD26;
+         z-index: 50;
+     }
 
 
-    #menu.open {
-        right: 0;
-    }
+     #menu.open {
+         right: 0;
+     }
 
-    #menu.open .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
+     #menu.open .bar:nth-child(1) {
+         transform: rotate(-45deg) translate(-5px, 6px);
+     }
 
-    #menu.open .bar:nth-child(2) {
-        opacity: 0;
-    }
+     #menu.open .bar:nth-child(2) {
+         opacity: 0;
+     }
 
-    #menu.open .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
+     #menu.open .bar:nth-child(3) {
+         transform: rotate(45deg) translate(-5px, -6px);
+     }
 
-    .menu-list__item {
-        padding: 15px;
-    }
+     .menu-list__item {
+         padding: 15px;
+     }
 
-    .icon-menu {
-        width: 30px;
-        height: 30px;
-        margin: 3px;
-        filter: drop-shadow(0px 0px 1px #4b4b50);
-        background-size: cover;
-        transition: background-image 0.3s;
-    }
+     .icon-menu {
+         width: 30px;
+         height: 30px;
+         margin: 3px;
+         filter: drop-shadow(0px 0px 1px #4b4b50);
+         background-size: cover;
+         transition: background-image 0.3s;
+     }
 
-    .icon-menu {
-        background-image: url('../icons/menu.png');
-    }
+     .icon-menu {
+         background-image: url('../icons/menu.png');
+     }
 
-    .icon-menu:hover {
-        background-image: url('../icons/list.png');
-    }
+     .icon-menu:hover {
+         background-image: url('../icons/list.png');
+     }
 
-    #menu-button.open {
-        background-image: url('../icons/cross.png');
-    }
+     #menu-button.open {
+         background-image: url('../icons/cross.png');
+     }
  }
-
- 
