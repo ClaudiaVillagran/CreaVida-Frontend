@@ -140,10 +140,6 @@
          font-size: 20px;
      }
 
-     .container__sobreNosotros {
-         min-height: 50vh;
-     }
-
      .container__ser-parte h2 {
          font-size: 7vw;
      }
@@ -376,76 +372,5 @@
          z-index: 40;
          cursor: pointer;
      }
-
-     .burger-icon {
-         background: none;
-         border: none;
-         cursor: pointer;
-         padding: 10px;
-     }
-
-     /*  .bar {
-        width: 25px;
-        height: 3px;
-        background-color: #333;
-        margin: 4px 0;
-        transition: 0.4s;
-    } */
-     #menu {
-         position: absolute;
-         display: flex;
-         flex-direction: column;
-         top: 130px;
-         width: 100%;
-         height: 100vh;
-         background:
-             radial-gradient(circle at top, rgb(0, 0, 0), #000000);
-         color: #000000;
-         transition: top 3s;
-         border-radius: 5px;
-         border-top: 1px solid #60AD26;
-         z-index: 50;
-     }
-
-
-     #menu.open {
-         right: 0;
-     }
-
-     #menu.open .bar:nth-child(1) {
-         transform: rotate(-45deg) translate(-5px, 6px);
-     }
-
-     #menu.open .bar:nth-child(2) {
-         opacity: 0;
-     }
-
-     #menu.open .bar:nth-child(3) {
-         transform: rotate(45deg) translate(-5px, -6px);
-     }
-
-     .menu-list__item {
-         padding: 15px;
-     }
-
-     .icon-menu {
-         width: 30px;
-         height: 30px;
-         margin: 3px;
-         filter: drop-shadow(0px 0px 1px #4b4b50);
-         background-size: cover;
-         transition: background-image 0.3s;
-     }
-
-     .icon-menu {
-         background-image: url('../icons/menu.png');
-     }
-
-     .icon-menu:hover {
-         background-image: url('../icons/list.png');
-     }
-
-     #menu-button.open {
-         background-image: url('../icons/cross.png');
-     }
+     
  }

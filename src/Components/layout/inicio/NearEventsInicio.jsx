@@ -1,14 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Global } from "../../../Helpers/Global";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import event1 from '../../../assets/img/event1.jpg'
+import { NearEvents } from "../participar/NearEvents";
+import { NavLink } from "react-router-dom";
+import { ModalParticipate } from "../modal/ModalParticipate";
+import { ModalDonate } from "../modal/ModalDonate";
+import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
 
 export const NearEventsInicio = () => {
   const [events, setEvents] = useState([]);
   const contentRef = useRef(null);
+  const [eventsRealized, setEventsRealized] = useState([]);
+  const [nearEvents, setNearEvents] = useState([]);
+  const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
+  const [modalOpenDonate, setModalOpenDonate] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState(null);
 
   const settings = {
     dots: true,
@@ -30,9 +39,9 @@ export const NearEventsInicio = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 2
+          initialSlide: 1
         }
       },
       {
@@ -53,6 +62,16 @@ export const NearEventsInicio = () => {
       setIsVisible(elementTop < windowHeight && elementTop > -element.clientHeight);
     }
   };
+
+  const participar = (eventId) => {
+    setModalOpenParticipe(true);
+    setSelectedEventId(eventId);
+  };
+
+  const donar = () => {
+    setModalOpenDonate(true);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -72,12 +91,28 @@ export const NearEventsInicio = () => {
       }
     });
     const data = await request.json();
-    if (data.status == 'success') {
-      console.log('getEvents', data)
-      setEvents(data.events)
-      console.log(events)
-    }
+    if (data.status === 'success') {
+      const nowDate = new Date();
+      nowDate.setHours(0, 0, 0, 0);
 
+      const realizedEvents = [];
+      const futureEvents = [];
+
+      for (let i = 0; i < data.events.length; i++) {
+        const eventDate = new Date(data.events[i].date);
+        eventDate.setHours(0, 0, 0, 0);
+
+        if (eventDate < nowDate) {
+          realizedEvents.push(data.events[i]);
+        } else {
+          futureEvents.push(data.events[i]);
+        }
+      }
+
+      setEventsRealized(realizedEvents);
+      setNearEvents(futureEvents);
+
+    }
   }
 
 
@@ -89,7 +124,52 @@ export const NearEventsInicio = () => {
       <div className="events__title">
         <h2>Eventos cercanos</h2>
       </div>
+      {modalOpenParticipe && (
+        <ButtonModalParticipate selectedEventId={selectedEventId}
+          setModalOpenParticipe={setModalOpenParticipe} modalOpenParticipe={modalOpenParticipe}
+        />
+
+      )}
+      {modalOpenDonate && (
+        <ModalDonate setModalOpenDonate={setModalOpenDonate} />
+      )}
       <div className="container-event">
+        {nearEvents.length > 0 ?
+          <Slider {...settings}>
+            {nearEvents.map((event, index) => {
+              return (
+                <div className="container__event" key={event._id}>
+                  <div className={`event-inicio event-${index + 1}`}>
+                    <div className="cuadrado-pintura">
+                      <div className="info__events">
+                        <div className="button-event">
+                          <button className="button-donar" onClick={donar}><span>Donar</span></button>
+                          <button className="button-participar" onClick={() => participar(event._id)}><span>Participar</span></button>
+
+                        </div>
+
+                        <h3>{event.title}</h3>
+                        <div className="time">
+                          <div className="icon-time"></div>
+                          <h5>10:00 AM</h5>
+                        </div>
+                        <NavLink to={'/event/' + event._id}>
+                          <button className="info__events-seeMore nearSeeMore">Ver informacíon</button>
+                        </NavLink>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              )
+            })}
+          </Slider>
+          :
+          <h2>No existen eventos cercanos</h2>}
+
+      </div>
+      {/* <div className="container-event">
         <Slider {...settings}>
           {events.map((event) => {
             return (
@@ -107,26 +187,7 @@ export const NearEventsInicio = () => {
             )
           })}
         </Slider>
-        {/* {events.map((event) => {
-          return (
-            <div className="event__near event-1" key={event._id}>
-              <div className="event-1-img event-img "></div>
-              <div className="event__near-description">
-                <h2 >{event.title}</h2>
-                <p>{'AQUI VA LA DESCRIPCION DEL EVENTO ' + event.description}</p>
-                <p>{event.date}</p>
-                <div className="events__info-seeMore seeMore seeMoreb">
-                  <NavLink to={'/event/' + event._id}>
-                    <button>IR</button>
-                    <p>Conocer sobre este evento</p>
-                  </NavLink>
-                </div>
-              </div>
-            </div>
-
-          )
-        })} */}
-      </div>
+      </div> */}
     </article>
 
   )

@@ -6,6 +6,8 @@ import { ModalDonate } from "../modal/ModalDonate";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { NearEventsHeader } from "./NearEventsHeader";
+import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
 
 export const NearEvents = ({ nearEvents }) => {
   const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
@@ -21,6 +23,7 @@ export const NearEvents = ({ nearEvents }) => {
   const participar = (eventId) => {
     setModalOpenParticipe(true);
     setSelectedEventId(eventId);
+    console.log(modalOpenParticipe)
   };
 
   const donar = () => {
@@ -86,18 +89,15 @@ export const NearEvents = ({ nearEvents }) => {
   return (
     <div className="container__article-near">
       {modalOpenParticipe && (
-        <ModalParticipate selectedEventId={selectedEventId}
-          setModalOpenParticipe={setModalOpenParticipe}
+        <ButtonModalParticipate selectedEventId={selectedEventId}
+          setModalOpenParticipe={setModalOpenParticipe} modalOpenParticipe={modalOpenParticipe}
         />
 
       )}
       {modalOpenDonate && (
         <ModalDonate setModalOpenDonate={setModalOpenDonate} />
       )}
-      <div className="events__description">
-        <h2>CreaVida a través de Chile</h2>
-        <p><span>CreaVida</span> <i>naptatam alam quaerat voluptat quauignam aliquamuignam aliquignuignam aliquam quaerat voluptatuignam aliquam quaerat voluptatm</i></p>
-      </div>
+      <NearEventsHeader/>
       <div className="container__near_events">
         <Slider {...settings}>
           {nearEvents.map((event, index) => {
@@ -109,7 +109,7 @@ export const NearEvents = ({ nearEvents }) => {
                       <div className="button-event">
                         <button className="button-donar" onClick={donar}><span>Donar</span></button>
                         <button className="button-participar" onClick={() => participar(event._id)}><span>Participar</span></button>
-
+                 
                       </div>
 
                       <h3>{event.title}</h3>

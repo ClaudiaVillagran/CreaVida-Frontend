@@ -5,9 +5,6 @@ import imagen2 from '../../../assets/img/Evento1.png'
 import imagen3 from '../../../assets/img/Evento1.png'
 import imagen4 from '../../../assets/img/Evento2.png'
 import { NavLink } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -28,46 +25,13 @@ export const AcercaDe = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // Simula una carga de página (puedes reemplazar esto con tu lógica real)
     setTimeout(() => {
       setLoaded(true);
     }, 200); // Retraso de 1 segundo para simular la carga
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
 
 
   const eventos = [
@@ -104,7 +68,7 @@ export const AcercaDe = () => {
   };
 
   useEffect(() => {
-    const newIntervalId = setInterval(cambiarEvento, 5000);
+    const newIntervalId = setInterval(cambiarEvento, 2000);
     // Limpieza: detener el intervalo cuando el componente se desmonta
     return () => clearInterval(newIntervalId);
   }, [eventos.length]);
@@ -115,7 +79,7 @@ export const AcercaDe = () => {
       <video autoPlay muted loop id="background-video" >
         <source src={video} type="video/mp4" />
       </video>
-      <div className='acerca-semitransparente'></div>
+       <div className='acerca-semitransparente'></div> 
       <div className='acerca__content'>
         <div className={`acerca__presentation ${loaded ? 'loaded' : ''}`}>
           <button className="boton-animado">¿QUIÉNES SOMOS?</button>
@@ -209,31 +173,34 @@ export const AcercaDe = () => {
           </span></button>
         </div>
         <div className="container__nuestro-equipo equipo_aboutUs">
-                    <h2>Nuestros Lideres</h2>
-                    <div className="container__lideres">
-                        <div className="container__lider">
-                            <div className="container__img-lider">
-                                <img src={imagen1} alt="Bárbara" />
-                            </div>
-                            <h3>Bárbara Veloso</h3>
-                            <p>Directora ejecutiva</p>
-                        </div>
-                        <div className="container__lider">
-                            <div className="container__img-lider">
-                                <img src={imagen2} alt="Rut" />
-                            </div>
-                            <h3>Ruth Alvarez</h3>
-                            <p>Trabajadora social</p>
-                        </div>
-                    </div>
-                </div>
+          <h2>Nuestros Lideres</h2>
+          <div className="container__lideres">
+            <div className="container__lider">
+              <div className="container__img-lider">
+                <img src={imagen1} alt="Bárbara" />
+              </div>
+              <h3>Bárbara Veloso</h3>
+              <p>Directora ejecutiva</p>
+            </div>
+            <div className="container__lider">
+              <div className="container__img-lider">
+                <img src={imagen2} alt="Rut" />
+              </div>
+              <h3>Ruth Alvarez</h3>
+              <p>Trabajadora social</p>
+            </div>
+          </div>
+        </div>
 
         <div className='acerca__eventosRealizados__container'>
           <div className="acerca__eventosRealizados-description">
             <div>
               <h1>Eventos realizados</h1>
               <p><i>rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</i></p>
-              <button>/ Visita nuestra oficina</button>
+              <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9' target="_blank"> 
+
+                <button>/ Visita nuestra oficina</button>
+              </NavLink>
             </div>
           </div>
 
@@ -254,7 +221,7 @@ export const AcercaDe = () => {
 
           <div className='space'></div>
         </div>
-        
+
       </div>
     </div >
   )

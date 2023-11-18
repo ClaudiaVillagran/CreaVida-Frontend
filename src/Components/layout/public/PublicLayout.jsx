@@ -2,6 +2,7 @@ import { Navigate, Outlet } from "react-router-dom"
 import { Header } from "./Header"
 import useAuth from "../../../Hooks/useAuth"
 import { Footer } from "./Footer";
+import { NavResponsive } from "./NavResponsive";
 
 export const PublicLayout = () => {
 
@@ -9,7 +10,7 @@ export const PublicLayout = () => {
   return (
     <>
       {/* layout */}
-      <Header />
+      <Header/>
 
       {/* contenido principal */}
       <section className="layout__content">

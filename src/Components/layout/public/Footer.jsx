@@ -18,17 +18,17 @@ export const Footer = () => {
                     <h3>Nosotros</h3>
                     <ul>
                         <li>
-                            <NavLink>
+                            <NavLink to='/acercaDe'>
                                 <span>Colaboradores</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink>
+                            <NavLink to='/participa'>
                                 <span>Ayudanos</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink>
+                            <NavLink to='https://www.somosicfa.cl/' target="_blank">
                                 <span>Nuestra iglesia</span>
                             </NavLink>
                         </li>
@@ -38,20 +38,20 @@ export const Footer = () => {
                     <h3>Contáctanos</h3>
                     <ul>
                         <li>
-                            <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9'>
+                            <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9' target="_blank">
                                 <img src={iconDirection} className="icon-footer"></img>
                                 <span>Serrano Esquina Prat, Lota</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink>
+                            <NavLink to="mailto:somosicfaweb@gmail.com" target="_blank">
                                 <img src={iconCorreo} className="icon-footer"></img>
 
                                 <span>somosicfaweb@gmail.com</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink>
+                            <NavLink to="https://api.whatsapp.com/send?phone=56945282176&text=¡Hola! ¿Cómo estás?">
                                 <img src={iconTelefono} className="icon-footer"></img>
                                 <span>+569 5969 5315</span>
                             </NavLink>
@@ -61,7 +61,9 @@ export const Footer = () => {
             </div>
             <div className="footer-secondary">
                 <div className="secondary-copyright">
-                    <p>&copy; CreaVida | Powered by Claudia Villagrán</p>
+                    <NavLink to='https://github.com/ClaudiaVillagran' target="_blank">
+                        <p>&copy; CreaVida | Powered by Claudia Villagrán</p>
+                    </NavLink>
                 </div>
                 <div className="secondary-logo">
                     <img src={avatar} alt="Logo-CreaVida" className='footer__logo-CreaVida' />

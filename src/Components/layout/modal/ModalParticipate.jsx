@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Global } from "../../../Helpers/Global";
-import { NavLink } from "react-router-dom";
 
 import { useForm } from "../../../Hooks/useForm";
+import RangeInput from '../rangeInput/RangeInput'
 
 
 export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => {
@@ -46,6 +46,7 @@ export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => 
     }
 
   }
+  
   return (
     <>
 
@@ -68,11 +69,9 @@ export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => 
                 <label htmlFor="lastname" >Apellido:</label>
               </div>
 
-              <div className="input-box" >
+                  <RangeInput/>
 
-                <input type="text" id="age" name="age" onChange={changed} />
-                <label htmlFor="age" >Edad:</label>
-              </div>
+
 
               <div className="input-box" >
                 <input type="email" id="email" name="email" required onChange={changed} />
@@ -109,3 +108,4 @@ export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => 
     </>
   )
 }
+
