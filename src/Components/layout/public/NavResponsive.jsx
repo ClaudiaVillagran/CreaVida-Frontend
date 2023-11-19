@@ -67,7 +67,7 @@ export const NavResponsive = () => {
                     </NavLink>
                     <NavLink to='/participa'>
                         <ListItem onClick={handleDrawerClose} className='menu__li'>
-                            <span >Participa</span>
+                            <span >Hazte miembro</span>
                         </ListItem>
                     </NavLink>
                 </List>
