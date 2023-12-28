@@ -15,6 +15,7 @@ export const NearEvents = ({ nearEvents }) => {
   const [events, setEvents] = useState([]);
   const [selectedEventId, setSelectedEventId] = useState(null);
   console.log("nearevents", nearEvents)
+  const [settings, setSettings] = useState({})
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -30,61 +31,80 @@ export const NearEvents = ({ nearEvents }) => {
     setModalOpenDonate(true);
   };
 
-
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
-  // const GetEvents = async () => {
-  //   const request = await fetch(Global.url + 'event/getEvents', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
-  //   const data = await request.json();
-  //   if (data.status == 'success') {
-  //     console.log('getEvents', data)
-  //     setEvents(data.events)
-  //     console.log(events);
-  //     for (let i = 0; i < events.length; i++) {
-  //       const newDate = events[i].date;
-  //       console.log(newDate, events[i])
-
-  //     }
-  //   }
-  // }
+  
+  useEffect(() => {
+    if (nearEvents.length>1) {
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }else{
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }
+  }, [nearEvents]);
 
   return (
     <div className="container__article-near">
@@ -100,9 +120,10 @@ export const NearEvents = ({ nearEvents }) => {
       <NearEventsHeader/>
       <div className="container__near_events">
         <Slider {...settings}>
+          <div>
           {nearEvents.map((event, index) => {
             return (
-              <div className="container__event" key={event._id}>
+              <div className="container__event" key={index}>
                 <div className={`event event-${index + 1}`}>
                   <div className="cuadrado-pintura">
                     <div className="info__events">
@@ -128,6 +149,7 @@ export const NearEvents = ({ nearEvents }) => {
               
             )
           })}
+          </div>
         </Slider>
       </div>
 

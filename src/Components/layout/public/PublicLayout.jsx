@@ -9,6 +9,7 @@ export const PublicLayout = () => {
   const { auth } = useAuth();
   return (
     <>
+    
       {/* layout */}
       <Header/>
 

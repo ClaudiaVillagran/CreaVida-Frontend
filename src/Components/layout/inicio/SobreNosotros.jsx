@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import imgBarbara from '../../../assets/img/Barbara.png'
-import imgRut from '../../../assets/img/carlos.png'
+import imgBarbara from '../../../assets/img/babaraInicio.png'
+import imgRut from '../../../assets/img/rutAlvarez.png'
 import { Navigate } from "../../navigate/Navigate";
-import iconCaridad from '../../../assets/icons/caridad.png'
-import iconHonra from '../../../assets/icons/honra.png'
-import iconSamaritano from '../../../assets/icons/voluntario.png'
 
 export const SobreNosotros = () => {
 
@@ -29,7 +26,6 @@ export const SobreNosotros = () => {
         };
     }, []);
 
-
     return (
         <>
             <article className={`container__sobreNosotros scroll_reveal ${isVisible ? 'visible' : ''}`} ref={contentRef} >
@@ -44,7 +40,7 @@ export const SobreNosotros = () => {
 
 
                 <div className="container__nuestro-equipo">
-                    <h2>Nuestros Lideres</h2>
+                    <h2>NUESTROS LÍDERES</h2>
                     <div className="container__lideres">
                         <div className="container__lider">
                             <div className="container__img-lider">
@@ -69,27 +65,27 @@ export const SobreNosotros = () => {
                 <div id="serParte"></div>
             </article>
             <article className="container__ser-parte" >
-                <h2 >¿Por qué ser parte?</h2>
-                <p className="ser-parte__p">Es aquella que reconoce que cada persona lleva la imagen de Dios y trabaja activamente e intencionalmente en sus comunidades con el fin de mostrar el amor de Dios y participar en la restauración integral de su entorno.  Al reconocer que cada persona lleva la imagen de Dios, las iglesias transformadoras se mantienen activas en sus contextos socioculturales modelando y promoviendo la justicia social y frenando la corrupción.
-                    La manera de cumplir con esta misión se puede ver en los siguientes tres niveles de transformación:</p>
+                <h2 >¿POR QUÉ SER PARTE?</h2>
+                <p className="ser-parte__p">Cada pequeño acto de bondad refleja la luz del cristianismo, y al hacerlo, inspiramos a otros a unirse a esta hermosa misión de amor y solidaridad. ¡Vamos juntos a hacer la diferencia que nuestro mundo tanto necesita!</p>
                 <div className="container__values">
-                    <div className="container__specific-value">
+                    <div className="container__specific-value love">
                         <div className="container__img-value">
-                            <img src={iconCaridad} alt="Caridad y amor al prójimo img" />
+                            {/* <img src={iconCaridad} alt="Caridad y amor al prójimo img"/> */}
+                            <div className="img-value-love"/>
                         </div>
                         <h4 className="title__value">Amor al prójimo</h4>
                         <p className="description__value"> La Biblia enfatiza el mandamiento de amar a tu prójimo como a ti mismo (Mateo 22:39). Donar es una manifestación concreta de este amor al ayudar a quienes enfrentan dificultades.</p>
                     </div>
-                    <div className="container__specific-value">
+                    <div className="container__specific-value honra">
                         <div className="container__img-value">
-                            <img src={iconHonra} alt="Honrar a Dios img" />
+                        <div className="img-value-honra"/>
                         </div>
                         <h4 className="title__value">Honrar a Dios</h4>
                         <p className="description__value">La Biblia también enseña sobre la importancia de honrar a Dios con nuestros recursos y bendiciones (Proverbios 3:9). Donar es una forma de mostrar gratitud por lo que hemos recibido.</p>
                     </div>
-                    <div className="container__specific-value">
+                    <div className="container__specific-value samaritano">
                         <div className="container__img-value">
-                            <img src={iconSamaritano} alt="El buen samaritano img" />
+                        <div className="img-value-samaritano"/>
                         </div>
                         <h4 className="title__value">El buen samaritano</h4>
                         <p className="description__value">La parábola del buen samaritano (Lucas 10:25-37) destaca la importancia de mostrar misericordia y compasión hacia quienes están en necesidad, sin importar su origen.</p>

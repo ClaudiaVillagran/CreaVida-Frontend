@@ -4,8 +4,8 @@ export const NearEventsHeader = () => {
     return (
         <>
             <div className="events__description">
-                <h2>CreaVida a través de Chile</h2>
-                <p><span>CreaVida</span> <i>naptatam alam quaerat voluptat quauignam aliquamuignam aliquignuignam aliquam quaerat voluptatuignam aliquam quaerat voluptatm</i></p>
+                <h2>PRÓXIMOS EVENTOS</h2>
+                <p><span><i>Únete a nosotros </i> </span> <i>en eventos que están a punto de desplegarse, donde la generosidad y la solidaridad crearán experiencias inolvidables.</i></p>
             </div>
         </>
 

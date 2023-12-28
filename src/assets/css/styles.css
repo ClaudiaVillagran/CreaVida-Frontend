@@ -62,7 +62,7 @@ body {
 .button-header:hover {
   color: #60ad26;
 
-  
+
   border: 1px solid #60ad26;
 }
 
@@ -90,7 +90,7 @@ body {
 .layout__navbar {
   display: flex;
   position: fixed;
-  width:100%;
+  width: 100%;
   background-color: #000;
   color: white !important;
   align-items: center;
@@ -98,14 +98,15 @@ body {
   box-shadow: 0px 5px 5px -6px #60ad26;
   z-index: 20;
 }
-.container__header{
+
+.container__header {
   width: 100%;
-  
   margin-inline: 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .scrolled {
   background-color: #000;
 }
@@ -114,32 +115,36 @@ body {
   transform-origin: center center;
   padding-right: 10vw;
 }
-.navbar__header{
+
+.navbar__header {
   width: 100px;
   height: auto;
 }
+
 .navbar_logo-CreaVida {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 
-.title__navbar{
+.title__navbar {
   font-size: 30px;
   color: #295508;
   font-weight: 600;
   font-family: 'Lora', serif;
 }
-.title__navbar-2{
+
+.title__navbar-2 {
   font-size: 30px;
   color: #60ad26;
   font-weight: 600;
   font-family: 'Lora', serif;
 }
 
-.menu__ul{
+.menu__ul {
   width: 200px;
 }
+
 .menu__li {
   font-size: 16px;
   font-weight: 700;
@@ -241,7 +246,7 @@ body {
 
 .principal__container {
   background-color: #fff;
-  height: 600px;
+  height: 700px;
   width: 100%;
   display: flex;
 }
@@ -305,14 +310,16 @@ body {
   align-items: center;
   justify-content: end;
   padding-right: 5%;
+  margin-top: 100px;
 }
 
+/* 
 .background__solidaridad img {
   width: 100%;
   height: 50%;
   object-fit: fill;
 
-}
+} */
 
 /* }
   .fondo_semi_transparente {
@@ -357,8 +364,9 @@ body {
 /* ESTILOS DEL CONTENT */
 
 .layout__content {
+  min-height: 400px;
   height: 100%;
-  background-color: #bebdba;
+  background-color: #ffffff;
 }
 
 /* ESTILOS DE ARTICLE SOMOS ICFA */
@@ -458,7 +466,7 @@ body {
 }
 
 /* ESTILO DE SOBRENOSOTTOS */
-.container__buttons-inicio{
+.container__buttons-inicio {
   display: flex;
   width: 80%;
   justify-content: space-between;
@@ -466,9 +474,11 @@ body {
   flex-wrap: wrap;
 
 }
-.container__buttons-inicio button{
+
+.container__buttons-inicio button {
   margin-bottom: 10px;
 }
+
 .container__sobreNosotros {
   display: flex;
   flex-direction: column;
@@ -486,7 +496,8 @@ body {
 
 .container__nuestro-equipo h2 {
   padding-bottom: 50px;
-  font-family: 'Overpass', sans-serif;
+  font-family: 'Italiana', sans-serif;
+  font-weight: lighter;
   font-size: 50px;
   letter-spacing: 5px;
 }
@@ -574,42 +585,92 @@ body {
 .container__ser-parte h2 {
   padding-block: 50px;
   font-size: 50px;
-  font-family: 'Overpass', sans-serif;
+  font-family: 'Italiana', sans-serif;
+  font-weight: lighter;
 }
 
 .ser-parte__p {
-  font-family: 'Mate', serif;
+  width: 50%;
+  font-style: italic;
   font-size: 15px;
-  text-align: justify;
+  text-align: center;
+  letter-spacing: 3px;
 }
 
 .container__values {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-block: 60px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .container__specific-value {
   display: flex;
   width: 30%;
+  height: auto;
   flex-direction: column;
   align-items: center;
 }
-.container__img-value{
+
+.container__img-value {
   width: 100%;
   height: auto;
-  margin-bottom: 40px;
 }
-.container__img-value img {
+
+.img-value-love {
   width: 100%;
-  height: 100%;
-  object-fit: fill;
+  height: 200px;
+  margin-top: 70px;
+  background-image: url('../icons/loveBlackAndWhite.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
 }
-.title__value{
+
+.love:hover .img-value-love {
+  margin-top: 0px;
+  background-image: url('../icons/love.png');
+}
+
+.img-value-honra {
+  width: 100%;
+  height: 200px;
+  margin-top: 70px;
+  background-image: url('../icons/cruzBlackAndWhite.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
+}
+
+.honra:hover .img-value-honra {
+  margin-top: 0px;
+  background-image: url('../icons/cruz.png');
+}
+
+.img-value-samaritano {
+  width: 100%;
+  height: 200px;
+  margin-top: 70px;
+  background-image: url('../icons/manBlackAndWhite.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
+}
+
+.samaritano:hover .img-value-samaritano {
+  margin-top: 0px;
+  background-image: url('../icons/voluntario.png');
+}
+
+.title__value {
   font-size: 3vw;
 }
-.description__value{
+
+.description__value {
   margin-top: 30px;
   font-size: 20px;
   text-align: center;
@@ -619,68 +680,87 @@ body {
 
 .container__events {
   color: #fff;
-  padding-inline: 5%;
+  padding-inline: 7%;
   padding-block: 50px;
   background-color: #000;
   z-index: 1000px;
+  display: flex;
+  flex-direction: column;
 }
-.slick-slide > div{
+
+.slick-slide>div {
   margin: 0 10px;
 }
-.slick-list{
-  margin:0 -10px;
+
+.slick-list {
+  margin: 0 -10px;
 }
-.slick-prev:before, .slick-next:before {
+
+.slick-prev:before,
+.slick-next:before {
   color: #60ad26;
 }
-.card__near-events{
+.card__near-events {
   background: #0f0f0f;
   border-radius: 8px;
   overflow: hidden;
   height: 500px;
-}
-.card-top{
- width: 100%;
- height: 60%;
+  max-width: 500px !important;
+  margin: 0 auto;
 }
 
-.card-top img{
+.card-top {
+  width: 100%;
+  height: 60%;
+}
+
+.card-top img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.card-bottom{
+
+.card-bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.card-bottom h2{
+
+.card-bottom h2 {
   font-family: 'Lora', sans-serif;
   font-size: 35px;
   margin-top: 20px;
 }
-.card-bottom p{
+
+.card-bottom p {
   font-family: 'Overpass', sans-serif;
   font-size: 20px;
   margin-top: 10px;
 }
-.card-bottom h6{
+
+.card-bottom h6 {
   font-family: 'Overpass', sans-serif;
   font-size: 15px;
   margin-top: 10px;
   font-weight: 100;
   color: #60AD26;
 }
-.near-event-b{
+
+.near-event-b {
   margin-top: 20px !important;
 }
+
+.events__title {
+  align-self: center;
+}
+
 .events__title h2 {
-  display: inline-block;
   font-size: 5vw;
   margin-bottom: 8%;
-  font-family: 'Overpass', serif;
+  font-family: 'Italiana', serif;
+  font-weight: lighter;
   font-size: 50px;
- 
+
 }
 
 .events__info {
@@ -853,6 +933,7 @@ body {
 .primary__info-company p {
   color: #9dabce81;
   font-size: 14px;
+  text-align: justify;
 }
 
 .primary__info-nosotros {
@@ -959,6 +1040,7 @@ body {
 .secondary-rrss li {
   margin-right: 20px;
 }
+
 .secondary-rrss li:last-child {
   margin-right: 0px !important;
 }
@@ -1083,16 +1165,18 @@ body {
 }
 
 .nuestraMotivacion-tittle {
-text-align: center;
-margin-left: -40px;
+
+  text-align: center;
+  margin-left: -40px;
 }
 
 .nuestraMotivacion__container h1 {
-  font-size: 7vw;
+  font-size: 6vw;
   color: #2b2a29;
   display: inline-block;
   margin-top: 20px;
-  font-family: 'Lora', serif;
+  font-family: 'Italiana', serif;
+  font-weight: lighter;
 }
 
 .nuestraMotivacion-tittle h2 {
@@ -1110,7 +1194,7 @@ margin-left: -40px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  
+
 }
 
 .enum {
@@ -1120,7 +1204,7 @@ margin-left: -40px;
   letter-spacing: 10px;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .nuestraMotivacion-enum h3 {
@@ -1184,7 +1268,7 @@ margin-left: -40px;
 }
 
 /* ESTILOS SOBRE NOSOTROS LIDERES */
-.equipo_aboutUs{
+.equipo_aboutUs {
   padding-block: 50px;
   background-color: #000;
 }
@@ -1205,11 +1289,12 @@ margin-left: -40px;
   font-size: 50px;
   text-align: center;
   margin-bottom: 15px;
-  font-family: 'Lora', serif;
+  font-family: 'Italiana', serif;
+  font-weight: lighter;
 }
 
 .acerca__eventosRealizados-description p {
-  font-size: 2vw;
+  font-size: 1.5vw;
   text-align: center;
   font-family: 'Overpass', sans-serif;
 }
@@ -1245,6 +1330,7 @@ margin-left: -40px;
 .acerca__eventosRealizados-description button:hover {
   color: #60ad26;
 }
+
 .acerca__eventosRealizados-description button:hover::before {
   top: 0;
 }
@@ -1274,6 +1360,7 @@ margin-left: -40px;
 
 .data h2 {
   font-size: 25px;
+  font-family: 'Italiana', sans-serif;
 }
 
 .data h3 {
@@ -1303,10 +1390,11 @@ margin-left: -40px;
 
 /* 
   ESTILOS ACERCA AYUDANOS */
-.acerca__ayudanos{
+.acerca__ayudanos {
   margin-bottom: 50px;
 
 }
+
 .acerca__ayudanos h1 {
   color: #2b2a29;
   text-align: center;
@@ -1435,7 +1523,8 @@ margin-left: -40px;
   font-size: 50px;
   text-align: center;
   margin-bottom: 20px;
-  font-family: 'Lora', serif;
+  font-family: 'Italiana', serif;
+  font-weight: lighter;
 }
 
 .events__description span {
@@ -1448,7 +1537,9 @@ margin-left: -40px;
 
 .events__description p {
   letter-spacing: 1px;
-  font-size: 2vw;
+  font-size: 1.5vw;
+  margin: 0 auto;
+  width: 70%;
   text-align: center;
   font-family: 'Overpass', sans-serif;
   font-weight: 600;
@@ -1463,12 +1554,14 @@ margin-left: -40px;
 .events__realized-tittle h2 {
   font-size: 50px;
   padding-bottom: 30px;
-  font-family: 'Lora', serif;
+  font-family: 'Italiana', serif;
+  font-weight: lighter;
 }
 
 .events__realized-tittle p {
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: #ffffff;
+  width: 70%;
   margin: auto;
   padding-bottom: 50px;
   font-family: 'Overpass', sans-serif;
@@ -1493,11 +1586,12 @@ margin-left: -40px;
 
 /* EVENTOS CERCANOS-MENU EVENTOS */
 
-.container__article-near{
+.container__article-near {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .container__near_events {
   margin-bottom: 30px;
   width: 95%;
@@ -1505,6 +1599,8 @@ margin-left: -40px;
 
 .container__event {
   height: 500px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .event {
@@ -1513,7 +1609,8 @@ margin-left: -40px;
   background-position: center;
   margin: 30px;
 }
-.event-inicio{
+
+.event-inicio {
   height: 100%;
   background-size: cover;
   background-position: center;
@@ -1683,22 +1780,26 @@ margin-left: -40px;
 }
 
 .questions-title {
-  font-size: 50px;
+  font-size: 35px ;
   text-align: center;
   color: #2b2a29;
   margin-bottom: 50px;
-  font-family: 'Lora', serif;
+  margin-top: 30px;
+  font-family: 'Italiana', serif;
+  font-weight: lighter ;
 }
 
 
-.container__acordions-questions{
+.container__acordions-questions {
   padding-bottom: 50px;
-  
+
 }
+
 /* ESTILOS DEL MENU PARTICIPA */
 
 .container__participate {
   width: 100%;
+  margin-top: 100px;
   color: #000;
   background-color: #fff;
 }
@@ -1813,7 +1914,7 @@ margin-left: -40px;
   text-align: center;
 }
 
-.container__form-participate{
+.container__form-participate {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2044,8 +2145,30 @@ margin-left: -40px;
   font-weight: 600;
   font-size: 2.5vw;
   width: 50%;
+  text-align: center;
+}
+.background-white-secondpart-date {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
 }
 
+.date-info {
+  font-weight: bold; /* Texto de fecha en negrita */
+  font-size: 18px; /* Ajusta el tamaño de la fecha según sea necesario */
+  margin-bottom: 5px; /* Agrega un pequeño espacio después de la fecha */
+}
+
+/* Opcional: Estilo de transición al pasar el ratón */
+.background-white-secondpart-date:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
 .buttons-event {
   display: flex;
   margin-top: 40px;
@@ -2085,3 +2208,72 @@ margin-left: -40px;
   }
 }
 
+/* ESTILOS BASE UI */
+
+.btn {
+  background-color: #60AD26;
+
+  color: #fff;
+
+}
+
+/* ESTILOS SER MIEMBRO */
+/* .container__participate{
+  background-color: #acdb88;
+}
+.container__forms{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.container__form-participate{
+  display: flex;
+  flex-direction: row;
+}
+.form-participate{
+  width:40%;
+}
+
+.container__form-member{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.form-member{
+  width: 40%;
+} */
+
+.container__forms-options {
+  width: 90%;
+  margin: 0 auto;
+  padding-block: 50px;
+}
+
+.p__form-participate {
+  font-size: 15px;
+}
+
+.p__form-socio {
+  font-size: 15px;
+}
+
+.form-participate {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-participate h2 {
+  font-size: 20px;
+  font-family: 'Overpass';
+  margin: 0 auto;
+
+  margin-bottom: 20px;
+}
+
+.button-inscription {
+
+  margin: 0 auto;
+}

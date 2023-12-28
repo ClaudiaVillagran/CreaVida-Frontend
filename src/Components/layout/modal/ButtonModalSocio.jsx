@@ -7,59 +7,55 @@ import { Global } from '../../../Helpers/Global';
 import { useState } from "react";
 import { useForm } from "../../../Hooks/useForm";
 
-export const ButtonModalParticipate = ({ selectedEventId, setModalOpenParticipe, modalOpenParticipe }) => {
+export const ButtonModalSocio = ({setModalOpenSocio, modalOpenSocio}) => {
 
 
+    const { form, changed, setForm } = useForm({});
+    const [saved, setSaved] = useState("notSaved");
+    const [loading, setLoading] = useState(false);
+  
+  
+    console.log(form)
+  
+    const handleClose = () => {
+      setModalOpenSocio(false);
+    };
+  
+    const saveSocio = async (e) => {
+      try {
+        setLoading(true)
+        e.preventDefault();
+        let newSocio = form;
+        console.log(newSocio);
 
-  const { form, changed, setForm } = useForm({});
-  const [saved, setSaved] = useState("notSaved");
-  const [loading, setLoading] = useState(false);
-
-
-  console.log(form)
-
-  const handleClose = () => {
-    setModalOpenParticipe(false);
-  };
-
-  const saveMember = async (e) => {
-    try {
-      setLoading(true)
-      e.preventDefault();
-      let newMember = form;
-      console.log(newMember);
-      if (selectedEventId) {
-        newMember.event = selectedEventId;
-      }
-
-      const request = await fetch(Global.url + 'member/register', {
-        method: 'POST',
-        body: JSON.stringify(newMember),
-        headers: {
-          'Content-Type': 'application/json'
+        const request = await fetch(Global.url + 'socio/register', {
+          method: 'POST',
+          body: JSON.stringify(newSocio),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        const data = await request.json();
+  
+        if (data.status == 'success') {
+          setTimeout(() => {
+            setLoading(false)
+          }, 20000);
+          setSaved("saved")
         }
-      })
-      const data = await request.json();
-
-      if (data.status == 'success') {
-        setTimeout(() => {
-          setLoading(false)
-        }, 20000);
-        setSaved("saved")
+  
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
       }
-
-    } catch (error) {
-      console.log(error)
-      setLoading(false)
+  
     }
-
-  }
 
   return (
     <>
       {saved != "saved" ?
         <Dialog
-          open={modalOpenParticipe}
+          open={modalOpenSocio}
           onClose={handleClose}
         >
           <div className="modal">
@@ -107,7 +103,7 @@ export const ButtonModalParticipate = ({ selectedEventId, setModalOpenParticipe,
                 />
 
                 <div className="buttons-form">
-                  <button type="submit" className="button-submit" onClick={saveMember}>Enviar</button>
+                  <button type="submit" className="button-submit" onClick={saveSocio}>Enviar</button>
                   <button className="button-close" onClick={handleClose}>Cerrar</button>
                 </div>
 

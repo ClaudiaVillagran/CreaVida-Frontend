@@ -21,8 +21,9 @@ export const Events = () => {
   const [loaded, setLoaded] = useState(false);
   const [eventsRealized, setEventsRealized] = useState([]);
   const [nearEvents, setNearEvents] = useState([]);
-  const [selectedEventId, setSelectedEventId] = useState(null);
+  const [settings, setSettings] = useState({})
 
+  
 
   const theme = createTheme({
     typography: {
@@ -30,40 +31,7 @@ export const Events = () => {
     },
   });
 
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+ 
 
 
   useEffect(() => {
@@ -105,6 +73,154 @@ export const Events = () => {
     }
   }
 
+  useEffect(() => {
+    if (nearEvents.length>1) {
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }else{
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }
+  }, [nearEvents]);
+
+
+  useEffect(() => {
+    if (eventsRealized.length>1) {
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }else{
+      setSettings(
+        {dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]}
+      );
+    }
+  }, [eventsRealized]); 
 
   return (
     <div className="container-events">
@@ -126,16 +242,18 @@ export const Events = () => {
         <article className="container__events ">
 
           <div className="events__realized-tittle">
-            <h2>Eventos Realizados</h2>
-            <p ><i>We offer a competitive array of employee benefits that go beyond the basics. We want Rioters to work hard, play their hearts out, and take time to recharge and find inspiration</i></p>
+            <h2>EVENTOS REALIZADOS</h2>
+            <p ><i>Una mirada hacia atrás en los eventos que nos han unido en amor, servicio y apoyo mutuo</i></p>
           </div>
 
           <div className="container-event">
             {eventsRealized.length > 0 ?
               <Slider {...settings}>
+                <div className="container__card__near-events">
+                  
                 {eventsRealized.map((event) => {
                   return (
-                    <div className="card__near-events" key={event._id}>
+                    <div className="card__near-events" key={event._id} style={{ maxWidth: '200px' }}>
                       <div className="card-top">
                         <img src={event1} alt="event1" />
                       </div>
@@ -148,6 +266,8 @@ export const Events = () => {
                     </div>
                   )
                 })}
+                
+                </div>
               </Slider>
               :
               <h2>No existen eventos realizados</h2>
@@ -157,7 +277,8 @@ export const Events = () => {
 
         <div className="container__questions">
           <div className="questions-title" id="eventsas">
-            <h2>Preguntas frecuentes</h2>
+            <h2>PREGUNTAS FRECUENTES</h2>
+
           </div>
           <ThemeProvider theme={theme}>
           <div className="container__acordions-questions">
@@ -165,6 +286,7 @@ export const Events = () => {
                 sx={{
                   border: '1px solid #60ad26',
                   borderBottom: '0px solid #fff',
+                  marginBottom: '10px',
 
                 }}>
                   
@@ -175,7 +297,7 @@ export const Events = () => {
                 
                 sx={{
                   background: '#1f201f',
-                  color:'#60ad26',
+                  color:'#fff',
                   
                   
                 }}
@@ -185,9 +307,9 @@ export const Events = () => {
               </AccordionSummary>
               <AccordionDetails   
                 sx={{
-                  background: '#0f100e',
+                  background: '#1f201f',
                   color:'#fff',
-                  
+
                 }}>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -197,6 +319,7 @@ export const Events = () => {
             </Accordion>
             <Accordion sx={{
                   border: '1px solid #60ad26',
+                  marginBottom: '10px',
                 }}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -204,13 +327,13 @@ export const Events = () => {
                 id="panel2a-header"
                 sx={{
                   background: '#1f201f',
-                  color:'#60ad26',
+                  color:'#fff',
                 }}
               >
                 <Typography>Pregunta 2</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{
-                  background: '#0f100e',
+                  background: '#1f201f',
                   color:'#fff',
                 }}>
                 <Typography>

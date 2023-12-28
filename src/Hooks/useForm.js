@@ -5,8 +5,8 @@ export const useForm = (initialObj = {}) => {
 
   const changed = ({ target }) => {
     const { name, value } = target;
-    console.log(target.type);
-    const numericValue = target.type == "number" ? parseFloat(value) : value;
+    console.log(name);
+    const numericValue = name == "number" ? parseFloat(value) : value;
     console.log(numericValue);
     setForm({
       ...form,

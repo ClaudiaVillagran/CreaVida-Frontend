@@ -1,14 +1,12 @@
 
-import Box from '@mui/material/Box';
+import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useEffect, useState } from 'react';
 
 export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
-    const [age, setAge] = useState('');
-    const [ageArray, setAgeArray] = useState([]);
+    const [age, setAge] = React.useState('');
+    const [ageArray, setAgeArray] = React.useState([]);
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -17,7 +15,7 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
 
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         agesIteration()
     }, [])
 
@@ -25,7 +23,7 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
 
     const agesIteration = () => {
 
-        let newArray = [{label:'milenials', value:1}];
+        let newArray = [{ label: 'milenials', value: 1 }];
         for (let index = 0; index < 10; index++) {
             newArray = [
                 ...newArray,
@@ -36,38 +34,33 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
             ];
         }
         setAgeArray(newArray);
-        console.log('a',ageArray);
+        console.log('a', ageArray);
 
     }
     return (
-        <Box sx={{
-            width: '57ch',
-            '& .MuiInputBase-input': {
-                fontSize: '16px',
-            },
-            '& .MuiInputLabel-root': {
-                fontSize: '16px',
-            },
-        }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" color="success">Rango etario</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    label="Age"
-                    onChange={handleChange}
-                    color="success"
-                    name='age'
-                >
-
-                    {ageArray.map((age, index) => (
-                        <MenuItem value={age.value} key={index} >
-                            {age.label}
-                        </MenuItem>
-                    ))}
+        <div>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel htmlFor="grouped-native-select">Generación</InputLabel>
+                <Select native defaultValue="" name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
+                    <option aria-label="None" value="" />
+                    <optgroup label="1946-1964">
+                        <option value={80}>Baby Bommers</option>
+                    </optgroup>
+                    <optgroup label="1965-1980">
+                        <option value={60}>Generación X</option>
+                    </optgroup>
+                    <optgroup label="1981-1996">
+                        <option value={40}>Milenials Y</option>
+                    </optgroup>
+                    <optgroup label="1997-2012">
+                        <option value={20}>Centenials Z</option>
+                    </optgroup>
+                    <optgroup label="2013-2025">
+                        <option value={0}>Generación Alfa T</option>
+                    </optgroup>
                 </Select>
             </FormControl>
-        </Box>
+            
+        </div>
     )
 }

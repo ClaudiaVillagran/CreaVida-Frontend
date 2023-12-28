@@ -1,32 +1,32 @@
+import { InputForm } from '../../componentsForm/InputForm';
+import { SelectForm } from '../../componentsForm/SelectForm';
+import { InputNumberForm } from '../../componentsForm/InputNumberForm';
+import { InputTextForm } from '../../componentsForm/InputTextForm';
+import { ButtonRegister } from '../../buttons/ButtonRegister';
+import { Dialog } from '@mui/material';
 import { useState } from "react";
-import { Global } from "../../../Helpers/Global";
-
 import { useForm } from "../../../Hooks/useForm";
-import RangeInput from '../rangeInput/RangeInput'
+import { Global } from '../../../Helpers/Global';
 
-
-export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => {
-
-  const { form, changed } = useForm({});
+export const ModalParticipate = ({ setModalOpenParticipe, modalOpenParticipe }) => {
+  const { form, changed, setForm } = useForm({});
   const [saved, setSaved] = useState("notSaved");
   const [loading, setLoading] = useState(false);
 
-
-  const closeModal = () => {
+  const handleClose = () => {
     setModalOpenParticipe(false);
   };
-
-  const saveMember = async (e) => {
+  
+  const saveSocio = async (e) => {
     try {
       setLoading(true)
       e.preventDefault();
-      let newMember = form;
+      let newSocio = form;
+      console.log(newSocio);
 
-      newMember.event = selectedEventId;
-
-      const request = await fetch(Global.url + 'member/register', {
+      const request = await fetch(Global.url + 'socio/register', {
         method: 'POST',
-        body: JSON.stringify(newMember),
+        body: JSON.stringify(newSocio),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -46,66 +46,61 @@ export const ModalParticipate = ({ selectedEventId, setModalOpenParticipe }) => 
     }
 
   }
-  
   return (
     <>
-
       {saved != "saved" ?
-        <div className="modal">
-          <div className="participation-box">
-
-            <span className="modal__close" onClick={closeModal}>&times;</span>
-
-            <h6>Gracias por querer ser parte</h6>
-            <form className="form__participate" onSubmit={saveMember}>
-
-              <input type="hidden" name="event" value={selectedEventId} />
-              <div className="input-box" >
-                <input type="text" id="name" name="name" required onChange={changed} />
-                <label htmlFor="name" >Nombre:</label>
-              </div>
-              <div className="input-box" >
-                <input type="text" id="lastname" name="lastname" required onChange={changed} />
-                <label htmlFor="lastname" >Apellido:</label>
-              </div>
-
-                  <RangeInput/>
-
-
-
-              <div className="input-box" >
-                <input type="email" id="email" name="email" required onChange={changed} />
-                <label htmlFor="email" >Email:</label>
-              </div>
-              <div className="input-box" >
-                <input type="text" id="number" name="number" required onChange={changed} />
-                <label htmlFor="number" >Contacto:</label>
-              </div>
-              <div className="input-box" >
-                <textarea id="message" name="message" rows="2" onChange={changed} ></textarea>
-                <label htmlFor="message" >Mensaje:</label>
-              </div>
-              <div className="buttons-form">
-                <button type="submit" className="button-submit"  >Enviar</button>
-                <button className="button-close" onClick={closeModal}>Cerrar</button>
-              </div>
-
-            </form>
-            {loading === true ? <div className="spinner"></div> : ""}
+        <Dialog
+          open={modalOpenParticipe}
+          onClose={handleClose}
+        >
+          <div className='form-participate'>
+            <h2>Cuentanos sobre ti</h2>
+            <InputForm namePlaceHolder='Ingrese su nombre' 
+                  nameInput='name'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm}  />
+            <InputForm namePlaceHolder='Ingrese su apellido'
+                  nameInput='lastname'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm} />
+            <SelectForm nameInput='age'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm}/>
+            <InputNumberForm nameInput='number'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm}/>
+            <InputForm namePlaceHolder='Ingrese su email' 
+                  nameInput='email'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm} />
+            <InputTextForm nameInput='message'
+                  form={form}
+                  changed={changed}
+                  setForm={setForm}/>
+            <div className='button-inscription'>
+              <ButtonRegister onClick={saveSocio}/>
+            </div>
+            
           </div>
-        </div>
+        </Dialog>
         :
         <div className="modal">
           <div className="participation-box">
 
-            <span className="modal__close" onClick={closeModal}>&times;</span>
+            <span className="modal__close" onClick={handleClose}>&times;</span>
             <h6>Gracias por inscribirte! 🥳</h6>
+            <p>Te contactaremos pronto</p>
           </div>
 
         </div>
       }
-
     </>
   )
 }
+
 

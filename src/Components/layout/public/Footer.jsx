@@ -12,7 +12,7 @@ export const Footer = () => {
             <div className="footer-primary">
                 <div className="primary__info-company">
                     <h3>CreaVida</h3>
-                    <p>Lorem ipsum dolor sit amet adipiscing elit, sed do eiusmod tempor incididunt ut la Lorem ipsum dolor sit amet adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+                    <p>Transformando vidas a través de la creatividad y el compromiso. Unimos fuerzas para fomentar el cambio positivo mediante iniciativas que inspiran, educan y empoderan. ¡Únete a nosotros en la construcción de un futuro lleno de esperanza y posibilidades!</p>
                 </div>
                 <div className="primary__info-nosotros">
                     <h3>Nosotros</h3>

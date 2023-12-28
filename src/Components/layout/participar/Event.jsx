@@ -9,7 +9,7 @@ export const Event = () => {
     const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
     const [modalOpenDonate, setModalOpenDonate] = useState(false);
     const [formattedDate, setFormattedDate] = useState("")
-
+    const [time, setTime] = useState()
 
     const participar = () => {
         setModalOpenParticipe(true);
@@ -24,7 +24,7 @@ export const Event = () => {
 
     useEffect(() => {
         getEvent(eventId);
-        window.scrollTo(0, 500);
+        window.scrollTo(0, 0);
 
     }, [])
 
@@ -41,6 +41,8 @@ export const Event = () => {
             setEvent(data.event)
             console.log(event)
             const eventDate = new Date(data.event.date);
+            setTime(eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+            console.log(time)
             const day = eventDate.getDate();
             const month = eventDate.getMonth() + 1; // Los meses comienzan desde 0
             const year = eventDate.getFullYear();
@@ -119,10 +121,10 @@ export const Event = () => {
                         <img src={img} alt="img-event" className="img-event" />
                     </div>
                     <h2 className="title-event">{event.title}</h2>
-                    <p className="frase-motivadora">Frase motivadora</p>
+                    {/* <p className="frase-motivadora">Frase motivadora</p> */}
                     <div className="specific-description">
                         <p className="first-description"  >{formattedDate}</p>
-                        <p className="second-description">{'aqui va la ubicacion' + event.location}</p>
+                        <p className="second-description">{event.location}</p>
                         <div className="buttons-description last-description">
                             <button className="button-donar description-donar " onClick={donar}>Donar</button>
 
@@ -136,7 +138,10 @@ export const Event = () => {
 
             </div>
             <div className="background-white-secondpart">
-                <p>{event.description + 'Aqui va la descrdasdañlkd asñkdOASDOASDASDSDAJS skladjasdlj dasjsajasd  asdkasdjasdl  dasjlKASDOÁSKDOKASipcion del evento'}</p>
+                <p>{event.description}</p>
+                    <p className="background-white-secondpart-date">
+                        Te esperamos a las {time} hrs
+                    </p>
                 <div className="buttons-event">
                     <button className="button-donar donar-description" onClick={donar}>Donar</button>
                     <button className="button-participar participar-description" onClick={participar}>Participar</button>
