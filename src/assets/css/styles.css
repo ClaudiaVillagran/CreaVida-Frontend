@@ -677,41 +677,70 @@ body {
 }
 
 /* ESTILOS DE EVENTOS */
-
+.nearInicio{
+  background-color: #202020 !important;
+}
 .container__events {
   color: #fff;
-  padding-inline: 7%;
-  padding-block: 50px;
-  background-color: #000;
+  background-color: #000 ;
   z-index: 1000px;
   display: flex;
   flex-direction: column;
 }
 
-.slick-slide>div {
+/* .slick-slide>div {
   margin: 0 10px;
 }
 
 .slick-list {
   margin: 0 -10px;
 }
-
+*/
 .slick-prev:before,
 .slick-next:before {
   color: #60ad26;
+  font-size: 5vw;
 }
+
+.slick-dots{
+  display: none !important;
+}
+.slick-dots li {
+  width: 60px;
+  height: 30px;
+}
+
+.slick-dots li button {
+  color: #295508;
+  font-size: 40px !important;
+}
+.container__article-near{
+  background-color: #202020;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #295508;
+}
+.button {
+  cursor: pointer;
+  background: #eee;
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+}
+
 .card__near-events {
   background: #0f0f0f;
   border-radius: 8px;
   overflow: hidden;
-  height: 500px;
-  max-width: 500px !important;
+  height: 700px;
+  width: 100%;
   margin: 0 auto;
 }
-
+.near{
+  background-color: #202020;
+}
 .card-top {
   width: 100%;
-  height: 60%;
+  height: 65%;
 }
 
 .card-top img {
@@ -725,7 +754,14 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+.card-bottom-near{
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 10px;  /* Ajusta según sea necesario */
+  border-bottom-right-radius: 10px; 
+}
 .card-bottom h2 {
   font-family: 'Lora', sans-serif;
   font-size: 35px;
@@ -737,7 +773,14 @@ body {
   font-size: 20px;
   margin-top: 10px;
 }
-
+.card-bottom-near{
+  font-family: 'Overpass', sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+.card-bottom-near p{
+  margin-bottom: 10px;
+}
 .card-bottom h6 {
   font-family: 'Overpass', sans-serif;
   font-size: 15px;
@@ -752,15 +795,35 @@ body {
 
 .events__title {
   align-self: center;
+  padding-block: 30px;
+  font-family: "Mark Pro", Arial, sans-serif;
+  letter-spacing: -0.01em;
+  background-color: #202020;
 }
 
 .events__title h2 {
-  font-size: 5vw;
-  margin-bottom: 8%;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
   font-family: 'Italiana', serif;
   font-weight: lighter;
-  font-size: 50px;
 
+}
+.events__title p{
+  letter-spacing: 1px;
+  font-size: 1.5vw;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  font-family: 'Overpass', sans-serif;
+  font-weight: 600;
+}
+.events__title span{
+  font-weight: 700;
+  background-image: url(../img/distressed-underline.svg);
+  background-repeat: repeat-x;
+  background-position: 0 99%;
+  background-size: 680px 5px, 0 0;
 }
 
 .events__info {
@@ -1512,8 +1575,9 @@ body {
 }
 
 .events__description {
-  color: #000;
-  padding-top: 50px;
+  color: #fff;
+  border-top: 1px solid #60AD26;
+  padding-block: 30px;
   padding-inline: 5%;
   font-family: "Mark Pro", Arial, sans-serif;
   letter-spacing: -0.01em;
@@ -1586,21 +1650,27 @@ body {
 
 /* EVENTOS CERCANOS-MENU EVENTOS */
 
-.container__article-near {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .container__near_events {
   margin-bottom: 30px;
   width: 95%;
 }
+.container-event-near{
+  
+  background-color: #202020 !important;
+}
+.containerSlider {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.slick-list {
+  max-width: 90% !important;
+  margin: 0 auto !important;
+}
 
 .container__event {
   height: 500px;
-  max-width: 500px;
-  margin: 0 auto;
 }
 
 .event {
@@ -1614,7 +1684,10 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  /* Centrar horizontalmente */
+  align-items: end;
 }
 
 .event-1 {
@@ -1638,13 +1711,18 @@ body {
 }
 
 .cuadrado-pintura {
-  position: relative;
+  /* position: relative;
   bottom: -250px;
   left: 30px;
-  background-image: url(../img/cuadradoPintura.png);
   background-size: contain;
   width: 80%;
-  height: 40%;
+  height: 40%; */
+  width: 600px;
+  /* O el tamaño que desees */
+  height: 200px;
+  /* O el tamaño que desees */
+  background-image: url(../img/cuadradoPintura.png);
+  margin-bottom: 20px;
 }
 
 .info__events {
@@ -1655,7 +1733,7 @@ body {
 }
 
 .info__events h3 {
-  color: #252423;
+  color: #ffffff;
   font-size: 15px;
   text-align: center;
   padding: 10px 0;
@@ -1732,6 +1810,11 @@ body {
   cursor: pointer;
   z-index: 1;
 }
+.part{
+  color: #60ad26;
+  
+  background-color: #252423;
+}
 
 .button-participar:hover {
   color: #60ad26;
@@ -1757,11 +1840,15 @@ body {
 .button-participar:hover::before {
   top: 0;
 }
-
+.titleEventCarrousel{
+  font-size: 40px !important;
+}
 .time {
   display: flex;
 }
-
+.date{
+  color: #60AD26 !important;
+}
 .icon-time {
   width: 20px;
   height: 20px;
@@ -1780,13 +1867,13 @@ body {
 }
 
 .questions-title {
-  font-size: 35px ;
+  font-size: 35px;
   text-align: center;
   color: #2b2a29;
   margin-bottom: 50px;
   margin-top: 30px;
   font-family: 'Italiana', serif;
-  font-weight: lighter ;
+  font-weight: lighter;
 }
 
 
@@ -2147,6 +2234,7 @@ body {
   width: 50%;
   text-align: center;
 }
+
 .background-white-secondpart-date {
   background-color: white;
   padding: 10px;
@@ -2159,9 +2247,12 @@ body {
 }
 
 .date-info {
-  font-weight: bold; /* Texto de fecha en negrita */
-  font-size: 18px; /* Ajusta el tamaño de la fecha según sea necesario */
-  margin-bottom: 5px; /* Agrega un pequeño espacio después de la fecha */
+  font-weight: bold;
+  /* Texto de fecha en negrita */
+  font-size: 18px;
+  /* Ajusta el tamaño de la fecha según sea necesario */
+  margin-bottom: 5px;
+  /* Agrega un pequeño espacio después de la fecha */
 }
 
 /* Opcional: Estilo de transición al pasar el ratón */
@@ -2169,6 +2260,7 @@ body {
   background-color: #f5f5f5;
   transition: background-color 0.3s ease;
 }
+
 .buttons-event {
   display: flex;
   margin-top: 40px;

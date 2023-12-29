@@ -155,10 +155,11 @@
      .title__value {
          font-size: 2.9vw;
      }
-     .description__value{
-        font-size: 12px;
-      }
-      
+
+     .description__value {
+         font-size: 12px;
+     }
+
 
  }
 
@@ -283,7 +284,7 @@
          width: 85%;
          font-size: 3.5vw;
      }
-     
+
      .buttons-event {
          width: 95%;
      }
@@ -372,5 +373,5 @@
          z-index: 40;
          cursor: pointer;
      }
-     
+
  }

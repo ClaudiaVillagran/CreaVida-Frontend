@@ -39,11 +39,11 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
     }
     return (
         <div>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel htmlFor="grouped-native-select">Generación</InputLabel>
-                <Select native defaultValue="" name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
+            <FormControl sx={{ m: 1, width: '20vw', minWidth: 200, margin: '0 auto' }}>
+                <InputLabel sx={{fontSize: 17}} htmlFor="grouped-native-select">Generación</InputLabel>
+                <Select  sx={{ fontSize: 16 }} native defaultValue="" name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
                     <option aria-label="None" value="" />
-                    <optgroup label="1946-1964">
+                    <optgroup label="1946-1964" >
                         <option value={80}>Baby Bommers</option>
                     </optgroup>
                     <optgroup label="1965-1980">

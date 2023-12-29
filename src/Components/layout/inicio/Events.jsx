@@ -14,6 +14,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { SliderResponsivePastEvents } from "../../carrousel/SliderResponsivePastEvents";
 
 
 
@@ -21,9 +22,6 @@ export const Events = () => {
   const [loaded, setLoaded] = useState(false);
   const [eventsRealized, setEventsRealized] = useState([]);
   const [nearEvents, setNearEvents] = useState([]);
-  const [settings, setSettings] = useState({})
-
-  
 
   const theme = createTheme({
     typography: {
@@ -31,7 +29,7 @@ export const Events = () => {
     },
   });
 
- 
+
 
 
   useEffect(() => {
@@ -51,17 +49,17 @@ export const Events = () => {
     const data = await request.json();
     if (data.status === 'success') {
       const nowDate = new Date();
-      nowDate.setHours(0, 0, 0, 0);
 
       const realizedEvents = [];
       const futureEvents = [];
 
       for (let i = 0; i < data.events.length; i++) {
         const eventDate = new Date(data.events[i].date);
-        eventDate.setHours(0, 0, 0, 0);
 
         if (eventDate < nowDate) {
           realizedEvents.push(data.events[i]);
+         
+          
         } else {
           futureEvents.push(data.events[i]);
         }
@@ -73,154 +71,7 @@ export const Events = () => {
     }
   }
 
-  useEffect(() => {
-    if (nearEvents.length>1) {
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }else{
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }
-  }, [nearEvents]);
 
-
-  useEffect(() => {
-    if (eventsRealized.length>1) {
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }else{
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }
-  }, [eventsRealized]); 
 
   return (
     <div className="container-events">
@@ -248,27 +99,7 @@ export const Events = () => {
 
           <div className="container-event">
             {eventsRealized.length > 0 ?
-              <Slider {...settings}>
-                <div className="container__card__near-events">
-                  
-                {eventsRealized.map((event) => {
-                  return (
-                    <div className="card__near-events" key={event._id} style={{ maxWidth: '200px' }}>
-                      <div className="card-top">
-                        <img src={event1} alt="event1" />
-                      </div>
-                      <div className="card-bottom">
-                        <h2>{event.title}</h2>
-                        <p>aquí va la descripción</p>
-                        <h6>{event.date}</h6>
-                      </div>
-                      <button className="button-donar near-event-b">Ver información</button>
-                    </div>
-                  )
-                })}
-                
-                </div>
-              </Slider>
+              <SliderResponsivePastEvents eventsRealized={eventsRealized} />
               :
               <h2>No existen eventos realizados</h2>
             }
@@ -281,68 +112,68 @@ export const Events = () => {
 
           </div>
           <ThemeProvider theme={theme}>
-          <div className="container__acordions-questions">
-            <Accordion  theme={theme}
+            <div className="container__acordions-questions">
+              <Accordion theme={theme}
                 sx={{
                   border: '1px solid #60ad26',
                   borderBottom: '0px solid #fff',
                   marginBottom: '10px',
 
                 }}>
-                  
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                
-                sx={{
-                  background: '#1f201f',
-                  color:'#fff',
-                  
-                  
-                }}
 
-              >
-                <Typography >Pregunta 1</Typography>
-              </AccordionSummary>
-              <AccordionDetails   
-                sx={{
-                  background: '#1f201f',
-                  color:'#fff',
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
 
-                }}>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion sx={{
-                  border: '1px solid #60ad26',
-                  marginBottom: '10px',
-                }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-                sx={{
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+
+
+                  }}
+
+                >
+                  <Typography >Pregunta 1</Typography>
+                </AccordionSummary>
+                <AccordionDetails
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+
+                  }}>
+                  <Typography>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion sx={{
+                border: '1px solid #60ad26',
+                marginBottom: '10px',
+              }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography>Pregunta 2</Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{
                   background: '#1f201f',
-                  color:'#fff',
-                }}
-              >
-                <Typography>Pregunta 2</Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color:'#fff',
+                  color: '#fff',
                 }}>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          </div>
+                  <Typography>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </div>
           </ThemeProvider>
         </div>
 

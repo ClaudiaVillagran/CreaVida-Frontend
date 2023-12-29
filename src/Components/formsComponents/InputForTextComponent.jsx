@@ -9,8 +9,8 @@ export const InputForTextComponent = ({nameInput, form, changed, setForm}) => {
   return (
     <Box
     component="form"
-    sx={{
-      '& .MuiTextField-root': { m: 1, width: '55ch' , },
+    sx={{width: '20vw', minWidth: 200, margin: '0 auto',
+      '& .MuiTextField-root': { m: 1 , },
       '& .MuiInputBase-input': {
         fontSize: '16px', 
       },

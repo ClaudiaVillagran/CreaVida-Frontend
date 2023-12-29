@@ -118,7 +118,7 @@ export const Event = () => {
 
                 <div className="container-description">
                     <div className="container-img">
-                        <img src={img} alt="img-event" className="img-event" />
+                        <img src={event.picture} alt="img-event" className="img-event" />
                     </div>
                     <h2 className="title-event">{event.title}</h2>
                     {/* <p className="frase-motivadora">Frase motivadora</p> */}

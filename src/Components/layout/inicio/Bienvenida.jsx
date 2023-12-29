@@ -37,7 +37,7 @@ export const Bienvenida = () => {
                 </div>
             </div>
             <Section />
-            <RegisterEvent/>
+            {/* <RegisterEvent/> */}
         </>
     )
 }

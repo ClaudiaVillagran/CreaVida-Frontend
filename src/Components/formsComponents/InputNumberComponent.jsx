@@ -31,7 +31,8 @@ export const InputNumberComponent = ({ nameLabel, nameType, nameInput, form, cha
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '55ch' },
+                width: '20vw', minWidth: 200, margin: '0 auto',
+                '& > :not(style)': { m: 1 },
                 '& .MuiInputBase-input': {
                     fontSize: '16px',
                 },
@@ -44,6 +45,7 @@ export const InputNumberComponent = ({ nameLabel, nameType, nameInput, form, cha
         >
             <TextField
                 id="standard-basic"
+                sx={{ width:'100%'}}
                 label={nameLabel}
                 variant="standard"
                 type={nameType}

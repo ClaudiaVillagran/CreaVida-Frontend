@@ -3,9 +3,9 @@ import { Global } from "../../../Helpers/Global";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { NavLink } from "react-router-dom";
 import { ModalDonate } from "../modal/ModalDonate";
 import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
+import { SliderResponsive } from "../../carrousel/SliderResponsive";
 
 export const NearEventsInicio = () => {
   const contentRef = useRef(null);
@@ -14,8 +14,6 @@ export const NearEventsInicio = () => {
   const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
   const [modalOpenDonate, setModalOpenDonate] = useState(false);
   const [selectedEventId, setSelectedEventId] = useState(null);
-  const [settings, setSettings] = useState({})
-  
 
   const handleScroll = () => {
     const element = contentRef.current;
@@ -53,9 +51,9 @@ export const NearEventsInicio = () => {
         'Content-Type': 'application/json'
       }
     });
-  
+
     const data = await request.json();
-  
+
     if (data.status === 'success') {
       const realizedEvents = [];
       const futureEvents = [];
@@ -63,106 +61,34 @@ export const NearEventsInicio = () => {
 
       for (let i = 0; i < data.events.length; i++) {
         const eventDate = new Date(data.events[i].date);
-  
+
         if (eventDate < nowDate) {
           realizedEvents.push(data.events[i]);
+       
         } else {
           // Obtén la hora directamente del objeto eventDate
           const eventWithTime = {
             ...data.events[i],
             time: eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
-  
+
           futureEvents.push(eventWithTime);
         }
       }
-  
+
       setEventsRealized(realizedEvents);
       setNearEvents(futureEvents);
     }
   };
 
-  useEffect(() => {
-    console.log(nearEvents)
-    if (nearEvents.length>1) {
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }else{
-      setSettings(
-        {dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]}
-      );
-    }
-  }, [nearEvents]);
 
   return (
 
-    <article className="container__events ">
+    <article className="container__events nearInicio">
 
       <div className="events__title">
         <h2>EVENTOS CERCANOS</h2>
+        <p><span><i>Únete a nosotros </i> </span> <i>en eventos que están a punto de desplegarse, donde la generosidad y la solidaridad crearán experiencias inolvidables.</i></p>
       </div>
       {modalOpenParticipe && (
         <ButtonModalParticipate selectedEventId={selectedEventId}
@@ -173,41 +99,12 @@ export const NearEventsInicio = () => {
       {modalOpenDonate && (
         <ModalDonate setModalOpenDonate={setModalOpenDonate} />
       )}
-      <div className="container-event">
+      <div className="container-event-near">
         {nearEvents.length > 0 ?
-          <Slider {...settings}>
-            <div>
-            {nearEvents.map((event, index) => {
-              return (
-                <div className="container__event" key={event._id}>
-                  <div className={`event-inicio event-${index + 1}`}>
-                    <div className="cuadrado-pintura">
-                      <div className="info__events">
-                        <div className="button-event">
-                          <button className="button-donar" onClick={donar}><span>Donar</span></button>
-                          <button className="button-participar" onClick={() => participar(event._id)}><span>Participar</span></button>
-
-                        </div>
-
-                        <h3>{event.title}</h3>
-                        <div className="time">
-                          <div className="icon-time"></div>
-                          
-                          <h5>{event.time}</h5>
-                        </div>
-                        <NavLink to={'/event/' + event._id}>
-                          <button className="info__events-seeMore nearSeeMore">Ver informacíon</button>
-                        </NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-              )
-            })}
-            </div>
-          </Slider>
+          <>
+            <SliderResponsive  nearEvents={nearEvents} donar={donar} participar={participar} />
+          </>
+         
           :
           <h2>No existen eventos cercanos</h2>}
 
