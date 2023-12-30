@@ -93,7 +93,7 @@ export const Events = () => {
         <article className="container__events ">
 
           <div className="events__realized-tittle">
-            <h2>EVENTOS REALIZADOS</h2>
+            <h2 className="title-sections">EVENTOS REALIZADOS</h2>
             <p ><i>Una mirada hacia atrás en los eventos que nos han unido en amor, servicio y apoyo mutuo</i></p>
           </div>
 
@@ -108,7 +108,7 @@ export const Events = () => {
 
         <div className="container__questions">
           <div className="questions-title" id="eventsas">
-            <h2>PREGUNTAS FRECUENTES</h2>
+            <h2 className="title-sections">PREGUNTAS FRECUENTES</h2>
 
           </div>
           <ThemeProvider theme={theme}>

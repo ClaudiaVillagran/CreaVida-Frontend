@@ -68,7 +68,7 @@ export const AcercaDe = () => {
     }
   }
 
- 
+
 
   const cambiarEvento = () => {
     setEventoActual((prevEventoActual) => {
@@ -91,27 +91,27 @@ export const AcercaDe = () => {
       <video autoPlay muted loop id="background-video" >
         <source src={video} type="video/mp4" />
       </video>
-       <div className='acerca-semitransparente'></div> 
+      <div className='acerca-semitransparente'></div>
       <div className='acerca__content'>
         <div className={`acerca__presentation ${loaded ? 'loaded' : ''}`}>
           <button className="boton-animado">¿QUIÉNES SOMOS?</button>
           <h1>Somos Esperanza</h1>
         </div>
         <div className="acerca__descripcion">
-
-          <p><span>CreaVida</span> <i>se fundo en AÑO para DESCRIPCION, realizamos nuestro primer evento de ayuda a EVENTO, desde ese entonces nos ha movido el amor
-            por los demas llegando al punto de haber realizado mas de CANTIDAD de eventos de ayuda</i></p>
+          <p className='acerca__descripcion-p'><span>CreaVida</span><i> se fundo en AÑO para DESCRIPCION, realizamos nuestro primer evento de ayuda a EVENTO, desde ese entonces nos ha movido el amor
+            por los demas llegando al punto de haber realizado mas de CANTIDAD de eventos de ayuda</i>
+          </p>
         </div>
         <div className="acerca__nuestraMotivacion">
           <div className='nuestraMotivacion__container' id='nuestraMotivacion'>
             <div className='nuestraMotivacion-tittle'>
-              <h1>NUESTRA MOTIVACIÓN</h1>
+              <h1 className='title-sections'>NUESTRA MOTIVACIÓN</h1>
               <h2><i>Aspiramos a transformar vidas generando un impacto positivo a través de acciones y donaciones de nuestros colaboradores</i></h2>
             </div>
             <div className='nuestraMotivacion-enum'>
               <div className='acerca-semitransparente enum-transparente'></div>
               <div className={`enum1 enum  ${elementoAbierto == 'elemento1' ? 'dontshow' : ''} `}>
-                <h3>SOLIDARIDAD</h3>
+                <h3 className='enum-title'>SOLIDARIDAD</h3>
                 <button onClick={() => toggleElemento('elemento1')}>+</button>
               </div>
               {elementoAbierto === 'elemento1' && (
@@ -123,20 +123,20 @@ export const AcercaDe = () => {
                 </div>
               )}
               <div className={`enum2 enum  ${elementoAbierto == 'elemento2' ? 'dontshow' : ''} `}>
-                <h3>COMPASION</h3>
+                <h3 className='enum-title'>COMPASIÓN</h3>
                 <button onClick={() => toggleElemento('elemento2')}>+</button>
               </div>
               {elementoAbierto === 'elemento2' && (
                 <div className="elemento-oculto">
 
                   <div>
-                    <h3 id='elemento-oculto-title'>COMPASION</h3>
+                    <h3 id='elemento-oculto-title'>COMPASIÓN</h3>
                     <p id='elemento-oculto-description'> La compasión, arraigada en la ternura del corazón, es un tema recurrente en las Escrituras. Jesús se conmovió por las multitudes y sanó a los enfermos, mostrando compasión por sus necesidades. La parábola del buen samaritano destaca la importancia de mostrar compasión hacia los demás, incluso aquellos que son considerados como extraños (Lucas 10:25-37).</p>
                   </div>
                 </div>
               )}
               <div className={`enum3 enum  ${elementoAbierto == 'elemento3' ? 'dontshow' : ''} `}>
-                <h3>GENEROSIDAD</h3>
+                <h3 className='enum-title'>GENEROSIDAD</h3>
                 <button onClick={() => toggleElemento('elemento3')}>+</button>
               </div>
               {elementoAbierto === 'elemento3' && (
@@ -148,7 +148,7 @@ export const AcercaDe = () => {
                 </div>
               )}
               <div className={`enum4 enum  ${elementoAbierto == 'elemento4' ? 'dontshow' : ''} `}>
-                <h3>APOYO MUTUO</h3>
+                <h3 className='enum-title'>APOYO MUTUO</h3>
                 <button onClick={() => toggleElemento('elemento4')}>+</button>
               </div>
               {elementoAbierto === 'elemento4' && (
@@ -161,7 +161,7 @@ export const AcercaDe = () => {
               )}
 
               <div className={`enum5 enum  ${elementoAbierto == 'elemento5' ? 'dontshow' : ''} `}>
-                <h3>COMUNIDAD</h3>
+                <h3 className='enum-title'>COMUNIDAD</h3>
                 <button onClick={() => toggleElemento('elemento5')}>+</button>
               </div>
               {elementoAbierto === 'elemento5' && (
@@ -177,15 +177,14 @@ export const AcercaDe = () => {
         </div>
         <div className="acerca__ayudanos">
           <h1>Se parte de nuestra comunidad</h1>
-          <button> <span>
+          <button><span>
             <NavLink to="/participa" style={{ textDecoration: 'none', color: 'inherit' }}>
               / Ir a donar
             </NavLink>
-
           </span></button>
         </div>
         <div className="container__nuestro-equipo equipo_aboutUs">
-          <h2>NUESTROS LÍDERES</h2>
+          <h2 className='title-sections'>NUESTROS LÍDERES</h2>
           <div className="container__lideres">
             <div className="container__lider">
               <div className="container__img-lider">
@@ -207,9 +206,9 @@ export const AcercaDe = () => {
         <div className='acerca__eventosRealizados__container'>
           <div className="acerca__eventosRealizados-description">
             <div>
-              <h1>EVENTOS REALIZADOS</h1>
+              <h1 className='title-sections'>EVENTOS REALIZADOS</h1>
               <p><i>Una mirada hacia atrás en los eventos que nos han unido en amor, servicio y apoyo mutuo</i></p>
-              <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9' target="_blank"> 
+              <NavLink to='https://goo.gl/maps/eqUh71kusXcKYG5b9' target="_blank">
 
                 <button>/ Visita nuestra oficina</button>
               </NavLink>
@@ -220,7 +219,7 @@ export const AcercaDe = () => {
             {eventsRealized.slice(eventoActual, eventoActual + eventosVisibles).map((evento, index) => (
               <div key={index} className={`evento-card`}>
                 <div className={`acerca__eventosRealizados-${index + 1} event_realized`}>
-                  <img src={evento.picture} alt="" className='img' />
+                  <img src={evento.picture} alt="" className='img custom-image' />
                   <div className='data'>
                     <h2>{evento.title}</h2>
                     <h3>{formatFecha(evento.date)}</h3>

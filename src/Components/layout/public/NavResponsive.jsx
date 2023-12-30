@@ -23,7 +23,7 @@ export const NavResponsive = () => {
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1}}>
             <AppBar position="static" sx={{ backgroundColor: 'black' }}>
                 <Toolbar>
                     <IconButton

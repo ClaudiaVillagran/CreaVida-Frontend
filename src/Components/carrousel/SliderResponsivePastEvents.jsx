@@ -61,8 +61,8 @@ export class SliderResponsivePastEvents extends Component {
                                     <img src={event.picture} alt="event1" />
                                 </div>
                                 <div className="card-bottom">
-                                    <h2>{event.title}</h2>
-                                    <p>{event.description}</p>
+                                    <h2 className="titleEventCarrousel">{event.title}</h2>
+                                    <p className="info__events-p">{event.description}</p>
                                     <h6>{`${formatDate(event.date)} ${formatTime(event.date)} hrs`}</h6>
                                 </div>
                                 <button className="button-donar near-event-b">Ver información</button>

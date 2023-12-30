@@ -19,11 +19,10 @@ export const Bienvenida = () => {
         <>
             <div className="principal__container">
                 <div className='presentation__inicio'>
-                    <h1 className='presentation__tittle'>Fundación CreaVida</h1>
                     <div className='presentation__logo'>
                         <img src={imgLogo} alt="logo" />
                     </div>
-                    <div>
+                    <div className='container_presentation-description'>
                     <p className='presentation__description-first'>"Impacto con amor y solidaridad."</p>
                     <p className='presentation__description'>Únete donando o como voluntario</p>
                     </div>

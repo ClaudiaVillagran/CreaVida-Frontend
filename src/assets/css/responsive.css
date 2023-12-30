@@ -61,6 +61,11 @@
          width: 90%;
      }
 
+     .data h2,
+     .data h3 {
+         font-size: 2.5vw;
+     }
+
      .colaborador {
          flex-direction: column;
          padding-bottom: 0px;
@@ -88,12 +93,39 @@
 
 
  @media (max-width:700px) {
+    .container__header{
+        margin-inline: 0px;
+    }
+    .css-hyum1k-MuiToolbar-root {
+        padding-left: 0 !important; /* Establece el padding izquierdo a 0 cuando la pantalla es menor a 700px */
+      }
+      .css-ancrnh-MuiButtonBase-root-MuiIconButton-root{
+        margin-right: 0 !important;
+      }
+      .navbar__header {
+        width: 80px;
+        height: auto;
+      }
+      
+    .title__navbar {
+        font-size: 4.5vw;
+      }
+      
+      .title__navbar-2 {
+        font-size: 4.5vw;
+      }
+      
+     .data h2,
+     .data h3 {
+         font-size: 2.5vw;
+     }
+
      .background__solidaridad {
          display: none;
      }
 
      .principal__container {
-         height: 500px;
+         height: 550px;
      }
 
      .presentation__inicio {
@@ -107,12 +139,13 @@
      }
 
      .presentation__logo {
-         width: 30vw;
-         height: 25vw;
+         width: 50vw;
+         height: auto
      }
 
      .presentation__description-first {
-         font-size: 5vw;
+         margin-top: 30px !important;
+         font-size: 6vw;
      }
 
      .presentation__description {
@@ -160,16 +193,67 @@
          font-size: 12px;
      }
 
+     .events__description p {
+         font-size: 3vw;
+     }
+
+     .ser-parte__p {
+         width: 80%;
+     }
 
  }
 
  @media (max-width: 500px) {
+
+    .button-header{
+        margin-right: 10px;
+        padding: 5px;
+        font-size: 2.5vw;
+    }
+    .navbar__header{
+        width: 20%;
+        height: auto;
+    }
+
      .container-lists__redes-list {
          position: initial;
          display: flex;
          flex-direction: row;
          justify-content: flex-end;
          margin-bottom: 0px;
+         margin-top: 10px;
+     }
+
+     .container__buttons-inicio {
+         display: none;
+
+     }
+
+     .container__nuestro-equipo h2 {
+         font-size: 20px;
+     }
+
+     .container__ser-parte h2 {
+         font-size: 20px;
+         padding-block: 20px;
+         font-weight: 900;
+     }
+
+     .ser-parte__p {
+         width: 100%;
+     }
+
+     .container__values {
+         width: 100%;
+     }
+
+     .description__value {
+         text-align: start;
+     }
+
+     .img-value-love,
+     .img-value-honra,
+     .img-value-samaritano {
          margin-top: 10px;
      }
 
@@ -227,8 +311,32 @@
          margin-bottom: 15px;
      }
 
+     .acerca__descripcion-p {
+         font-size: 3vw;
+     }
+
      .colaborador-description p {
          font-size: 4vw;
+     }
+
+     .title-sections {
+         font-weight: 900 !important;
+         font-size: 6vw !important;
+     }
+
+     .data h2,
+     .data h3 {
+         font-size: 3vw;
+         font-weight: lighter !important;
+     }
+
+     .custom-image {
+         width: 100px;
+         height: auto
+     }
+
+     .acercade_description {
+         font-size: 3vw;
      }
 
      .acerca__eventosRealizados-description p {
@@ -240,7 +348,7 @@
      }
 
      .events__description p {
-         font-size: 4vw;
+         font-size: 2.5vw;
      }
 
      .container-description {
@@ -249,6 +357,14 @@
 
      .title-near-event-participation {
          font-size: 5vw;
+     }
+
+     .enum-title {
+         letter-spacing: 1px;
+     }
+
+     #elemento-oculto-description {
+         font-size: 12px !important;
      }
 
      .title-event {
@@ -300,6 +416,25 @@
 
      .options-donate button {
          width: 45%;
+     }
+
+     .container__article-near {
+         padding-bottom: 0px;
+     }
+
+     .titleEventCarrousel {
+         font-size: 4vw !important;
+     }
+     .card-bottom-near {
+       height: 250px;
+      }
+      .info__events p {
+        font-size: 3vw !important;
+        text-align: center;
+     }
+     .info__events-p {
+        font-size: 3vw !important;
+        text-align: center;
      }
 
      .footer-primary {
