@@ -77,13 +77,14 @@ export const Events = () => {
     <div className="container-events">
       <div className="background__events">
         <img src={imgEvents} alt="image-background" className="image-background-events" />
-        <div className='events-semitransparente'></div>
-      </div>
-      <div className="events__content">
-        <div className={`events__presentation ${loaded ? 'loaded' : ''}`}>
+        <div className="events__presentation ">
           <button className="boton-animado">Eventos</button>
           <h1>Conoce como puedes ayudar</h1>
         </div>
+        <div className='events-semitransparente'></div>
+      </div>
+      <div className="events__content">
+        
         {nearEvents.length > 0 ?
           <NearEvents nearEvents={nearEvents} />
           :

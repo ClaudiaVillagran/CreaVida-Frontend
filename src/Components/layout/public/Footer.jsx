@@ -51,7 +51,7 @@ export const Footer = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="https://api.whatsapp.com/send?phone=56945282176&text=¡Hola! ¿Cómo estás?">
+                            <NavLink to="https://api.whatsapp.com/send?phone=56945282176&text=¡Hola! ¿Cómo estás?" target="_blank">
                                 <img src={iconTelefono} className="icon-footer"></img>
                                 <span>+569 5969 5315</span>
                             </NavLink>

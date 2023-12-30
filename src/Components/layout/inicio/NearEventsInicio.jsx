@@ -87,7 +87,7 @@ export const NearEventsInicio = () => {
     <article className="container__events nearInicio">
 
       <div className="events__title">
-        <h2>EVENTOS CERCANOS</h2>
+        <h2 className="title-sections">EVENTOS CERCANOS</h2>
         <p><span><i>Únete a nosotros </i> </span> <i>en eventos que están a punto de desplegarse, donde la generosidad y la solidaridad crearán experiencias inolvidables.</i></p>
       </div>
       {modalOpenParticipe && (

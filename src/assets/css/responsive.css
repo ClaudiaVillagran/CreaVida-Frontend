@@ -178,7 +178,7 @@
      }
 
      .ser-parte__p {
-         font-size: 15px;
+         font-size: 10px;
      }
 
      .container__specific-value {
@@ -245,6 +245,7 @@
 
      .container__values {
          width: 100%;
+        margin-top: 0px;
      }
 
      .description__value {

@@ -1105,11 +1105,73 @@ body {
 /* ESTILOS ACERCA DE NOSOTROS */
 
 .container__acerca {
+  margin-top: 100px;
   width: 100%;
-  height: 100%;
+  height: auto;
   font-family: 'Lora', serif;
 }
 
+.acerca_portada {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(to top, #838181, #fff);
+
+}
+
+.portada-info {
+  width: 70%;
+  margin-block: 100px;
+  border-radius: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #313131b0;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+}
+
+.portada-info__container-img {
+  width: 25%;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 5%;
+}
+
+.portada-info__container-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.portada-info-data_pastora {
+  margin-block: 5%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Italiana", sans-serif;
+  font-size: 1.5vw;
+}
+
+.portada-info-data_pastora h2 {
+  margin-bottom: 10px;
+}
+
+.portada-info-data_pastora p {
+  margin-bottom: 10px;
+}
+.portada-info-buttons{
+  display: flex;
+
+}
+.button-portada{
+  margin: 0 !important;
+  margin-right: 10px !important;
+  color: #fff !important;
+}
 #background-video {
   position: relative;
   width: 100%;
@@ -1491,13 +1553,15 @@ body {
 /* MENU-EVENTOS */
 .container-events {
   width: 100%;
+  margin-top: 100px;
   color: #000;
   background-color: #fff;
 }
 
 .background__events {
   width: 100%;
-  height: 900px;
+  height: auto;
+  position: relative;
 }
 
 .image-background-events {
@@ -1507,7 +1571,7 @@ body {
 
 .events-semitransparente {
   width: 100%;
-  height: 900px;
+  height: 100%;
   position: absolute;
   background: rgba(0, 0, 0, 0.7);
   top: 0;
@@ -1518,29 +1582,22 @@ body {
   position: relative;
   z-index: 12;
 }
-
 .events__presentation {
   position: absolute;
-  height: 500px;
-  width: 100%;
-  top: -900px;
+  width: 80%;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 1s, transform 1s;
-}
-
-.events__presentation.loaded {
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
+  z-index: 12;
+  top: 0;
 }
 
 .events__presentation button {
-  height: 30px;
-  margin-top: 350px;
+  height: 3vh;
   padding-inline: 15px;
   padding-block: 5px;
   background-color: #60ad26;
@@ -1552,12 +1609,12 @@ body {
 
 .events__presentation h1 {
   position: relative;
-  top: 50px;
+  margin-top: 10px;
   text-align: center;
-  font-size: 10vw;
+  font-size: 5vw;
   color: #fff;
-  font-family: 'Lora', serif;
-}
+  font-family: 'Italiana', serif;
+} 
 
 .events__description {
   color: #fff;
