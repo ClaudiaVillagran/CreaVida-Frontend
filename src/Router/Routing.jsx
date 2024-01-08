@@ -11,7 +11,7 @@ import { Bienvenida } from '../Components/layout/inicio/Bienvenida';
 import { Event } from '../Components/layout/participar/Event';
 import { EventPast } from '../Components/layout/participar/EventPast';
 import { ConfirmationPaymentTransbank } from '../Components/layout/inicio/ConfirmationPaymentTransbank';
-
+import {RegisterEvent } from '../Components/layout/inicio/RegisterEvent'
 
 export const Routing = () => {
     return (
@@ -27,6 +27,7 @@ export const Routing = () => {
                         <Route path='event/:id' element={<Event/>}/>
                         <Route path='eventPast/:id' element={<EventPast/>}/>
                         <Route path='confirmation-payment' element={<ConfirmationPaymentTransbank />} />
+                        <Route path='ud12j1321j' element={<RegisterEvent/>} />
                         {/* <Route path='registro' element={<Register />} /> */}
                     </Route>
 

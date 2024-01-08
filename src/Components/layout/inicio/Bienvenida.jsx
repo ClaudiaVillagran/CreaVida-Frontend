@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Section } from '../../layout/inicio/Section';
 import imgLogo from '../../../assets/img/MarcaFCV_transparente.png'
 import imgSolidaridad from '../../../assets/img/barbaraynelson.png'
 import { NavLink } from 'react-router-dom';
-import {FormPaymentTransbank} from './FormPaymentTransbank';
+// import {FormPaymentTransbank} from './FormPaymentTransbank';
+// import { RegisterEvent } from './RegisterEvent';
 
 export const Bienvenida = () => {
 
