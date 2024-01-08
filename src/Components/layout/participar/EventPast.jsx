@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom"
 import { Global } from "../../../Helpers/Global";
 import { useEffect, useState } from "react";
 import { FormPaymentTransbank } from "../inicio/FormPaymentTransbank";
-export const Event = () => {
+
+export const EventPast = () => {
     const params = useParams();
     const eventId = params.id;
     const [event, setEvent] = useState({});
@@ -143,16 +144,16 @@ export const Event = () => {
             <div className="background-white">
 
             </div>
-            <div className="background-white-secondpart">
+           <div className="background-white-secondpart">
                 <p>{event.description}</p>
-                <p className="background-white-secondpart-date">
+                {/* <p className="background-white-secondpart-date">
                     Te esperamos a las {time} hrs
                 </p>
                 <div className="buttons-event">
                     <button className="button-donar donar-description" onClick={donar}>Donar</button>
                     <button className="button-participar participar-description" onClick={participar}>Participar</button>
-                </div>
-            </div>
+                </div>  */}
+            </div> 
 
         </div>
     )

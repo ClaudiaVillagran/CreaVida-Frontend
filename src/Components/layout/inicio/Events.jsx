@@ -107,7 +107,7 @@ export const Events = () => {
           </div>
         </article>
 
-        <div className="container__questions">
+        <div className="container__questions" >
           <div className="questions-title" id="eventsas">
             <h2 className="title-sections">PREGUNTAS FRECUENTES</h2>
 
@@ -135,7 +135,7 @@ export const Events = () => {
                   }}
 
                 >
-                  <Typography >Pregunta 1</Typography>
+                  <Typography >¿Qué es CreaVida?</Typography>
                 </AccordionSummary>
                 <AccordionDetails
                   sx={{
@@ -144,8 +144,7 @@ export const Events = () => {
 
                   }}>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  CreaVida es una fundación sin fines de lucro comprometida con la transformación positiva de comunidades a través de eventos y programas que fomentan la compasión, la generosidad y el servicio.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -162,15 +161,113 @@ export const Events = () => {
                     color: '#fff',
                   }}
                 >
-                  <Typography>Pregunta 2</Typography>
+                  <Typography>¿Cómo puedo participar en los eventos de CreaVida?</Typography>
                 </AccordionSummary>
                 <AccordionDetails sx={{
                   background: '#1f201f',
                   color: '#fff',
                 }}>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  Puedes participar de varias maneras: registrándote como voluntario, donando, o asistiendo a nuestros eventos. Visita nuetra sección de eventos para obtener más detalles y opciones de participación.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion sx={{
+                border: '1px solid #60ad26',
+                marginBottom: '10px',
+              }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography>¿Cómo dono a CreaVida?</Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{
+                  background: '#1f201f',
+                  color: '#fff',
+                }}>
+                  <Typography>
+                  Donar es fácil. Puedes hacerlo en línea a través de nuestra página de donaciones. También aceptamos donaciones en especie dirigiendote a nuestra iglesia. ¡Cada contribución cuenta!
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion sx={{
+                border: '1px solid #60ad26',
+                marginBottom: '10px',
+              }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography>¿Cómo puedo ser voluntario en CreaVida?</Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{
+                  background: '#1f201f',
+                  color: '#fff',
+                }}>
+                  <Typography>
+                  Nos encantaría que te unas como voluntario. Visita nuestra sección de voluntariado para obtener información sobre oportunidades actuales y cómo registrarte.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion sx={{
+                border: '1px solid #60ad26',
+                marginBottom: '10px',
+              }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography>¿Cuál es el impacto de mi donación?</Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{
+                  background: '#1f201f',
+                  color: '#fff',
+                }}>
+                  <Typography>
+                  Tu donación tiene un impacto significativo en la obra de CreaVida, reflejando el llamado cristiano a amar y servir a los demás. Al contribuir, te unes a nosotros en la misión de manifestar el amor de Cristo en la práctica, llevando esperanza, consuelo y oportunidades a aquellos que más lo necesitan. 
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+
+
+
+              <Accordion sx={{
+                border: '1px solid #60ad26',
+                marginBottom: '10px',
+              }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                  sx={{
+                    background: '#1f201f',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography>¿Cómo puedo participar en los eventos de CreaVida?</Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{
+                  background: '#1f201f',
+                  color: '#fff',
+                }}>
+                  <Typography>
+                  Puedes participar de varias maneras: registrándote como voluntario, donando, o asistiendo a nuestros eventos. Visita nuetra sección de eventos para obtener más detalles y opciones de participación.
                   </Typography>
                 </AccordionDetails>
               </Accordion>

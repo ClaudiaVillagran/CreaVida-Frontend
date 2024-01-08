@@ -200,11 +200,16 @@
      .ser-parte__p {
          width: 80%;
      }
+     .container-agradecimiento-h1-failed{
+        font-size: 4vw !important;
+      }
 
  }
 
  @media (max-width: 500px) {
-
+    .container__payment h1{
+        font-size: 15px;
+      }
     .button-header{
         margin-right: 10px;
         padding: 5px;

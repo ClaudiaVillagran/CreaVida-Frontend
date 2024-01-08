@@ -46,7 +46,7 @@ export const InputNumberComponent = ({ nameLabel, nameType, nameInput, form, cha
             <TextField
                 id="standard-basic"
                 sx={{ width:'100%'}}
-                label={nameLabel}
+                label={nameLabel === 'Monto a donar' ? `${nameLabel} (CLP $)` : nameLabel}
                 variant="standard"
                 type={nameType}
                 color="success"
@@ -56,6 +56,7 @@ export const InputNumberComponent = ({ nameLabel, nameType, nameInput, form, cha
                         handleFieldChange(e);
                     }}
                 name={nameInput}
+                
             />
         </Box>
     )

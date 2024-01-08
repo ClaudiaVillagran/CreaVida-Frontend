@@ -1916,6 +1916,7 @@ body {
   flex-direction: column;
   align-items: center;
   align-content: center;
+  margin-inline: 10px;
 }
 
 .questions-title {
@@ -2171,6 +2172,10 @@ body {
   background-color: #000;
 }
 
+.event-description-time{
+  font-family:sans-serif;
+}
+
 .container-description {
   position: relative;
   top: 222px;
@@ -2230,6 +2235,10 @@ body {
   align-items: center;
   font-family: 'Overpass', sans-serif;
   font-weight: 600;
+}
+.timeE{
+  
+  border-right: 0px solid #656f77 !important;
 }
 
 .second-description {
@@ -2420,4 +2429,52 @@ body {
 .button-inscription {
 
   margin: 0 auto;
+}
+
+.webpay{
+  color: #000;
+}
+.container__payment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__payment h1{
+  font-family: 'Italiana', sans-serif;
+  font-size: 2vw;
+
+}
+.confirmation-webpay{
+  margin-top: 100px;
+  font-size: 50px;
+}
+.buttonWebpay:hover{
+  background-color:#202020 ;
+}
+.container-agradecimiento{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-img-agradecimiento{
+  margin-top: 20px;
+  width: 150px;
+  height: auto;
+}
+
+.container-agradecimiento h1 {
+font-family: 'Italiana', sans-serif;
+color: #252423;
+font-size: 5vw;
+margin-bottom: 20px;
+}
+.container-img-agradecimiento img{
+  width: 100%;
+  height: auto;
+}
+.container-agradecimiento-h1-failed{
+  font-size: 2.5vw !important;
+}
+.container__payment h1{
+  font-size: 20px ;
 }

@@ -65,7 +65,9 @@ export class SliderResponsivePastEvents extends Component {
                                     <p className="info__events-p">{event.description}</p>
                                     <h6>{`${formatDate(event.date)} ${formatTime(event.date)} hrs`}</h6>
                                 </div>
+                                <NavLink to={'/eventPast/' + event._id}>
                                 <button className="button-donar near-event-b">Ver información</button>
+                                </NavLink>
                             </div>
                         )
                     })}

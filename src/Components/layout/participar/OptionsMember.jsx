@@ -8,10 +8,14 @@ import Typography from '@mui/joy/Typography';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useState } from 'react';
 import { ButtonModalSocio } from '../modal/ButtonModalSocio';
+import { FormPaymentTransbank } from '../inicio/FormPaymentTransbank';
 
 export const OptionsMember = () => {
     const [modalOpenDonate, setModalOpenDonate] = useState(false);
     const [modalOpenSocio, setModalOpenSocio] = useState(false);
+    
+    const [openWebpay, setOpenWebPay] = useState(false)
+
     const donar = () => {
         setModalOpenDonate(true);
     };
@@ -21,6 +25,8 @@ export const OptionsMember = () => {
     const closeModal = () => {
         setModalOpenSocio(false);
         setModalOpenDonate(false);
+        
+        setOpenWebPay(false);
     };
     return (
 
@@ -35,16 +41,19 @@ export const OptionsMember = () => {
              {modalOpenDonate && (
                 <div className="modal">
                     <div className="participation-box">
+                    {!openWebpay ?
+                            <>
                         <span className="modal__close " onClick={closeModal}>&times;</span>
 
                         <h6 className="donate-h6">Gracias por querer ser parte</h6>
                         <p className="method_donation"><i>Selecciona el método para donar</i></p>
                         <div className="options-donate">
                             <button className="button-donate">Transferencia</button>
-                            <button className="button-donate">WebPay</button>
-                            <button className="button-donate">PayPal</button>
-                        </div>
-
+                            <button className="button-donate" onClick={() => setOpenWebPay(prevOpenWebpay => !prevOpenWebpay)}>WebPay</button>
+                                    {/* <button className="button-donate">PayPal</button> */}
+                                </div>
+                            </>
+                            : <FormPaymentTransbank closeModal={closeModal} />}
                     </div>
                 </div>
             )}
