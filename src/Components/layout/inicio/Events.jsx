@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import imgEvents from '../../../assets/img/event5 (4).jpg'
 import { Global } from "../../../Helpers/Global";
 import { NearEvents } from "../participar/NearEvents";
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import event1 from '../../../assets/img/event1.jpg'
 
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
