@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 import { Global } from "../../../Helpers/Global";
 import { useEffect, useState } from "react";
-import { FormPaymentTransbank } from "../inicio/FormPaymentTransbank";
+import { ModalDonate } from "../modal/ModalDonate";
+import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
+
 export const Event = () => {
     const params = useParams();
     const eventId = params.id;
@@ -17,11 +19,6 @@ export const Event = () => {
     };
     const donar = () => {
         setModalOpenDonate(true);
-    };
-    const closeModal = () => {
-        setModalOpenParticipe(false);
-        setModalOpenDonate(false);
-        setOpenWebPay(false);
     };
 
     useEffect(() => {
@@ -58,67 +55,13 @@ export const Event = () => {
         <div className="container__specific-event">
 
             {modalOpenParticipe && (
-                <div className="modal">
-                    <div className="participation-box">
+                <ButtonModalParticipate selectedEventId={eventId}
+                    setModalOpenParticipe={setModalOpenParticipe} modalOpenParticipe={modalOpenParticipe}
+                />
 
-                        <span className="modal__close" onClick={closeModal}>&times;</span>
-
-                        <h6>Gracias por querer ser parte</h6>
-                        <form className="form__participate">
-                            <div className="input-box" >
-                                <input type="text" id="nombre" name="nombre" required />
-                                <label htmlFor="nombre" >Nombre:</label>
-                            </div>
-                            <div className="input-box" >
-                                <input type="text" id="apellido" name="apellido" required />
-                                <label htmlFor="apellido" >Apellido:</label>
-                            </div>
-
-                            <div className="input-box" >
-
-                                <input type="text" id="edad" name="edad" required />
-                                <label htmlFor="edad" >Edad:</label>
-                            </div>
-
-                            <div className="input-box" >
-                                <input type="text" id="contacto" name="contacto" required />
-                                <label htmlFor="contacto" >Contacto:</label>
-                            </div>
-
-                            <div className="input-box" >
-                                <textarea id="mensaje" name="mensaje" rows="2" required></textarea>
-                                <label htmlFor="mensaje" >Mensaje:</label>
-                            </div>
-                            <div className="buttons-form">
-                                <button type="submit" className="button-submit">Enviar</button>
-                                <button className="button-close" onClick={closeModal}>Cerrar</button>
-                            </div>
-
-                        </form>
-
-
-                    </div>
-                </div>
             )}
             {modalOpenDonate && (
-                <div className="modal">
-                    <div className="participation-box">
-
-                        {!openWebpay ?
-                            <>
-                                <span className="modal__close " onClick={closeModal}>&times;</span>
-
-                                <h6 className="donate-h6">Gracias por querer ser parte</h6>
-                                <p className="method_donation"><i>Selecciona el método para donar</i></p>
-                                <div className="options-donate">
-                                    <button className="button-donate">Transferencia</button>
-                                    <button className="button-donate" onClick={() => setOpenWebPay(prevOpenWebpay => !prevOpenWebpay)}>WebPay</button>
-                                    {/* <button className="button-donate">PayPal</button> */}
-                                </div>
-                            </>
-                            : <FormPaymentTransbank closeModal={closeModal} />}
-                    </div>
-                </div>
+                <ModalDonate setModalOpenDonate={setModalOpenDonate} />
             )}
             <div className="background-black">
 
@@ -132,7 +75,7 @@ export const Event = () => {
                         <p className="first-description"  >{formattedDate}</p>
                         <p className="second-description">{event.location}</p>
                         <div className="buttons-description last-description">
-                           <p className="first-description timeE"> {time+'hrs'}</p>
+                            <p className="first-description timeE"> {time + 'hrs'}</p>
 
                         </div>
                     </div>

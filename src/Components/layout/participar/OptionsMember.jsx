@@ -8,13 +8,11 @@ import Typography from '@mui/joy/Typography';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useState } from 'react';
 import { ButtonModalSocio } from '../modal/ButtonModalSocio';
-import { FormPaymentTransbank } from '../inicio/FormPaymentTransbank';
+import { ModalDonate } from '../modal/ModalDonate';
 
 export const OptionsMember = () => {
     const [modalOpenDonate, setModalOpenDonate] = useState(false);
     const [modalOpenSocio, setModalOpenSocio] = useState(false);
-    
-    const [openWebpay, setOpenWebPay] = useState(false)
 
     const donar = () => {
         setModalOpenDonate(true);
@@ -22,12 +20,7 @@ export const OptionsMember = () => {
     const serSocio = () => {
         setModalOpenSocio(true);
     }
-    const closeModal = () => {
-        setModalOpenSocio(false);
-        setModalOpenDonate(false);
-        
-        setOpenWebPay(false);
-    };
+
     return (
 
         <Box
@@ -38,24 +31,8 @@ export const OptionsMember = () => {
                 gap: 2,
             }}
         >
-             {modalOpenDonate && (
-                <div className="modal">
-                    <div className="participation-box">
-                    {!openWebpay ?
-                            <>
-                        <span className="modal__close " onClick={closeModal}>&times;</span>
-
-                        <h6 className="donate-h6">Gracias por querer ser parte</h6>
-                        <p className="method_donation"><i>Selecciona el método para donar</i></p>
-                        <div className="options-donate">
-                            <button className="button-donate">Transferencia</button>
-                            <button className="button-donate" onClick={() => setOpenWebPay(prevOpenWebpay => !prevOpenWebpay)}>WebPay</button>
-                                    {/* <button className="button-donate">PayPal</button> */}
-                                </div>
-                            </>
-                            : <FormPaymentTransbank closeModal={closeModal} />}
-                    </div>
-                </div>
+               {modalOpenDonate && (
+                <ModalDonate setModalOpenDonate={setModalOpenDonate} />
             )}
             {modalOpenSocio && (
                 <ButtonModalSocio
@@ -76,7 +53,7 @@ export const OptionsMember = () => {
                 <Typography level="h2" sx={{ fontSize: '40px', color: '#fff' }} >Ser socio</Typography>
                 <Divider inset="none" />
                 <p className='p__form-socio'>
-                Al ser socio generarás un compromiso continuo y a largo plazo con nosotros, realizando contribuciones regulares, mensuales, trimestral o anual.
+                Al ser socio generarás un compromiso continuo y a largo plazo con nosotros, realizando aportes regulares, mensuales, trimestral o anual.
                 </p>
                 <Divider inset="none" />
                 <CardActions  sx={{ marginTop: 'auto' }}>
@@ -95,7 +72,7 @@ export const OptionsMember = () => {
             </Card>
             <Card size="lg" variant="outlined" sx={{ display: 'flex', flexDirection: 'column' }}> 
                 <Chip size="sm" variant="outlined" color="neutral" sx={{ fontSize: '10px', color: '#60AD26' }}>
-                    APORTE MONETARIO
+                    APORTE
                 </Chip>
                 <Typography level="h2" sx={{ fontSize: '40px' }}>Donar</Typography>
                 <Divider inset="none" />

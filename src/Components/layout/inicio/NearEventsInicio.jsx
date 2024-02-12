@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Global } from "../../../Helpers/Global";
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ModalDonate } from "../modal/ModalDonate";

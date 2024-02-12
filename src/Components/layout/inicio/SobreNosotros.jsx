@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import imgBarbara from '../../../assets/img/babaraInicio.png'
-import imgRut from '../../../assets/img/rutAlvarez.png'
-import { Navigate } from "../../navigate/Navigate";
+
+import video from '../../../assets/img/presen.mp4'
+import ReactPlayer from "react-player";
 
 export const SobreNosotros = () => {
 
@@ -28,9 +28,26 @@ export const SobreNosotros = () => {
 
     return (
         <>
-            <article className={`container__sobreNosotros scroll_reveal ${isVisible ? 'visible' : ''}`} ref={contentRef} >
 
-                <div className="container__buttons-inicio">
+            <article className={`container__sobreNosotros scroll_reveal ${isVisible ? 'visible' : ''}`} ref={contentRef} >
+                <div className='portada-info info'>
+                    <div >
+                        <ReactPlayer
+                            url={video}
+                            controls
+                            config
+                            playIcon
+                            muted
+                            width='100%'
+                            height='auto'
+                        />
+                    </div>
+                    <div className='data__presentation'>
+                        <h2>CreaVida</h2>
+                        <p> Conoce la esencia de nuestra fundación. Exploraremos juntos los proyectos, la misión y el impacto que logramos gracias a tu apoyo. ¡Conviértete en parte de nuestra historia!</p>
+                    </div>
+                </div>
+                {/* <div className="container__buttons-inicio">
                     <Navigate url="eventos/#eventsas" style="button-donar" text="Eventos cercanos" />
                     <a href="#serParte">
                         <button className="button-donar">¿Por qué ser parte?</button>
@@ -57,7 +74,7 @@ export const SobreNosotros = () => {
                             <p>Trabajadora social</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <a href="#serParte">
                     <button className="button-arrow">
                     </button>
@@ -71,21 +88,21 @@ export const SobreNosotros = () => {
                     <div className="container__specific-value love">
                         <div className="container__img-value">
                             {/* <img src={iconCaridad} alt="Caridad y amor al prójimo img"/> */}
-                            <div className="img-value-love"/>
+                            <div className="img-value-love" />
                         </div>
                         <h4 className="title__value">Amor al prójimo</h4>
                         <p className="description__value"> La Biblia enfatiza el mandamiento de amar a tu prójimo como a ti mismo (Mateo 22:39). Donar es una manifestación concreta de este amor al ayudar a quienes enfrentan dificultades.</p>
                     </div>
                     <div className="container__specific-value honra">
                         <div className="container__img-value">
-                        <div className="img-value-honra"/>
+                            <div className="img-value-honra" />
                         </div>
                         <h4 className="title__value">Honrar a Dios</h4>
                         <p className="description__value">La Biblia también enseña sobre la importancia de honrar a Dios con nuestros recursos y bendiciones (Proverbios 3:9). Donar es una forma de mostrar gratitud por lo que hemos recibido.</p>
                     </div>
                     <div className="container__specific-value samaritano">
                         <div className="container__img-value">
-                        <div className="img-value-samaritano"/>
+                            <div className="img-value-samaritano" />
                         </div>
                         <h4 className="title__value">El buen samaritano</h4>
                         <p className="description__value">La parábola del buen samaritano (Lucas 10:25-37) destaca la importancia de mostrar misericordia y compasión hacia quienes están en necesidad, sin importar su origen.</p>

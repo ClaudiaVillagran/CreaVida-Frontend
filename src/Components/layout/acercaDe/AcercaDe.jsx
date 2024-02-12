@@ -4,6 +4,7 @@ import imagen1 from '../../../assets/img/babaraInicio.png'
 import imagen2 from '../../../assets/img/rutAlvarez.png'
 import { NavLink } from 'react-router-dom';
 import { Global } from '../../../Helpers/Global';
+import ReactPlayer from 'react-player'
 
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -85,37 +86,23 @@ export const AcercaDe = () => {
 
   return (
     <div className="container__acerca"  >
-
-      {/* <video autoPlay muted loop id="background-video" >
-        <source src={video} type="video/mp4" />
-      </video> */}
-      {/* <div className='acerca-semitransparente'></div> */}
-
-      {/* <div className={`acerca__presentation ${loaded ? 'loaded' : ''}`}>
-          <button className="boton-animado">¿QUIÉNES SOMOS?</button>
-          <h1>Somos Esperanza</h1>
-        </div> */}
-      {/* <div className="acerca__descripcion">
-          <p className='acerca__descripcion-p'><span>CreaVida</span><i> se fundo en AÑO para DESCRIPCION, realizamos nuestro primer evento de ayuda a EVENTO, desde ese entonces nos ha movido el amor
-            por los demas llegando al punto de haber realizado mas de CANTIDAD de eventos de ayuda</i>
-          </p>
-        </div> */}
-
-
       <div className='acerca_portada'>
         <div className='portada-info'>
-          <div className='portada-info__container-img'>
-            <img src={imagen1} alt="Bárbara" />
+          <div >
+
+            <ReactPlayer
+              url={video}
+              controls
+              config
+              playIcon
+              muted
+              width='100%'
+              height='auto'
+            />
           </div>
-          <div className='portada-info-data_pastora'>
-            <h2>Bárbara Velozo</h2>
-            <p>Conoce a Bárbara Velozo, el corazón latente detrás de CreaVida. Su visión simple pero poderosa guía cada evento y proyecto. Creemos en el poder de la compasión para cambiar vidas. Únete a nosotros, ya sea donando o participando en nuestros eventos. Juntos, creamos vida, amor y un propósito más grande.</p>
-            <div className='portada-info-buttons'>
-            <NavLink to="https://api.whatsapp.com/send?phone=56945282176&text=¡Hola! Quiero tener información de la fundación" target="_blank">
-              <button className="button-header button-portada">Bárbara Velozo</button>
-              </NavLink>
-              <button className="button-header button-portada">Ir a donar</button>
-            </div>
+          <div className='data__presentation'>
+            <h2>CreaVida</h2>
+            <p> Conoce la esencia de nuestra fundación. Exploraremos juntos los proyectos, la misión y el impacto que logramos gracias a tu apoyo. ¡Conviértete en parte de nuestra historia!</p>
           </div>
         </div>
       </div>
@@ -203,7 +190,7 @@ export const AcercaDe = () => {
         </span></button>
       </div>
       <div className="container__nuestro-equipo equipo_aboutUs">
-        <h2 className='title-sections'>NUESTROS LÍDERES</h2>
+        <h2 className='title-sections'>NUESTRO EQUIPO</h2>
         <div className="container__lideres">
           <div className="container__lider">
             <div className="container__img-lider">

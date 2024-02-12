@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { ModalParticipate } from "../modal/ModalParticipate";
 import { ModalDonate } from "../modal/ModalDonate";
 
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { NearEventsHeader } from "./NearEventsHeader";

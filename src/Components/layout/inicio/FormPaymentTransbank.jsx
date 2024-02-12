@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from '../../../Hooks/useForm';
 import { InputNumberComponent } from '../../formsComponents/InputNumberComponent';
+import { Global } from "../../../Helpers/Global";
 
 export const FormPaymentTransbank = ({ closeModal }) => {
     const [transactionData, setTransactionData] = useState({});
@@ -14,7 +15,7 @@ export const FormPaymentTransbank = ({ closeModal }) => {
 
             let amount = form.amount
             // Llama al servidor para iniciar la transacción y obtén la URL y el token
-            const response = await axios.post('http://localhost:3000/api/payment/start-payment', { amount: amount });
+            const response = await axios.post(`${Global.url}payment/start-payment`, { amount: amount });
             const data = response.data;
             console.log(data);
             // Actualiza el estado con los datos de la transacción

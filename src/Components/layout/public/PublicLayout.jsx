@@ -2,7 +2,6 @@ import { Navigate, Outlet } from "react-router-dom"
 import { Header } from "./Header"
 import useAuth from "../../../Hooks/useAuth"
 import { Footer } from "./Footer";
-import { NavResponsive } from "./NavResponsive";
 
 export const PublicLayout = () => {
 

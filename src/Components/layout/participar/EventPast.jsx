@@ -13,12 +13,7 @@ export const EventPast = () => {
     const [time, setTime] = useState()
     const [openWebpay, setOpenWebPay] = useState(false)
 
-    const participar = () => {
-        setModalOpenParticipe(true);
-    };
-    const donar = () => {
-        setModalOpenDonate(true);
-    };
+
     const closeModal = () => {
         setModalOpenParticipe(false);
         setModalOpenDonate(false);
