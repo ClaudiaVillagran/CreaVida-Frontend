@@ -29,7 +29,7 @@ export const ConfirmationPaymentTransbank = () => {
                 if (token_ws.length > 1) {
                     // Realizar la solicitud solo si hay un token
                     const response = await axios.post(
-                        "http://localhost:3000/api/payment/confirm-payment",
+                        "https://backend.fcreavida.cl/api/payment/confirm-payment",
                         { token_ws }
                     );
                     console.log(response.data);

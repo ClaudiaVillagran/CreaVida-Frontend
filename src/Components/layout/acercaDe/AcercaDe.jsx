@@ -4,7 +4,6 @@ import imagen1 from '../../../assets/img/babaraInicio.png'
 import imagen2 from '../../../assets/img/rutAlvarez.png'
 import { NavLink } from 'react-router-dom';
 import { Global } from '../../../Helpers/Global';
-import ReactPlayer from 'react-player'
 
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -89,16 +88,8 @@ export const AcercaDe = () => {
       <div className='acerca_portada'>
         <div className='portada-info'>
           <div >
-
-            <ReactPlayer
-              url={video}
-              controls
-              config
-              playIcon
-              muted
-              width='100%'
-              height='auto'
-            />
+		<h1 style={{ textAlign: 'center' }}>aqui va el video de presentacion de la pastora</h1>
+         {/*aqui va el reactplayer*/}
           </div>
           <div className='data__presentation'>
             <h2>CreaVida</h2>

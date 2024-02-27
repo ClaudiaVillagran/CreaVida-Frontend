@@ -55,6 +55,9 @@ export const OptionsMember = () => {
                 <p className='p__form-socio'>
                 Al ser socio generarás un compromiso continuo y a largo plazo con nosotros, realizando aportes regulares, mensuales, trimestral o anual.
                 </p>
+		     <br />
+		     <br />
+     <br />
                 <Divider inset="none" />
                 <CardActions  sx={{ marginTop: 'auto' }}>
 
@@ -79,6 +82,9 @@ export const OptionsMember = () => {
                 <p className='p__form-participate'>
                 Contribuciones únicas o esporádicas de dinero. No implican necesariamente un compromiso a largo plazo.
                 </p>
+	<br />
+	<br />
+<br />
                 <Divider inset="none" />
                 <CardActions  sx={{ marginTop: 'auto' }}>
 

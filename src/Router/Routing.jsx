@@ -26,7 +26,7 @@ export const Routing = () => {
                         <Route path='acercaDe' element={<AcercaDe />} />
                         <Route path='event/:id' element={<Event/>}/>
                         <Route path='eventPast/:id' element={<EventPast/>}/>
-                        <Route path='confirmation-payment' element={<ConfirmationPaymentTransbank />} />
+                        <Route path='confirmation-payment/*' element={<ConfirmationPaymentTransbank />} />
                         <Route path='ud12j1321j' element={<RegisterEvent/>} />
                         {/* <Route path='registro' element={<Register />} /> */}
                     </Route>

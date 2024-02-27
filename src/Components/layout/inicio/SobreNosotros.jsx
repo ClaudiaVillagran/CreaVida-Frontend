@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import video from '../../../assets/img/presen.mp4'
-import ReactPlayer from "react-player";
 
 export const SobreNosotros = () => {
 
@@ -32,15 +31,7 @@ export const SobreNosotros = () => {
             <article className={`container__sobreNosotros scroll_reveal ${isVisible ? 'visible' : ''}`} ref={contentRef} >
                 <div className='portada-info info'>
                     <div >
-                        <ReactPlayer
-                            url={video}
-                            controls
-                            config
-                            playIcon
-                            muted
-                            width='100%'
-                            height='auto'
-                        />
+                       <h1 style={{ textAlign: 'center' }}>aqui va el video de presentacion de la pastora</h1>
                     </div>
                     <div className='data__presentation'>
                         <h2>CreaVida</h2>
