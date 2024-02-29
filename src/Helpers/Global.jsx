@@ -1,3 +1,3 @@
 export const Global = {
-    url:"https://backend.fcreavida.cl/api/"
+    url:"http://localhost:3000/api/"
 };

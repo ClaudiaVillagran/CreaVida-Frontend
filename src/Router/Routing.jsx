@@ -30,8 +30,8 @@ export const Routing = () => {
                         <Route path='ud12j1321j' element={<RegisterEvent/>} />
                         {/* <Route path='registro' element={<Register />} /> */}
                     </Route>
-
-                    <Route path='/admin' element={<PrivateLayout />}>
+                    {/*validar que exista token*/}
+                    <Route path='/admin'  element={<PrivateLayout />}>
                         {/* <Route index element={<Feed />} /> */}
                     </Route>
 
