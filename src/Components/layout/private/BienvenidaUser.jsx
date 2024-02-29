@@ -4,6 +4,8 @@ import { VirtualAssistant } from "./VirtualAssistant";
 import { TextBienvenida } from "./TextBienvenida";
 
 import iconDown from '../../../assets/icons/down.png';
+import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
 export const BienvenidaUser = () => {
     const [user, setUser] = useState({});
@@ -12,6 +14,8 @@ export const BienvenidaUser = () => {
     const [showButtons, setShowButtons] = useState(false);
     const [showHand, setShowHand] = useState(false);
     const [buttonBeingHovered, setButtonBeingHovered] = useState('');
+    const [showButtonOne, setShowButtonOne] = useState(false);
+    const [showButtonTwo, setShowButtonTwo] = useState(false);
 
     const getUserData = async () => {
         try {
@@ -37,17 +41,20 @@ export const BienvenidaUser = () => {
     }, []);
     useEffect(() => {
         if (isComplete) {
-            const firstButtonTimer = setTimeout(() => {
-                setShowButtons(true);
-                const secondButtonTimer = setTimeout(() => {
-                    setShowButtons(true);
-                }, 1000); // Espera 5 segundos antes de mostrar el segundo botón
-                return () => clearTimeout(secondButtonTimer);
-            }, 500); // Espera 5 segundos antes de mostrar el primer botón
-            return () => clearTimeout(firstButtonTimer);
+            const timerOne = setTimeout(() => {
+                setShowButtonOne(true);
+            }, 600);
+
+            const timerTwo = setTimeout(() => {
+                setShowButtonTwo(true);
+            }, 1000);
+
+            return () => {
+                clearTimeout(timerOne);
+                clearTimeout(timerTwo);
+            };
         }
     }, [isComplete]);
-
     const handleMouseEnter = (buttonType) => {
         setShowHand(true);
         setButtonBeingHovered(buttonType);
@@ -73,20 +80,24 @@ export const BienvenidaUser = () => {
                     </div>
 
                     <div className="container_buttons">
-                        {isComplete && showButtons && (
+                        {isComplete && (
                             <>
                                 <div className="containerhand">
                                     <div className={`hand-icon ${showHand && buttonBeingHovered === 'Registrar' ? 'visible' : ''}`}>
                                         <img src={iconDown} alt="Icono de mano" className="iconDown" />
                                     </div>
                                     <div className="button-wrapper">
-                                        <button
-                                            className="button_welcome button_animation"
-                                            onMouseEnter={() => handleMouseEnter('Registrar')}
-                                            onMouseLeave={handleMouseLeave}
-                                        >
-                                            Registrar un evento
-                                        </button>
+
+                                        <NavLink to={'registerEvent'}>
+                                            <button
+                                                className={`button_welcome button_animation ${showButtonOne ? 'visible' : ''}`}
+                                                style={{ visibility: showButtonOne ? 'visible' : 'hidden' }}
+                                                onMouseEnter={() => handleMouseEnter('Registrar')}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                Registrar un evento
+                                            </button>
+                                        </NavLink>
                                     </div>
                                 </div>
                                 <div className="containerhand">
@@ -94,13 +105,16 @@ export const BienvenidaUser = () => {
                                         <img src={iconDown} alt="Icono de mano" className="iconDown" />
                                     </div>
                                     <div className="button-wrapper">
-                                        <button
-                                            className="button_welcome button_animation"
-                                            onMouseEnter={() => handleMouseEnter('Ver')}
-                                            onMouseLeave={handleMouseLeave}
-                                        >
-                                            Ver eventos
-                                        </button>
+                                        <NavLink to={'registerEvent'}>
+                                            <button
+                                                className={`button_welcome button_animation ${showButtonTwo ? 'visible' : ''}`}
+                                                style={{ visibility: showButtonTwo ? 'visible' : 'hidden' }}
+                                                onMouseEnter={() => handleMouseEnter('Ver')}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                Ver eventos
+                                            </button>
+                                        </NavLink>
                                     </div>
                                 </div>
                             </>

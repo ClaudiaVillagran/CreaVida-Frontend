@@ -11,7 +11,7 @@ import { Bienvenida } from '../Components/layout/inicio/Bienvenida';
 import { Event } from '../Components/layout/participar/Event';
 import { EventPast } from '../Components/layout/participar/EventPast';
 import { ConfirmationPaymentTransbank } from '../Components/layout/inicio/ConfirmationPaymentTransbank';
-import {RegisterEvent } from '../Components/layout/inicio/RegisterEvent'
+import { RegisterEvent } from '../Components/layout/inicio/RegisterEvent'
 
 export const Routing = () => {
     return (
@@ -24,16 +24,17 @@ export const Routing = () => {
                         <Route path='participa' element={<Participar />} />
                         <Route path='eventos' element={<Events />} />
                         <Route path='acercaDe' element={<AcercaDe />} />
-                        <Route path='event/:id' element={<Event/>}/>
-                        <Route path='eventPast/:id' element={<EventPast/>}/>
+                        <Route path='event/:id' element={<Event />} />
+                        <Route path='eventPast/:id' element={<EventPast />} />
                         <Route path='confirmation-payment/*' element={<ConfirmationPaymentTransbank />} />
-                        <Route path='ud12j1321j' element={<RegisterEvent/>} />
                         {/* <Route path='registro' element={<Register />} /> */}
                     </Route>
                     {/*validar que exista token*/}
-                    <Route path='/admin'  element={<PrivateLayout />}>
+                    <Route path='/admin' element={<PrivateLayout />}>
                         {/* <Route index element={<Feed />} /> */}
                     </Route>
+                    
+                    <Route path='/admin/registerEvent' element={<RegisterEvent />} />
 
                     <Route path='*' element={
                         <>

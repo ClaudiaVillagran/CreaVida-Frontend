@@ -103,22 +103,27 @@ export const RegisterEvent = () => {
   }, [statusUpload, form]);
 
   return (
-    <div style={{ color: 'blue', fontSize: '40px' }}>
-      <form>
-        <input type="text" name="title" onChange={changeForm} />
-        <input type="datetime-local" name="date" onChange={changeForm} />
-        <input type="text" name="location" onChange={changeForm} />
-        <textarea name="description"  cols="30" rows="10" onChange={changeForm}></textarea>
-        <br />
-        <input
-          type="file"
-          name="picture"
-          accept="image/png,image/jpeg,image/webp"
-          onChange={changePicture}
-        />
-        <button onClick={newEvent}>subir</button>
-      </form>
-    </div>
+    <article className="container_registerEvent">
+      <div className="container_form_event">
+        
+      <h1>REGISTRAR UN NUEVO EVENTO</h1>
+        <form>
+          <input type="text" name="title" onChange={changeForm} className="input_titleEvent" placeholder="Ttulo del evento"/>
+          <input type="datetime-local" name="date" onChange={changeForm} />
+          <input type="text" name="location" onChange={changeForm} />
+          <textarea name="description" cols="30" rows="10" onChange={changeForm}></textarea>
+          <br />
+          <input
+            type="file"
+            name="picture"
+            accept="image/png,image/jpeg,image/webp"
+            onChange={changePicture}
+          />
+          <button onClick={newEvent}>Subir</button>
+        </form>
+      </div>
+
+    </article>
   );
 };
 
