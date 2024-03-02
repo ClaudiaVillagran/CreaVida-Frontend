@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Global } from "../../../Helpers/Global";
-
+import loadingIcon from '../../../assets/icons/loading.gif'
 export const RegisterEvent = () => {
   const [form, setForm] = useState({});
   const [picture, setPicture] = useState();
   const [statusUpload, setStatusUpload] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setStatusUpload(false);
   }, []);
@@ -51,7 +51,7 @@ export const RegisterEvent = () => {
       }
 
       const data = await res.json();
-      console.log(data);
+      setLoading(false)
       return data;
     } catch (error) {
       console.error("Error uploading picture:", error.message);
@@ -60,6 +60,7 @@ export const RegisterEvent = () => {
   };
 
   const newEvent = async (e) => {
+    setLoading(true);
     e.preventDefault();
     if (picture) {
       console.log('exist');
@@ -106,12 +107,13 @@ export const RegisterEvent = () => {
     <article className="container_registerEvent">
       <div className="container_form_event">
         
-      <h1>REGISTRAR UN NUEVO EVENTO</h1>
+      <h1>Register</h1>
+      <span>Crea un nuevo evento</span>
         <form>
           <input type="text" name="title" onChange={changeForm} className="input_titleEvent" placeholder="Ttulo del evento"/>
           <input type="datetime-local" name="date" onChange={changeForm} />
-          <input type="text" name="location" onChange={changeForm} />
-          <textarea name="description" cols="30" rows="10" onChange={changeForm}></textarea>
+          <input type="text" name="location" onChange={changeForm} placeholder="Ciudad del evento"/>
+          <textarea name="description" cols="30" rows="10" onChange={changeForm} placeholder="Descripción del evento"></textarea>
           <br />
           <input
             type="file"
@@ -119,7 +121,8 @@ export const RegisterEvent = () => {
             accept="image/png,image/jpeg,image/webp"
             onChange={changePicture}
           />
-          <button onClick={newEvent}>Subir</button>
+          {loading ? <button className="btn_new_event button-donar" ><img src={loadingIcon} className="loadingIcon"></img></button> :
+          <button className="btn_new_event button-donar" onClick={newEvent}>SUBIR</button>}
         </form>
       </div>
 

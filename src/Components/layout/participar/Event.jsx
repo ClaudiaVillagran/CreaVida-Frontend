@@ -10,9 +10,9 @@ export const Event = () => {
     const [event, setEvent] = useState({});
     const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
     const [modalOpenDonate, setModalOpenDonate] = useState(false);
-    const [formattedDate, setFormattedDate] = useState("")
-    const [time, setTime] = useState()
-    const [openWebpay, setOpenWebPay] = useState(false)
+    const [formattedDate, setFormattedDate] = useState("");
+    const [time, setTime] = useState();
+    const [openWebpay, setOpenWebPay] = useState(false);
 
     const participar = () => {
         setModalOpenParticipe(true);
@@ -36,12 +36,12 @@ export const Event = () => {
         });
         const data = await request.json();
         if (data.status == 'success') {
-            console.log('getEvents', data)
+            // console.log('getEvents', data)
             setEvent(data.event)
-            console.log(event)
+            // console.log(event)
             const eventDate = new Date(data.event.date);
             setTime(eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
-            console.log(time)
+            // console.log(time)
             const day = eventDate.getDate();
             const month = eventDate.getMonth() + 1; // Los meses comienzan desde 0
             const year = eventDate.getFullYear();

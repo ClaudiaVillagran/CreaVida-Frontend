@@ -12,6 +12,8 @@ import { Event } from '../Components/layout/participar/Event';
 import { EventPast } from '../Components/layout/participar/EventPast';
 import { ConfirmationPaymentTransbank } from '../Components/layout/inicio/ConfirmationPaymentTransbank';
 import { RegisterEvent } from '../Components/layout/inicio/RegisterEvent'
+import { AllEvents } from '../Components/layout/private/AllEvents';
+import { EditEvent } from '../Components/layout/private/EditEvent';
 
 export const Routing = () => {
     return (
@@ -36,6 +38,9 @@ export const Routing = () => {
                     
                     <Route path='/admin/registerEvent' element={<RegisterEvent />} />
 
+                    <Route path='/admin/allEvents' element={<AllEvents />} />
+                    
+                    <Route path='/admin/allEvents/:id' element={<EditEvent />} />
                     <Route path='*' element={
                         <>
                             <p>

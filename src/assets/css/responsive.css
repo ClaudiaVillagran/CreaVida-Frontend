@@ -553,4 +553,23 @@
          font-size: 4vw !important;
          letter-spacing: 1px;
      }
+     .container_form_event{
+        width: 90%;
+     }
+     .container_robot{
+        flex-direction: column;
+        height:50%;
+        align-items: center;
+     }
+     .robot{
+        height: 80%;
+     }
+     .container__text{
+        width: 100%;
+        height: 10%;
+        margin-top: -40px;
+     }
+     .container__text p{
+        font-size:15px;
+     }
  }

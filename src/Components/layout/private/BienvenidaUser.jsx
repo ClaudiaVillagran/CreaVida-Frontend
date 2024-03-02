@@ -72,6 +72,7 @@ export const BienvenidaUser = () => {
                     <div className="container_robot">
                         <VirtualAssistant isComplete={isComplete} />
                         <TextBienvenida
+                            userName={user.username}
                             totalTime={totalTime}
                             setTotalTime={setTotalTime}
                             setIsComplete={setIsComplete}
@@ -105,7 +106,7 @@ export const BienvenidaUser = () => {
                                         <img src={iconDown} alt="Icono de mano" className="iconDown" />
                                     </div>
                                     <div className="button-wrapper">
-                                        <NavLink to={'registerEvent'}>
+                                        <NavLink to={'allEvents'}>
                                             <button
                                                 className={`button_welcome button_animation ${showButtonTwo ? 'visible' : ''}`}
                                                 style={{ visibility: showButtonTwo ? 'visible' : 'hidden' }}
