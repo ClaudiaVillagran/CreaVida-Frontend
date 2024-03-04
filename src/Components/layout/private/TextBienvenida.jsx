@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export const TextBienvenida = ({ userName, totalTime, setTotalTime, setIsComplete, isComplete }) => {
     const [displayText, setDisplayText] = useState('');
+    const [showFullText, setShowFullText] = useState(false);
     const interval = 50;
 
     useEffect(() => {
@@ -10,10 +11,13 @@ export const TextBienvenida = ({ userName, totalTime, setTotalTime, setIsComplet
 
             let index = 0;
             const timer = setInterval(() => {
-                if (index < text.length) {
+                if (!showFullText && index < text.length) {
                     setDisplayText(text.slice(0, index + 1));
                     index++;
                 } else {
+                    if (showFullText) {
+                        setDisplayText(text)
+                    }
                     clearInterval(timer);
                     setIsComplete(true);
                     setTotalTime((text.length * interval) / 1000);
@@ -22,10 +26,12 @@ export const TextBienvenida = ({ userName, totalTime, setTotalTime, setIsComplet
 
             return () => clearInterval(timer);
         }
-    }, [userName]);
-
+    }, [userName,showFullText]);
+    const handleClick = () => {
+        setShowFullText(true);
+    };
     return (
-        <div className="container__text">
+        <div className="container__text" onClick={handleClick}>
             <p>{displayText}</p>
         </div>
     );

@@ -4,7 +4,6 @@ import { VirtualAssistant } from "./VirtualAssistant";
 import { TextBienvenida } from "./TextBienvenida";
 
 import iconDown from '../../../assets/icons/down.png';
-import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
 
 export const BienvenidaUser = () => {

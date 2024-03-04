@@ -225,6 +225,30 @@
          font-size: 3vw !important;
          letter-spacing: 1px;
      }
+     .container_forResponsive{
+        flex-direction: column;
+     }
+     .container_date {
+        width: 100%;
+      }
+      .container_tc{
+        width: 100%;
+      }
+      .container_img-events {
+        width: 15%;
+      }
+    .container_buttonEvent{
+       display: flex;
+       flex-direction: column;
+    }
+    .container__dataEvents button {
+        width: 100%;
+      }
+      
+    .btn_del{
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
  }
 
  @media (max-width: 500px) {
@@ -572,4 +596,21 @@
      .container__text p{
         font-size:15px;
      }
+     .container_img-events {
+        width: 25%;
+      }
+      .container_tc{
+        display: flex;
+        flex-direction: column;
+      }
+      .container_tc h3{
+        font-size: 3.5vw;
+      }
+      .container_tc h4{
+        font-size: 3vw;
+      }
+      .container_date {
+        align-items: center;
+        justify-content: center;
+      }
  }

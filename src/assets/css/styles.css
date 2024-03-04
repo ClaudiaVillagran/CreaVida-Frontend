@@ -2942,21 +2942,24 @@ LOGIN */
   padding-block: 20px;
   justify-content: space-between;
 }
-
-.container_tc {
+.container_forResponsive{
   display: flex;
   width: 50%;
+}
+.container_tc {
+  display: flex;
+  width: 80%;
   align-items: center;
 }
 
 .container_tc h3 {
-  font-size: 18px;
+  font-size: 2vw;
   font-family: 'Overpass';
   margin-right: 5px;
 }
 
 .container_tc h4 {
-  font-size: 15px;
+  font-size: 2vw;
 
   font-family: 'Overpass';
   color: #828582;
@@ -2973,7 +2976,7 @@ LOGIN */
 
 .container_date {
   display: flex;
-  width: 10%;
+  width: 30%;
 }
 
 .day_events {
@@ -2991,9 +2994,11 @@ LOGIN */
 .month_year {
   font-size: 12px;
 }
-
+.container_buttonEvent{
+  width: 20%;
+}
 .container__dataEvents button {
-  width: 10%;
+  width: 40%;
   height: 30px;
   align-self: center;
   cursor: pointer;
@@ -3004,7 +3009,7 @@ LOGIN */
   border: 1px solid #bdbaba;
   color: #bdbaba;
   transition: all 0.5s ease;
-
+  margin-right: 10px;
 }
 
 .btn_del:hover {

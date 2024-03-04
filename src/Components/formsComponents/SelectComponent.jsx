@@ -19,8 +19,6 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
         agesIteration()
     }, [])
 
-
-
     const agesIteration = () => {
 
         let newArray = [{ label: 'milenials', value: 1 }];
@@ -41,7 +39,7 @@ export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
         <div>
             <FormControl sx={{ m: 1, width: '20vw', minWidth: 200, margin: '0 auto' }}>
                 <InputLabel sx={{fontSize: 17}} htmlFor="grouped-native-select">Generación</InputLabel>
-                <Select  sx={{ fontSize: 16 }} native defaultValue="" name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
+                <Select  sx={{ fontSize: 16 }} native defaultValue='' name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
                     <option aria-label="None" value="" />
                     <optgroup label="1946-1964" >
                         <option value={80}>Baby Bommers</option>

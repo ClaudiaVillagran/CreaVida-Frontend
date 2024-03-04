@@ -109,21 +109,26 @@ export const AllEvents = () => {
               <div className="container_img-events">
                 <img src={event.picture} alt="picture event" className="img_pictureEvent" />
               </div>
-              <div className="container_date">
-                <p className="day_events">{day}</p>
-                <div className="month_year">
-                  <p className="year_events">{year}</p>
-                  <p className="month_events">{capitalizedMonth}</p>
+              <div className="container_forResponsive">
+
+                <div className="container_date">
+                  <p className="day_events">{day}</p>
+                  <div className="month_year">
+                    <p className="year_events">{year}</p>
+                    <p className="month_events">{capitalizedMonth}</p>
+                  </div>
+                </div>
+                <div className="container_tc">
+                  <h3>{event.title} / </h3> <h4>{event.location}</h4>
                 </div>
               </div>
-              <div className="container_tc">
-                <h3>{event.title} / </h3> <h4>{event.location}</h4>
-              </div>
-              <button className="btn_del">Delete</button>
+              <div className="container_buttonEvent">
+                <button className="btn_del">Eliminar</button>
 
-              <button className="btn_edit" onClick={() => openModalEdit(event)}>
-                Información
-              </button>
+                <button className="btn_edit" onClick={() => openModalEdit(event)}>
+                  Info
+                </button>
+              </div>
             </div>
           );
         })}
@@ -138,18 +143,18 @@ export const AllEvents = () => {
           <h1>{selectedEvent.title}</h1>
           <h2>Miembros del evento:</h2>
           <div className="cards_members">
-            {members.length>0 ?
+            {members.length > 0 ?
               members.map(member => {
                 let age = '';
                 if (member.age == 80) {
                   age = 'Baby Boomers';
-                }else if (member.age == 60){
+                } else if (member.age == 60) {
                   age = 'Generación X'
-                }else if (member.age == 40){
+                } else if (member.age == 40) {
                   age = 'Milenials Y'
-                }else if (member.age == 20){
+                } else if (member.age == 20) {
                   age = 'Centenials Z'
-                }else if (member.age == 10){
+                } else if (member.age == 10) {
                   age = 'Generación alfa T'
                 }
                 return (
@@ -162,7 +167,7 @@ export const AllEvents = () => {
                   </div>
                 )
               })
-           : <h1 style={{marginTop: '20px'}}>No existen miembros registrados aún</h1> }
+              : <h1 style={{ marginTop: '20px' }}>No existen miembros registrados aún</h1>}
 
           </div>
         </div>
