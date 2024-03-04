@@ -83,6 +83,22 @@ export const AllEvents = () => {
       setMembers(data.event.members);
     }
   }
+  const deleteEvent = async (id) => {
+    console.log(id);
+    const request = await fetch(Global.url + 'event/deleteEvent/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await request.json();
+    console.log(data);
+    if (data.status == 'success') {
+      console.log('borrada de forma correcta');
+      const updatedEvents = events.filter(event => event._id !== id);
+      setEvents(updatedEvents);
+    }
+  }
   return (
     <>
       <section className="container_allEvents">
@@ -123,7 +139,7 @@ export const AllEvents = () => {
                 </div>
               </div>
               <div className="container_buttonEvent">
-                <button className="btn_del">Eliminar</button>
+                <button className="btn_del" onClick={() => deleteEvent(event._id)}>Eliminar</button>
 
                 <button className="btn_edit" onClick={() => openModalEdit(event)}>
                   Info
