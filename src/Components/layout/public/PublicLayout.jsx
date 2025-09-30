@@ -3,6 +3,7 @@ import { Header } from "./Header"
 import useAuth from "../../../Hooks/useAuth"
 import { Footer } from "./Footer";
 
+import "../../../assets/css/publicLayout.css";
 export const PublicLayout = () => {
 
   const { auth } = useAuth();

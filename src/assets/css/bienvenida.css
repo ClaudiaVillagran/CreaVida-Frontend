@@ -1,0 +1,127 @@
+.principal__container{
+  margin-top: 0 !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: clamp(520px, 80vh, 760px);
+  background: #fff;
+}
+
+.presentation__inicio{
+  width: 100%;
+  color: #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.presentation__logo{ width: min(280px, 36vw); }
+.presentation__logo img{ width: 100%; height: auto; object-fit: contain; }
+
+.presentation__description-first{
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: clamp(22px, 3.2vw, 36px);
+  margin-top: 28px;
+}
+.presentation__description{
+  font-family: 'Overpass', sans-serif;
+  font-weight: 700; font-style: italic;
+  font-size: clamp(14px, 2.2vw, 18px);
+  color: #60AD26;
+}
+
+.presentation-button{
+  margin-top: 24px !important;
+  font-size: 15px; line-height: 1;
+  padding: 10px 18px; border-radius: 999px; border:1px solid transparent;
+  background: #60AD26; color: #fff;
+  font-weight: 800; letter-spacing: .3px;
+  box-shadow: 0 4px 14px rgba(96,173,38,.25);
+  cursor: pointer; transition: filter .2s, box-shadow .2s, transform .05s;
+}
+.presentation-button:hover{ filter: brightness(.97); box-shadow: 0 6px 18px rgba(96,173,38,.30); }
+.presentation-button:active{ transform: translateY(1px); }
+
+.background__solidaridad{
+  width: 100%;
+  display: flex; align-items: end; justify-content: center;
+}
+.background__solidaridad img{
+  width: min(620px, 80%); height: auto; object-fit: cover;
+}
+
+/* Mobile */
+@media (max-width: 991.98px){
+  .principal__container{ grid-template-columns: 1fr; gap: 16px; }
+  .background__solidaridad{ order: -1; padding-top: 16px; }
+  .presentation__description-first{ margin-top: 14px; }
+}
+/* Oculta la columna de imagen en pantallas pequeñas */
+@media (max-width: 991.98px){
+  .background__solidaridad{ 
+    display: none !important; 
+  }
+  /* Ajusta el hero cuando se oculta la imagen */
+  .principal__container{
+    grid-template-columns: 1fr;
+    min-height: clamp(520px, 70vh, 760px);
+    gap: 12px;
+    padding-block: 16px;
+  }
+}
+/* --- Anti-overflow pack para el hero --- */
+.principal__container{
+  width: 100%;
+  overflow-x: hidden; /* seguridad extra por si algo intenta salirse */
+}
+
+.presentation__inicio{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-inline: clamp(12px, 4vw, 24px);
+  overflow: hidden;            /* evita desbordes visuales */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.presentation__inicio > *{
+  max-width: 100%;
+}
+
+/* textos del hero con ancho controlado */
+.container_presentation-description{ width: 100%; }
+.presentation__description-first,
+.presentation__description{
+  margin-inline: auto;
+  max-width: 40ch;             /* limita el ancho del párrafo */
+  overflow-wrap: anywhere;     /* por si aparece una palabra larguísima */
+}
+
+/* botón: no crecer más que la pantalla */
+.presentation-button{
+  max-width: 100%;
+  white-space: nowrap;
+  padding: 10px 16px;          /* un poco más compacto en móviles */
+  letter-spacing: .3px;
+}
+
+/* Móvil: ocultamos la imagen de la derecha (si no lo tenías ya) */
+@media (max-width: 991.98px){
+  .background__solidaridad{ display: none !important; }
+  .principal__container{
+    grid-template-columns: 1fr;
+    min-height: clamp(520px, 70vh, 760px);
+    gap: 12px;
+    padding-block: 16px;
+  }
+}
+
+/* Móviles muy chicos (≤360px) */
+@media (max-width: 360px){
+  .presentation__logo{ width: 56vw; }
+  .presentation-button{ font-size: 13px; }
+}

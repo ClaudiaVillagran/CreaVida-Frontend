@@ -1,0 +1,10 @@
+/* src/Components/layout/inicio/sobreNosotros.css */
+.scroll_reveal{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.scroll_reveal.visible{
+  opacity: 1;
+  transform: translateY(0);
+}

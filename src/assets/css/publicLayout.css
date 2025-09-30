@@ -1,0 +1,7 @@
+/* Offset del sticky header para TODO el contenido público */
+:root{
+  --cv-header-h: 88px;
+  --cv-header-h-sm: 72px;
+}
+
+

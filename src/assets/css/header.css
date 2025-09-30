@@ -1,0 +1,187 @@
+/* =========================
+   HEADER (solo header)
+   ========================= */
+:root{
+  --cv-green:#60AD26;
+  --cv-green-900:#295508;
+  --cv-dark:#202020;
+  --cv-white:#fff;
+  --cv-header-h: 88px;        /* desktop */
+  --cv-header-h-sm: 72px;     /* móvil */
+  --cv-container: min(1120px, 100%);
+  --cv-pad: 16px;
+}
+
+/* Wrapper */
+.layout__navbar{
+  position: sticky; top:0; left:0; right:0;
+  z-index: 1200;
+  background: var(--cv-white);
+  color: var(--cv-dark) !important;
+  height: var(--cv-header-h);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  transition: box-shadow .25s ease, background .25s ease, backdrop-filter .25s ease;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.layout__navbar.is-scrolled{
+  background: rgba(255,255,255,.96);   /* menos transparente para que no se “pierda” */
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  backdrop-filter: saturate(180%) blur(8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+/* Contenedor */
+.container__header{
+  width: var(--cv-container);
+  margin-inline: auto;
+  height: 100%;
+  padding: 0 var(--cv-pad);
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left | center | right */
+  align-items: center;
+  gap: 12px;
+}
+
+/* IZQUIERDA: hamburguesa + logo */
+.left{ display:flex; align-items:center; gap:10px; min-width:0; }
+
+/* hamburguesa */
+.mobile-toggle{ display: none !important; color:#1e1e1e; }
+.mobile-toggle svg{ width: 28px; height: 28px; }
+
+/* Marca (solo logo en header) */
+.brand{ display:inline-flex; align-items:center; gap:10px; min-width:0; }
+.brand:hover{ text-decoration: none; }
+.navbar_logo-CreaVida{
+  height: 44px;             /* desktop baseline */
+  width:auto; object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.08));
+}
+
+/* CENTRO: nav (solo desktop) */
+.center{ display:flex; justify-content:center; }
+.nav__list{ display:flex; gap: 28px; list-style:none; margin:0; padding:0; }
+.nav__link{
+  display:inline-block; padding:12px 8px; border-radius:10px;
+  font: 700 15px/1 'Overpass', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#1e1e1e;
+  transition: background .2s ease, color .2s ease, transform .05s ease;
+}
+.nav__link:hover{ background: rgba(0,0,0,.05); }
+.nav__link.is-active{
+  color:#111; background: rgba(96,173,38,.18);
+}
+
+/* DERECHA: CTA SIEMPRE VISIBLE */
+.right{ display:flex; justify-content:flex-end; }
+.button-header{
+  font-size: 15px; line-height: 1;
+  padding: 10px 18px; border-radius: 999px; border:1px solid transparent;
+  background: var(--cv-green); color: var(--cv-white);
+  font-weight: 800; letter-spacing: .3px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; transition: filter .2s, box-shadow .2s, transform .05s, border-color .2s;
+  box-shadow: 0 4px 14px rgba(96,173,38,.25);
+}
+.button-header:hover{ filter: brightness(.97); box-shadow: 0 6px 18px rgba(96,173,38,.30); }
+.button-header:active{ transform: translateY(1px); }
+.button-header:focus-visible{
+  outline: none; border-color: var(--cv-green);
+  box-shadow: 0 0 0 3px rgba(96,173,38,.25);
+}
+
+/* Drawer (móvil) */
+.brand--drawer{ display:inline-flex; align-items:center; gap:10px; }
+.drawer__link{ border-radius: 10px; margin: 4px 6px; }
+.drawer__link:hover{ background: rgba(96,173,38,.10); }
+
+/* Forzar colores claros en Drawer */
+.MuiDrawer-paper{ background:#111 !important; color:#e9e9e9 !important; }
+.MuiDrawer-paper a{ color:#e9e9e9 !important; }
+.MuiDrawer-paper .MuiListItemButton-root{ color:#e9e9e9 !important; border-radius:10px; margin:4px 6px; }
+.MuiDrawer-paper .MuiListItemButton-root:hover{ background:rgba(96,173,38,.10); }
+.MuiDrawer-paper .MuiListItemText-primary{ color:#e9e9e9 !important; font-weight:700; }
+
+/* ======= Responsive SOLO header ======= */
+@media (max-width: 991.98px){
+  :root{ --cv-header-h: var(--cv-header-h-sm); }
+  .layout__navbar{ height: var(--cv-header-h-sm); }
+
+  /* mostrar hamburguesa en móvil */
+  .mobile-toggle{ display: inline-flex !important; }
+
+  /* logo un poco más chico para ganar espacio */
+  .navbar_logo-CreaVida{ height: 40px; }
+
+  /* ocultar menú central, PERO NO el CTA */
+  .center{ display: none !important; }
+
+  /* CTA sigue visible en móvil */
+  .right{ display:flex !important; }
+  .button-header{
+    font-size: 13.5px; padding: 10px 14px; white-space: nowrap;
+    box-shadow: 0 5px 16px rgba(96,173,38,.26);
+  }
+
+  /* aire lateral */
+  .container__header{ padding: 0 10px; gap: 10px; }
+}
+
+@media (min-width: 992px){
+  .mobile-toggle{ display: none !important; }
+  .navbar_logo-CreaVida{ height: 44px; }
+}
+@media (min-width: 1400px){
+  .navbar_logo-CreaVida{ height: 52px; }
+  .layout__navbar{ height: 96px; }
+}
+
+/* ===== Drawer claro y con contraste ===== */
+.MuiDrawer-paper{
+  background:#fff !important;
+  color:#1e1e1e !important;
+  border-right:1px solid rgba(0,0,0,.08) !important;
+}
+
+/* Ítems del menú: texto 100% opaco siempre */
+.MuiDrawer-paper .drawer__link{
+  color:#1e1e1e !important;
+  opacity: 1 !important;
+  border-radius: 12px;
+  margin: 6px 8px;
+  padding: 10px 12px;
+}
+.MuiDrawer-paper .drawer__link .MuiListItemText-primary{
+  color:#1e1e1e !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+  letter-spacing: .2px;
+}
+
+/* Hover/activo (pill sutil y legible) */
+.MuiDrawer-paper .drawer__link:hover{
+  background: rgba(96,173,38,.08) !important;
+}
+.MuiDrawer-paper .drawer__link.active{
+  background: rgba(96,173,38,.14) !important;
+  color:#1e1e1e !important;
+}
+
+/* Divider suave */
+.MuiDrawer-paper .MuiDivider-root{
+  border-color: rgba(0,0,0,.08) !important;
+}
+
+/* CTA outline elegante (menos brillante) */
+.MuiDrawer-paper .drawer__cta{
+  border-radius: 999px !important;
+  background: transparent !important;
+  color:#1e1e1e !important;
+  border:1px solid rgba(96,173,38,.38) !important;
+  box-shadow:none !important;
+  letter-spacing:.3px;
+}
+.MuiDrawer-paper .drawer__cta:hover{
+  background: rgba(96,173,38,.06) !important;
+  border-color: rgba(96,173,38,.5) !important;
+}
