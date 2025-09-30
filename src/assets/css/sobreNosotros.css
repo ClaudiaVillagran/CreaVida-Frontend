@@ -1,10 +1,273 @@
-/* src/Components/layout/inicio/sobreNosotros.css */
-.scroll_reveal{
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity .6s ease, transform .6s ease;
+/* =========================
+   SOBRE NOSOTROS (solo esta sección)
+   variables locales --sn-*
+   ========================= */
+
+/* Animación reveal local */
+.scroll_reveal{ opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.scroll_reveal.visible{ opacity: 1; transform: translateY(0); }
+
+/* ---------- Sección oscura ---------- */
+.container__sobreNosotros{
+  /* Variables locales */
+  --sn-green: #60AD26;
+  --sn-dark: #202020;
+  --sn-light: #ffffff;
+  --sn-muted: #cfcfcf;
+  --sn-maxw: 1120px;
+
+  background: var(--sn-dark);
+  color: var(--sn-light);
+  padding-block: clamp(48px, 8vw, 96px);
+  padding-inline: 16px;
+
+  overflow-x: hidden;
 }
-.scroll_reveal.visible{
-  opacity: 1;
-  transform: translateY(0);
+
+.container__sobreNosotros .portada-info{
+  max-width: var(--sn-maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  text-align: center;
+}
+
+/* ----- Video cover ----- */
+.sn-video{
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  /* Fondo (si no hay thumbnail): gradiente suave */
+  background:
+    radial-gradient(120% 120% at 80% 10%, rgba(96,173,38,.28), transparent 40%),
+    linear-gradient(160deg, #2b2b2b 0%, #111 100%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+.sn-video__overlay{
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  gap: 12px; color: #fff;
+  background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45));
+}
+.sn-video__play{
+  width: 64px; height: 64px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.35);
+  font-size: 24px;
+  transition: transform .15s ease, background .2s ease;
+}
+.sn-video:hover .sn-video__play{ transform: scale(1.06); background: rgba(255,255,255,.22); }
+.sn-video__title{
+  font-weight: 800; letter-spacing: .2px;
+  text-shadow: 0 2px 18px rgba(0,0,0,.5);
+}
+
+/* ----- Texto + highlights ----- */
+.container__sobreNosotros .data__presentation{
+  display: grid; gap: 12px; justify-items: center;
+}
+.container__sobreNosotros .data__presentation h2{
+  font-family: 'Lora', serif;
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 600; margin: 0;
+}
+.container__sobreNosotros .data__presentation p{
+  font-family: 'Overpass', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(14px, 2.1vw, 18px);
+  line-height: 1.6; color: var(--sn-muted);
+  max-width: 60ch; margin: 0;
+}
+
+/* Pills de highlights */
+.sn-highlights{
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px; margin-top: 8px; padding: 0;
+  list-style: none;
+}
+.sn-pill{
+  color: #e9e9e9; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 8px 12px; border-radius: 999px; font-weight: 700;
+  font-size: 14px; letter-spacing: .2px;
+}
+
+/* Flecha a sección siguiente */
+.sn-arrow-link{ display: grid; place-items: center; }
+.button-arrow{
+  margin: 28px auto 0;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.18);
+  background: transparent; color: var(--sn-light); cursor: pointer;
+  position: relative; transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.button-arrow::before{
+  content: "⌄"; position: absolute; inset: 0; display: grid; place-items: center;
+  font-size: 22px; line-height: 1;
+}
+.button-arrow:hover{ background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.32); transform: translateY(1px); }
+
+/* ---------- Modal de video ---------- */
+.sn-modal{
+  position: fixed; inset: 0; background: rgba(0,0,0,.65);
+  display: grid; place-items: center; z-index: 1300; padding: 16px;
+}
+.sn-modal__box{
+  position: relative; width: min(960px, 96vw);
+  aspect-ratio: 16/9; background: #000;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+.sn-modal__close{
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12); color: #fff; cursor: pointer;
+}
+.sn-modal__frame{ position: absolute; inset: 0; }
+.sn-modal__frame iframe{ width: 100%; height: 100%; display: block; }
+
+/* ---------- ¿Por qué ser parte? (clara) ---------- */
+.container__ser-parte{
+  --sn-green: #60AD26;
+  --sn-bg: #ffffff;
+  --sn-text: #111;
+  --sn-text-muted: #3a3a3a;
+
+  background: var(--sn-bg);
+  color: var(--sn-text);
+  padding-block: clamp(56px, 8vw, 96px);
+  padding-inline: 16px;
+  display: grid; gap: 20px; justify-items: center; text-align: center;
+  overflow-x: hidden;
+}
+.container__ser-parte h2{
+  font-family: 'Italiana','Lora', serif; font-weight: 300; letter-spacing: .5px;
+  font-size: clamp(28px, 4vw, 40px); margin: 0;
+}
+.container__ser-parte .ser-parte__p{
+  font-family: 'Overpass', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(14px, 2.1vw, 18px);
+  line-height: 1.8; color: var(--sn-text-muted);
+  max-width: 70ch; margin: 0;
+}
+.container__ser-parte .button-donar{
+  margin-top: 8px; font-size: 15px; line-height: 1;
+  padding: 10px 18px; border-radius: 999px; border: 1px solid transparent;
+  background: var(--sn-green); color: #fff; font-weight: 800; letter-spacing: .3px;
+  box-shadow: 0 4px 14px rgba(96,173,38,.18);
+  cursor: pointer; transition: filter .2s, box-shadow .2s, transform .05s, border-color .2s;
+}
+.container__ser-parte .button-donar:hover{ filter: brightness(.97); box-shadow: 0 6px 18px rgba(96,173,38,.26); }
+.container__ser-parte .button-donar:active{ transform: translateY(1px); }
+.container__ser-parte .button-donar:focus-visible{
+  outline: none; box-shadow: 0 0 0 3px rgba(96,173,38,.2);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px){
+  .container__sobreNosotros .portada-info{ gap: 18px; }
+  .container__sobreNosotros .data__presentation p{ max-width: 52ch; }
+}
+@media (max-width: 575.98px){
+  .container__sobreNosotros,
+  .container__ser-parte{ padding-inline: 12px; }
+
+  .button-arrow{ width: 44px; height: 44px; }
+  .sn-pill{ font-size: 13px; padding: 7px 10px; }
+}
+/* ====== Refinamiento SOLO para .container__ser-parte ====== */
+.container__ser-parte{
+  /* variables locales */
+  --sn-green: #60AD26;
+  --sn-text: #1a1a1a;
+  --sn-muted: #4a4a4a;
+  --sn-maxw: 64ch;
+
+  background: #fff;
+  color: var(--sn-text);
+  padding-block: clamp(56px, 8vw, 96px);
+  padding-inline: 16px;
+
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  text-align: center;
+}
+
+/* Título: usa Lora (como en el sitio), sin tracking exagerado
+   y un subrayado sutil en verde para acento de marca */
+.container__ser-parte h2{
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: clamp(26px, 3.6vw, 36px);
+  line-height: 1.15;
+  letter-spacing: 0;           /* sin separación rara en mayúsculas */
+  margin: 0;
+  color: var(--sn-text);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+.container__ser-parte h2::after{
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: var(--sn-green);
+  opacity: .9;
+}
+
+/* Párrafo: Overpass sobrio, ancho cómodo y color más suave */
+.container__ser-parte .ser-parte__p{
+  font-family: 'Overpass', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 2.1vw, 18px);
+  line-height: 1.75;
+  color: var(--sn-muted);
+  max-width: var(--sn-maxw);
+  margin: 0;
+}
+
+/* CTA: estilo outline elegante (menos “brillo”) */
+.container__ser-parte .button-donar{
+  margin-top: 6px;
+  font-family: 'Overpass', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: .2px;
+
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(96,173,38,.55);
+  background: #fff;
+  color: var(--sn-text);
+  box-shadow: none;
+
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+}
+.container__ser-parte .button-donar:hover{
+  background: rgba(96,173,38,.06);
+  border-color: rgba(96,173,38,.75);
+  box-shadow: 0 6px 22px rgba(0,0,0,.06), 0 0 0 3px rgba(96,173,38,.12) inset;
+}
+.container__ser-parte .button-donar:active{ transform: translateY(1px); }
+.container__ser-parte .button-donar:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96,173,38,.2);
+}
+
+/* Responsive fino */
+@media (max-width: 575.98px){
+  .container__ser-parte{ padding-inline: 12px; }
+  .container__ser-parte h2::after{ width: 64px; }
+  .container__ser-parte .button-donar{ padding: 10px 16px; font-size: 14.5px; }
 }

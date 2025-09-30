@@ -1,0 +1,165 @@
+/* =========================
+   OPTIONS MEMBER – Marca verde + verde crema
+   (variables aisladas para no afectar otros módulos)
+   ========================= */
+.om2{
+  /* Integra tu verde de marca (usa var global si existe) */
+  --om2-brand: var(--cv-green, #60AD26);     /* verde CreaVida */
+  --om2-brand-700: #3E7C15;                  /* hover/press */
+  --om2-brand-900: #295508;                  /* tono profundo */
+
+  /* Neutros elegantes */
+  --om2-ink: #1C1F24;
+  --om2-muted: #626B72;
+  --om2-brd: #E3E9E2;
+  --om2-brd-soft: #EDF2EA;
+  --om2-surface: #FFFFFF;
+
+  /* “Verde crema” (fondo suave) */
+  --om2-cream: #F3FAEE;   /* base */
+  --om2-cream-2: #ECF7E7; /* degradé sutil */
+
+  --om2-focus: rgba(96,173,38,.22);
+  --om2-shadow: 0 10px 26px rgba(16, 24, 16, .06);
+  --om2-shadow-strong: 0 16px 38px rgba(16, 24, 16, .10);
+}
+
+/* Grid */
+.om2__grid{
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 20px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(50%, 340px), 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+
+/* Card base */
+.om2__card{
+  border-radius: 16px;
+  padding: clamp(16px, 2.2vw, 22px);
+  background: var(--om2-surface);
+  color: var(--om2-ink);
+  border: 1px solid var(--om2-brd);
+  box-shadow: var(--om2-shadow);
+  display:flex; flex-direction: column;
+  min-height: 320px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.om2__card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--om2-shadow-strong);
+  border-color: #DCE5D8;
+}
+
+/* Variantes */
+.om2__card--cream{
+  background: linear-gradient(180deg, var(--om2-cream), var(--om2-cream-2) 60%, #fff 100%);
+  border-color: var(--om2-brd-soft);
+}
+.om2__card--white{
+  background: linear-gradient(180deg, #fff, #FDFEFD 100%);
+}
+
+/* Chip */
+.om2__chip{
+  display:inline-block;
+  border: 1px solid color-mix(in srgb, var(--om2-brand), #000 12%);
+  background: color-mix(in srgb, var(--om2-cream), #fff 20%);
+  color: var(--om2-brand-900);
+  font-size: 11px;
+  letter-spacing:.4px;
+  font-weight:800;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.om2__chip--line{
+  background:#fff;
+  color: var(--om2-brand);
+}
+
+/* Título / textos (sin tocar font-family global) */
+.om2__title{
+  font-weight: 800;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.2;
+  margin: 10px 0 12px;
+  color: var(--om2-ink);
+}
+.om2__text{
+  color: var(--om2-muted);
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.om2__divider{
+  border: 0; height: 1px;
+  background: var(--om2-brd-soft);
+  margin: 12px 0;
+}
+
+/* Bullets */
+.om2__bullets{
+  margin: 10px 0 0;
+  padding: 0 0 0 18px;
+  color: #4B544B;
+}
+.om2__bullets li{ margin: 5px 0; }
+.om2__bullets--muted{ color: #5B655B; }
+
+/* Empuja acciones al final */
+.om2__spacer{ flex:1; }
+
+/* Acciones */
+.om2__actions{ display:flex; gap:10px; margin-top: 8px; }
+
+/* Botones */
+.om2__btn{
+  appearance: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1;
+  cursor: pointer;
+  display:inline-flex; align-items:center; gap:8px;
+  transition: background .2s, border-color .2s, filter .2s, box-shadow .2s, transform .05s;
+}
+.om2__btn:active{ transform: translateY(1px); }
+.om2__btn:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px var(--om2-focus);
+}
+
+/* Primario sólido (verde marca, sin “neón”) */
+.om2__btn--solid{
+  background: var(--om2-brand);
+  border:1px solid var(--om2-brand);
+  color:#fff;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--om2-brand), #000 60%);
+}
+.om2__btn--solid:hover{
+  background: var(--om2-brand-700);
+  border-color: var(--om2-brand-700);
+}
+
+/* Outline (acento verde suave) */
+.om2__btn--outline{
+  background: transparent;
+  border:1.5px solid color-mix(in srgb, var(--om2-brand), #000 12%);
+  color: var(--om2-brand-900);
+}
+.om2__btn--outline:hover{
+  background: color-mix(in srgb, var(--om2-cream), #fff 30%);
+  border-color: var(--om2-brand);
+}
+
+/* Flecha */
+.om2__arrow{ width:18px; height:18px; }
+
+/* Responsive */
+@media (max-width: 575.98px){
+  .om2__card{ min-height: 300px; }
+  .om2__title{ font-size: 22px; }
+}

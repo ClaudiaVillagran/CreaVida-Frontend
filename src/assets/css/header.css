@@ -13,9 +13,12 @@
 }
 
 /* Wrapper */
+/* Header fijo */
 .layout__navbar{
-  position: sticky; top:0; left:0; right:0;
-  z-index: 1200;
+  position: fixed;     /* antes: sticky */
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 1100;       /* por debajo del Drawer (MUI ~1200) */
   background: var(--cv-white);
   color: var(--cv-dark) !important;
   height: var(--cv-header-h);
@@ -23,6 +26,7 @@
   transition: box-shadow .25s ease, background .25s ease, backdrop-filter .25s ease;
   -webkit-backdrop-filter: none; backdrop-filter: none;
 }
+
 .layout__navbar.is-scrolled{
   background: rgba(255,255,255,.96);   /* menos transparente para que no se “pierda” */
   -webkit-backdrop-filter: saturate(180%) blur(8px);
@@ -184,4 +188,22 @@
 .MuiDrawer-paper .drawer__cta:hover{
   background: rgba(96,173,38,.06) !important;
   border-color: rgba(96,173,38,.5) !important;
+}
+/* Empuja el contenido para que no quede debajo del header fijo */
+.layout__content{
+  padding-top: var(--cv-header-h);
+}
+
+/* Si tienes otras páginas sin .layout__content, puedes usar body como fallback: */
+/* body { padding-top: var(--cv-header-h); } */
+
+/* Anclajes (#id) no quedan escondidos tras el header */
+html{
+  scroll-padding-top: var(--cv-header-h);
+}
+
+/* Móvil: usa la altura móvil */
+@media (max-width: 991.98px){
+  .layout__content{ padding-top: var(--cv-header-h-sm); }
+  html{ scroll-padding-top: var(--cv-header-h-sm); }
 }

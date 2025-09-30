@@ -7,6 +7,7 @@ import { NearEventsHeader } from "./NearEventsHeader";
 import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
 import { SliderResponsive } from "../../carrousel/SliderResponsive";
 
+import '../../../assets/css/nearEvents.css'
 export const NearEvents = ({ nearEvents}) => {
   const [modalOpenParticipe, setModalOpenParticipe] = useState(false);
   const [modalOpenDonate, setModalOpenDonate] = useState(false);
@@ -40,7 +41,7 @@ export const NearEvents = ({ nearEvents}) => {
       {modalOpenDonate && (
         <ModalDonate setModalOpenDonate={setModalOpenDonate} />
       )}
-      <NearEventsHeader/>
+      {/* <NearEventsHeader/> */}
       <div className="container-event">
         {nearEvents.length > 0 ?
           <>

@@ -1,0 +1,104 @@
+/* ========= SOCIO MODAL — look claro, elegante y consistente ========= */
+.pm-overlay{
+  position:fixed; inset:0; z-index:1300;
+  background:rgba(0,0,0,.38);
+  backdrop-filter: blur(2px);
+  display:flex; align-items:center; justify-content:center;
+  padding:18px;
+}
+
+/* Panel claro */
+.pm-dialog{
+  width:min(840px, 96vw);
+  background:#fff;                     /* <- claro */
+  color:#1e1e1e;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+  padding:22px;
+  position:relative;
+}
+
+/* Botón cerrar sobrio */
+.pm-close{
+  position:absolute; top:10px; right:12px;
+  width:34px; height:34px; border-radius:50%;
+  background:#fff; color:#111;
+  border:1px solid #E5E7EB;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  font-size:20px; line-height:1; cursor:pointer;
+}
+.pm-close:hover{ background:#F3F4F6; }
+
+/* Cabecera */
+.pm-head{ margin-bottom:14px; }
+.pm-title{
+  font-size:clamp(18px, 2.2vw, 22px);
+  margin:0; color:#202020; font-weight:800;
+}
+.pm-subtitle{ color:#6B7280; margin:4px 0 0; font-size:14px; }
+
+/* Form */
+.pm-form{ margin-top:4px; }
+.pm-grid{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+.pm-col-full{ grid-column:1 / -1; }
+
+/* Campos (claros) */
+.pm-field{ display:flex; flex-direction:column; gap:6px; }
+.pm-label{ color:#374151; font-weight:700; font-size:13.5px; }
+.pm-input{
+  background:#fff; color:#111827;
+  border:1px solid #E5E7EB;
+  border-radius:12px;
+  padding:10px 12px; outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.pm-input::placeholder{ color:#9CA3AF; }
+.pm-input:hover{ border-color:#D1D5DB; }
+.pm-input:focus{
+  border-color:#60AD26;
+  box-shadow:0 0 0 3px rgba(96,173,38,.18);
+}
+.pm-select{ appearance:none; background:#fff; }
+.pm-textarea{ resize:vertical; min-height:120px; }
+
+/* Error suave */
+.pm-error{
+  background:#FFF4F4; border:1px solid #FAD4D4; color:#8A2B2B;
+  padding:10px 12px; border-radius:10px; margin-bottom:8px; font-size:14px;
+}
+
+/* Acciones */
+.pm-actions{
+  margin-top:16px; display:flex; gap:10px; justify-content:flex-end;
+}
+
+/* Botón primario: menos brillo, sin glow agresivo */
+.pm-btn{
+  --green:#60AD26;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 16px; border-radius:999px; border:1px solid transparent;
+  background: var(--green); color:#fff; font-weight:800; letter-spacing:.2px;
+  box-shadow: 0 4px 12px rgba(96,173,38,.18);
+  cursor:pointer; transition: transform .05s, filter .2s, box-shadow .2s;
+}
+.pm-btn:hover{ filter:brightness(.98); box-shadow:0 6px 16px rgba(96,173,38,.22); }
+.pm-btn:active{ transform: translateY(1px); }
+.pm-btn[disabled]{ opacity:.7; cursor:default; }
+
+/* Botón secundario (ghost) acorde al panel claro */
+.pm-btn--ghost{
+  background:#fff; color:#111;
+  border:1px solid #E5E7EB; box-shadow:none;
+}
+.pm-btn--ghost:hover{
+  background:#F6F7F6; border-color:#DADADA;
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .pm-grid{ grid-template-columns: 1fr; }
+}

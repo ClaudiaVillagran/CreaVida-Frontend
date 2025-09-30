@@ -1,0 +1,152 @@
+/* =========================
+   MODAL DONATE (solo este modal)
+   ========================= */
+.modal{
+  /* overlay */
+  --md-bg: rgba(0,0,0,.65);
+  --md-panel: #101010;
+  --md-ink: #e9e9e9;
+  --md-sub: #bdbdbd;
+  --md-brd: rgba(255,255,255,.10);
+  --md-green: #60AD26;
+  --md-green-700: #3f7d1a;
+
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--md-bg);
+  backdrop-filter: blur(4px);
+}
+
+.participation-box{
+  position: relative;
+  width: min(560px, 96vw);
+  max-height: 86vh;                 /* que no desborde en pantallas bajas */
+  overflow: auto;                   /* scroll interno si el contenido crece */
+  background: linear-gradient(180deg, #0f0f0f 0%, #121212 100%);
+  color: var(--md-ink);
+  border: 1px solid var(--md-brd);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  padding: clamp(18px, 3vw, 28px);
+  animation: md-enter .18s ease-out both;
+}
+
+@keyframes md-enter{
+  from{ opacity:0; transform: translateY(8px) scale(.98); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* Botón cerrar (X) */
+.modal__close{
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--md-ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background .15s ease, transform .05s ease;
+}
+.modal__close:hover{ background: rgba(255,255,255,.06); }
+.modal__close:active{ transform: translateY(1px); }
+.modal__close:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96,173,38,.35);
+}
+
+/* Títulos y textos superiores */
+.donate-h6{
+  margin: 8px 0 6px;
+  font-size: clamp(16px, 2.2vw, 18px);
+  font-weight: 700;
+  text-align: center;
+}
+.method_donation{
+  margin: 0 0 14px;
+  color: var(--md-sub);
+  text-align: center;
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+/* Selección de método */
+.options-donate{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 480px){
+  .options-donate{ grid-template-columns: 1fr; }
+}
+
+/* Botones de método (consistentes con tu estilo) */
+.button-donate{
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--md-green);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: background .15s ease, box-shadow .15s ease, transform .05s ease;
+  box-shadow: 0 10px 26px rgba(96,173,38,.28);
+}
+.button-donate:hover{
+  background: #529221; /* un poco más oscuro, menos “brillo” */
+  box-shadow: 0 12px 30px rgba(96,173,38,.34);
+}
+.button-donate:active{ transform: translateY(1px); }
+.button-donate:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96,173,38,.35);
+}
+
+/* Vista “Transferencia” */
+.transfer-data{
+  color: var(--md-ink);
+  font-size: clamp(14px, 2vw, 15px);
+  line-height: 1.65;
+  padding: 4px 2px 0;
+}
+.transfer-data p{
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: #0c0c0c;
+  border: 1px dashed var(--md-brd);
+  border-radius: 10px;
+}
+
+/* Si el contenido embebido (WebPay) es grande, que scrollee dentro del panel */
+.participation-box .webpay,
+.participation-box .container__payment,
+.participation-box .transfer-data{
+  max-width: 100%;
+}
+
+/* Scrollbar sutil (solo navegadores que lo soportan) */
+.participation-box::-webkit-scrollbar{ width: 10px; }
+.participation-box::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.12);
+  border-radius: 10px;
+}
+.participation-box::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.04);
+  border-radius: 10px;
+}
+
+/* Respetar usuarios con menos animación */
+@media (prefers-reduced-motion: reduce){
+  .participation-box{ animation: none; }
+  .button-donate,
+  .modal__close{ transition: none; }
+}

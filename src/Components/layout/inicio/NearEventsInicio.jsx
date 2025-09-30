@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { ModalDonate } from "../modal/ModalDonate";
 import { ButtonModalParticipate } from "../modal/ButtonModalParticipate";
 import { SliderResponsive } from "../../carrousel/SliderResponsive";
+import '../../../assets/css/nearEventsInicio.css';
 
 export const NearEventsInicio = () => {
   const contentRef = useRef(null);
@@ -52,7 +53,7 @@ export const NearEventsInicio = () => {
     });
 
     const data = await request.json();
-
+    console.log(data);
     if (data.status === 'success') {
       const realizedEvents = [];
       const futureEvents = [];

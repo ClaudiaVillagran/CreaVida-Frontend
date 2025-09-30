@@ -1,0 +1,79 @@
+/* =========================
+   NEAR EVENTS WRAPPER (solo este bloque)
+   ========================= */
+.container__article-near{
+  /* variables locales (no pisa navbar) */
+  --ne2-bg: transparent;       /* deja que el fondo de la página fluya (#e7e6e3) */
+  --ne2-ink: #141414;
+  --ne2-sub: #6b7280;
+  --ne2-accent: #60AD26;
+  --ne2-max: 1120px;
+
+  background: var(--ne2-bg);
+  color: var(--ne2-ink);
+  padding: clamp(32px, 6vw, 56px) 16px;
+}
+
+/* Header compacto centrado */
+.container__article-near .ne-head{
+  width: min(var(--ne2-max), 100%);
+  margin: 0 auto clamp(16px, 2vw, 26px);
+  text-align: center;
+}
+.container__article-near .ne-eyebrow{
+  display:inline-block;
+  font-weight: 800;            /* sin cambiar familia */
+  letter-spacing: .3px;
+  font-size: clamp(12px, 1.6vw, 13px);
+  color: var(--ne2-accent);
+  text-transform: uppercase;
+  background: rgba(96,173,38,.12);
+  border: 1px solid rgba(96,173,38,.28);
+  border-radius: 999px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+.container__article-near .ne-title{
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(22px, 4.2vw, 34px);
+  color: var(--ne2-ink);
+}
+.container__article-near .ne-sub{
+  margin: 8px auto 0;
+  max-width: 70ch;
+  color: var(--ne2-sub);
+  line-height: 1.75;
+  font-size: clamp(14px, 2.1vw, 16px);
+}
+
+/* CTA “ver todos” (opcional) */
+.container__article-near .ne-cta{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #f9fafb;
+  color: var(--ne2-ink);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background .2s, border-color .2s, transform .05s;
+}
+.container__article-near .ne-cta:hover{
+  background:#f3f4f6; border-color: rgba(0,0,0,.18);
+}
+.container__article-near .ne-cta:active{ transform: translateY(1px); }
+
+/* Área del slider: centrada y limitada */
+.container__article-near .container-event{
+  width: min(var(--ne2-max), 100%);
+  margin: 10px auto 0;
+  position: relative;
+}
+
+/* Ajuste fino en móviles */
+@media (max-width: 575.98px){
+  .container__article-near{ padding-inline: 12px; }
+}

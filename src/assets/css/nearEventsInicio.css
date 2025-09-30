@@ -1,0 +1,464 @@
+/* =========================================================
+   NEAR EVENTS (solo este componente) — sin cambios de tipografías
+   ========================================================= */
+.container__events.nearInicio{
+  --ne-bg: #202020;
+  --ne-ink: #ffffff;
+  --ne-sub: #cfcfcf;
+  --ne-green: #60AD26;
+  --ne-green-2: #3b7c18;
+  --ne-card: #0f0f0f;
+  --ne-brd: rgba(255,255,255,.08);
+  --ne-shadow: 0 10px 30px rgba(0,0,0,.28);
+  --ne-maxw: 1120px;
+
+  background:
+    radial-gradient(120% 120% at 90% -10%, rgba(96,173,38,.18), transparent 40%),
+    linear-gradient(180deg, #202020 0%, #181818 100%);
+  color: var(--ne-ink);
+  padding: clamp(36px, 7vw, 72px) 16px;
+  overflow-x: hidden;
+}
+
+/* ---------- Título y descripción ---------- */
+.container__events.nearInicio .events__title{
+  max-width: var(--ne-maxw);
+  margin: 0 auto clamp(12px, 2vw, 24px);
+  text-align: center;
+}
+
+/* Respetamos tus fuentes: NO hay font-family aquí */
+.container__events.nearInicio .events__title .title-sections,
+.container__events.nearInicio .events__title h2{
+  font-weight: 300;
+  font-size: clamp(28px, 4.4vw, 44px);
+  line-height: 1.15;
+  margin: 0;
+  color: var(--ne-ink);
+  display: inline-block;
+  padding-bottom: 12px;
+  position: relative;
+}
+.container__events.nearInicio .events__title .title-sections::after,
+.container__events.nearInicio .events__title h2::after{
+  content: "";
+  display: block;
+  width: clamp(72px, 12vw, 120px);
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ne-green), var(--ne-green-2));
+  opacity: .95;
+}
+
+.container__events.nearInicio .events__title p{
+  color: var(--ne-sub);
+  font-size: clamp(14px, 2.1vw, 18px);
+  line-height: 1.75;
+  max-width: 70ch;
+  margin: 10px auto 0;
+}
+.container__events.nearInicio .events__title p span{
+  color: var(--ne-ink);
+  font-weight: 700;
+}
+
+/* ---------- Contenedor del carrusel ---------- */
+/* BIEN: usa todo el ancho disponible, limitado a tu max container */
+/* antes podía ser 100% y por eso en XL se veía gigante */
+/* Contenedor del carrusel: ancho razonable y centrado */
+.container__events.nearInicio .container-event-near{
+  width: 100%;
+  /* entre 360px y 720px, escalando con el viewport */
+  max-width: clamp(260px, 64vw, 420px);
+  margin: 0 auto;
+  padding-top: 8px;
+  position: relative;
+}
+.containerSlider .card__near-events{
+  width: 100% !important;
+}
+/* asegura que slick use el 100% del contenedor */
+.container__events.nearInicio .container-event-near .slick-slider,
+.container__events.nearInicio .container-event-near .slick-list{
+  width: 100%;
+}
+
+
+/* Espaciado entre slides (slick) */
+.container__events.nearInicio .container-event-near .slick-slide > div{
+  margin: 0 12px;
+}
+.container__events.nearInicio .container-event-near .slick-list{
+  margin: 0 -12px;
+  overflow: visible; /* permite que el hover de las cards “respire” fuera */
+}
+
+/* ---------- Flechas del carrusel ---------- */
+.container__events.nearInicio .container-event-near .slick-prev,
+.container__events.nearInicio .container-event-near .slick-next{
+  width: 44px; height: 44px;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--ne-brd);
+  border-radius: 50%;
+  z-index: 2;
+}
+.container__events.nearInicio .container-event-near .slick-prev{ left: -4px; }
+.container__events.nearInicio .container-event-near .slick-next{ right: -4px; }
+
+.container__events.nearInicio .container-event-near .slick-prev:before,
+.container__events.nearInicio .container-event-near .slick-next:before{
+  color: var(--ne-green);
+  font-size: 28px;
+  opacity: .95;
+}
+.container__events.nearInicio .container-event-near .slick-prev:hover,
+.container__events.nearInicio .container-event-near .slick-next:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.20);
+}
+.container__events.nearInicio .container-event-near .slick-disabled{
+  opacity: .5; cursor: default;
+}
+
+/* ---------- Dots (opcionales) ---------- */
+.container__events.nearInicio .container-event-near .slick-dots{
+  bottom: -26px;
+}
+.container__events.nearInicio .container-event-near .slick-dots li button:before{
+  color: var(--ne-sub);
+  font-size: 10px;
+  opacity: .6;
+}
+.container__events.nearInicio .container-event-near .slick-dots li.slick-active button:before{
+  color: var(--ne-green);
+  opacity: 1;
+}
+
+/* Mensaje “vacío” */
+.container__events.nearInicio .container-event-near > h2{
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(18px, 2.8vw, 22px);
+  color: var(--ne-sub);
+  margin: 18px 0 0;
+}
+
+/* ---------- “Skin” para cards dentro del slider (si existen esas clases) ---------- */
+.container__events.nearInicio .card__near-events{
+  background: var(--ne-card);
+  border-radius: 14px;
+  border: 1px solid var(--ne-brd);
+  overflow: hidden;
+  box-shadow: var(--ne-shadow);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.container__events.nearInicio .card__near-events:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.36);
+  border-color: rgba(255,255,255,.14);
+}
+.container__events.nearInicio .card-top img{
+  display: block; width: 100%; height: auto; object-fit: cover;
+}
+
+/* Pie de card */
+.container__events.nearInicio .card-bottom,
+.container__events.nearInicio .card-bottom-near{
+  background: #0a0a0a;
+  border-top: 1px solid var(--ne-brd);
+}
+
+/* Botones dentro de las cards (usa tus clases existentes) */
+.container__events.nearInicio .button-donar,
+.container__events.nearInicio .button-participar{
+  border-radius: 999px;
+  border: 1.5px solid rgba(96,173,38,.65);
+  background: transparent;
+  color: #fff;
+  padding: 8px 14px;
+  line-height: 1;
+  box-shadow: none;
+  transition: background .2s, border-color .2s, transform .05s;
+}
+.container__events.nearInicio .button-donar:hover,
+.container__events.nearInicio .button-participar:hover{
+  background: rgba(96,173,38,.10);
+  border-color: rgba(96,173,38,.85);
+}
+.container__events.nearInicio .button-donar:active,
+.container__events.nearInicio .button-participar:active{
+  transform: translateY(1px);
+}
+
+/* ---------- Accesibilidad y reducida animación ---------- */
+.container__events.nearInicio .container-event-near .slick-prev:focus-visible,
+.container__events.nearInicio .container-event-near .slick-next:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96,173,38,.35);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .container__events.nearInicio .card__near-events,
+  .container__events.nearInicio .card__near-events:hover{
+    transition: none;
+    transform: none;
+    box-shadow: var(--ne-shadow);
+  }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1199.98px){
+  .container__events.nearInicio .container-event-near .slick-prev{ left: -2px; }
+  .container__events.nearInicio .container-event-near .slick-next{ right: -2px; }
+}
+
+@media (max-width: 991.98px){
+  .container__events.nearInicio{ padding-inline: 12px; }
+  .container__events.nearInicio .container-event-near .slick-prev,
+  .container__events.nearInicio .container-event-near .slick-next{
+    width: 40px; height: 40px;
+  }
+  .container__events.nearInicio .container-event-near .slick-prev:before,
+  .container__events.nearInicio .container-event-near .slick-next:before{
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 575.98px){
+  .container__events.nearInicio .events__title .title-sections::after{ width: 72px; }
+  .container__events.nearInicio .container-event-near .slick-prev,
+  .container__events.nearInicio .container-event-near .slick-next{
+    top: 42%;
+  }
+  /* Si prefieres ocultar dots en móvil:
+     .container__events.nearInicio .container-event-near .slick-dots{ display:none !important; } */
+}
+/* =========================================================
+   SLIDER RESPONSIVE (cards) — sin cambios de font-family
+   ========================================================= */
+
+.containerSlider{
+  --sr-card-w: min(880px, 92vw);   /* ancho por defecto */
+  --sr-aspect: 16/9;               /* alto por defecto */
+  --sr-ink: #ffffff;
+  --sr-sub: #cfcfcf;
+  --sr-green: #60AD26;
+  --sr-brd: rgba(255,255,255,.10);
+  --sr-card: #0f0f0f;
+  --sr-shadow: 0 12px 34px rgba(0,0,0,.30);
+
+  max-width: 1120px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Si SOLO hay 1 evento: más compacto y más bajo */
+.containerSlider.is-single{
+  --sr-card-w: min(560px, 92vw);
+  --sr-aspect: 4/3;
+}
+
+/* Slide wrapper */
+.containerSlider .slide-shell{ padding: 6px; }
+
+/* Card */
+.containerSlider .card__near-events{
+  width: var(--sr-card-w);
+  margin: 0 auto;
+  background: var(--sr-card);
+  border: 1px solid var(--sr-brd);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--sr-shadow);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.containerSlider .card__near-events:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 46px rgba(0,0,0,.38);
+  border-color: rgba(255,255,255,.16);
+}
+
+/* Imagen con proporción controlada por variable */
+.containerSlider .card-top{
+  width: 100%;
+  aspect-ratio: var(--sr-aspect);
+  overflow: hidden;
+  background: #0b0b0b;
+}
+.containerSlider .card-top img{
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Cuerpo */
+.containerSlider .card-bottom-near{
+  background: #0a0a0a;
+  border-top: 1px solid var(--sr-brd);
+  padding: clamp(12px, 2.6vw, 20px);
+}
+.containerSlider .info__events{ display: grid; gap: 8px; }
+
+/* Botonera */
+.containerSlider .button-event{
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+}
+.containerSlider .button-donar,
+.containerSlider .button-participar{
+  border-radius: 999px;
+  border: 1.5px solid rgba(96,173,38,.65);
+  background: transparent;
+  color: var(--sr-ink);
+  padding: 7px 12px;
+  line-height: 1;
+  box-shadow: none;
+  transition: background .2s, border-color .2s, transform .05s;
+}
+.containerSlider .button-donar:hover,
+.containerSlider .button-participar:hover{
+  background: rgba(96,173,38,.10);
+  border-color: rgba(96,173,38,.85);
+}
+.containerSlider .button-participar.part{ background: #171717; }
+.containerSlider .button-donar:active,
+.containerSlider .button-participar:active{ transform: translateY(1px); }
+
+/* Título / descripción / fecha (sin tocar font-family) */
+.containerSlider .titleEventCarrousel{
+  color: var(--sr-ink);
+  font-weight: 700;
+  font-size: clamp(17px, 2.2vw, 20px);
+  text-align: center;
+  margin: 2px 0;
+}
+.desc_p{
+  color: var(--sr-sub);
+  font-size: clamp(23px, 2vw, 15px);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 68ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;   /* máx. 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* Centrar los ítems del grid por defecto */
+.containerSlider .info__events{
+  display: grid;
+  gap: 8px;
+  justify-items: center;  /* <-- clave */
+}
+
+/* Centrar SOLO la descripción y limitar su ancho efectivo */
+.containerSlider .info__events .desc{
+  justify-self: center;            /* evita el stretch del grid */
+  inline-size: min(68ch, 100%);    /* equivalente a width, pero lógico */
+  margin: 0;                       /* ya no necesitas auto */
+  text-align: center;
+
+  /* clamp de líneas (como ya tenías) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.containerSlider .time{
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-top: 2px;
+}
+
+.containerSlider .date{
+  color: var(--sr-green);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Ver información */
+.containerSlider .info__events-seeMore.nearSeeMore{
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: #141414;
+  color: #fff;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .05s;
+}
+.containerSlider .info__events-seeMore.nearSeeMore:hover{
+  background: #181818;
+  border-color: rgba(255,255,255,.22);
+}
+.containerSlider .info__events-seeMore.nearSeeMore:active{
+  transform: translateY(1px);
+}
+
+/* Centrado de slides y flechas/dots */
+.containerSlider .slick-slide > div{ display: flex; justify-content: center; }
+.containerSlider .slick-list{ overflow: visible; margin: 0 -6px; }
+
+/* Si hay más de 1, mostramos flechas (estilo base) */
+.containerSlider:not(.is-single) .slick-prev,
+.containerSlider:not(.is-single) .slick-next{
+  width: 40px; height: 40px;
+  top: 45%; transform: translateY(-50%);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
+  z-index: 2;
+}
+.containerSlider:not(.is-single) .slick-prev{ left: -12px; }
+.containerSlider:not(.is-single) .slick-next{ right: -12px; }
+.containerSlider:not(.is-single) .slick-prev:before,
+.containerSlider:not(.is-single) .slick-next:before{
+  color: var(--sr-green); font-size: 24px; opacity: .95;
+}
+
+/* Dots visibles solo si no es single (el JS ya los apaga, esto es redundancia visual) */
+.containerSlider.is-single .slick-dots{ display: none !important; }
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .containerSlider{ --sr-card-w: min(640px, 94vw); }
+  .containerSlider.is-single{ --sr-card-w: min(520px, 94vw); }
+}
+@media (max-width: 575.98px){
+  .containerSlider{ --sr-card-w: min(520px, 96vw); }
+  .containerSlider.is-single{ --sr-card-w: min(480px, 96vw); }
+  .containerSlider .titleEventCarrousel{ font-size: 17px; }
+  .containerSlider .date{ font-size: 12.5px; }
+}
+/* =========================
+   DESCRIPCIÓN MÁS GRANDE
+   ========================= */
+
+/* Aplícalo tanto si el <p> tiene clase .desc como si no */
+.containerSlider .info__events .desc,
+.containerSlider .info__events p{
+  /* Mínimo 15px en móvil, escala con el viewport y tope 18px */
+  font-size: clamp(15px, calc(0.6vw + 12px), 18px);
+  line-height: 1.7;
+  color: var(--sr-sub);        /* mantiene tu color actual */
+  text-align: center;
+  justify-self: center;
+  inline-size: min(68ch, 100%);
+  margin: 0;
+
+  /* recorte de líneas (puedes subir a 4 si quieres) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Si solo hay un evento, haz la descripción un poquito más grande
+   y permite una línea extra para que respire mejor */
+.containerSlider.is-single .info__events .desc,
+.containerSlider.is-single .info__events p{
+  font-size: clamp(16px, calc(0.5vw + 13px), 19px);
+  -webkit-line-clamp: 4;
+}
+.containerSlider .time .icon-time{ color: var(--sr-green); font-size: 18px; }

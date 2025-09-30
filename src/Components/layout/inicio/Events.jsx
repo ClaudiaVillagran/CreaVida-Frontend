@@ -1,286 +1,180 @@
+// src/Components/layout/inicio/Events.jsx
 import { useEffect, useState } from "react";
-import imgEvents from '../../../assets/img/event5 (4).jpg'
 import { Global } from "../../../Helpers/Global";
-import { NearEvents } from "../participar/NearEvents";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import { createTheme } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
+import { NearEventsInicio } from "./NearEventsInicio";
 import { SliderResponsivePastEvents } from "../../carrousel/SliderResponsivePastEvents";
-
-
+import "../../../assets/css/events.css";
 
 export const Events = () => {
-  const [loaded, setLoaded] = useState(false);
   const [eventsRealized, setEventsRealized] = useState([]);
   const [nearEvents, setNearEvents] = useState([]);
 
-  const theme = createTheme({
-    typography: {
-      fontSize: 20,
-    },
-  });
-
-
-
-
   useEffect(() => {
+    window.scrollTo(0, 0);
     GetEvents();
-    setTimeout(() => {
-      setLoaded(true);
-    }, 200);
   }, []);
 
   const GetEvents = async () => {
-    const request = await fetch(Global.url + 'event/getEvents', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await request.json();
-    if (data.status === 'success') {
-      const nowDate = new Date();
+    try {
+      const request = await fetch(Global.url + "event/getEvents", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await request.json();
 
-      const realizedEvents = [];
-      const futureEvents = [];
-
-      for (let i = 0; i < data.events.length; i++) {
-        const eventDate = new Date(data.events[i].date);
-
-        if (eventDate < nowDate) {
-          realizedEvents.push(data.events[i]);
-         
-          
-        } else {
-          futureEvents.push(data.events[i]);
+      if (data?.status === "success") {
+        const now = new Date();
+        const realized = [];
+        const future = [];
+        for (const ev of data.events) {
+          const d = new Date(ev.date);
+          if (d < now) realized.push(ev);
+          else future.push(ev);
         }
+        setEventsRealized(realized);
+        setNearEvents(future);
       }
-
-      setEventsRealized(realizedEvents);
-      setNearEvents(futureEvents);
-
+    } catch (e) {
+      console.error(e);
     }
-  }
-
-
+  };
 
   return (
-    <div className="container-events">
-      <div className="background__events">
-        <img src={imgEvents} alt="image-background" className="image-background-events" />
-        <div className="events__presentation ">
-          <button className="boton-animado">Eventos</button>
-          <h1>Conoce como puedes ayudar</h1>
+    <div className="events">
+      {/* HERO */}
+      <section className="events__hero">
+        <div className="ev-container events__hero-inner">
+          <span className="eyebrow">Eventos</span>
+          <h1>Conoce cómo puedes ayudar</h1>
+          <p>
+            Participa como voluntario, dona o comparte. Cada aporte suma para
+            transformar realidades.
+          </p>
         </div>
-        <div className='events-semitransparente'></div>
-      </div>
-      <div className="events__content">
-        
-        {nearEvents.length > 0 ?
-          <NearEvents nearEvents={nearEvents} />
-          :
-          <h2>No existen eventos cercanos</h2>}
+      </section>
 
+      {/* PRÓXIMOS EVENTOS (usa NearEventsInicio SIN header y con tema claro) */}
+      <section className="events__upcoming">
+        <div className="ev-container">
+          {/* <header className="section-head">
+            <h2 className="title-sections">PRÓXIMOS EVENTOS</h2>
+            <p className="section-sub">
+              Únete a iniciativas que están por comenzar y sé parte del cambio.
+            </p>
+          </header> */}
 
-        <article className="container__events ">
+          {nearEvents.length > 0 ? (
+            <NearEventsInicio nearEvents={nearEvents} withHeader={false} />
+          ) : (
+            <p className="empty">No existen eventos cercanos</p>
+          )}
+        </div>
+      </section>
 
-          <div className="events__realized-tittle">
+      {/* EVENTOS REALIZADOS */}
+      <section className="events__past">
+        <div className="ev-container">
+          <header className="section-head">
             <h2 className="title-sections">EVENTOS REALIZADOS</h2>
-            <p ><i>Una mirada hacia atrás en los eventos que nos han unido en amor, servicio y apoyo mutuo</i></p>
-          </div>
+            <p className="section-sub">Una mirada a momentos que ya dejaron huella.</p>
+          </header>
 
-          <div className="container-event">
-            {eventsRealized.length > 0 ?
+          <div className="events__past-slider">
+            {eventsRealized.length > 0 ? (
               <SliderResponsivePastEvents eventsRealized={eventsRealized} />
-              :
-              <h2>No existen eventos realizados</h2>
-            }
+            ) : (
+              <p className="empty">No existen eventos realizados</p>
+            )}
           </div>
-        </article>
-
-        <div className="container__questions" >
-          <div className="questions-title" id="eventsas">
-            <h2 className="title-sections">PREGUNTAS FRECUENTES</h2>
-
-          </div>
-          <ThemeProvider theme={theme}>
-            <div className="container__acordions-questions">
-              <Accordion theme={theme}
-                sx={{
-                  border: '1px solid #60ad26',
-                  borderBottom: '0px solid #fff',
-                  marginBottom: '10px',
-
-                }}>
-
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-
-
-                  }}
-
-                >
-                  <Typography >¿Qué es CreaVida?</Typography>
-                </AccordionSummary>
-                <AccordionDetails
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-
-                  }}>
-                  <Typography>
-                  CreaVida es una fundación sin fines de lucro comprometida con la transformación positiva de comunidades a través de eventos y programas que fomentan la compasión, la generosidad y el servicio.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion sx={{
-                border: '1px solid #60ad26',
-                marginBottom: '10px',
-              }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-                  }}
-                >
-                  <Typography>¿Cómo puedo participar en los eventos de CreaVida?</Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color: '#fff',
-                }}>
-                  <Typography>
-                  Puedes participar de varias maneras: registrándote como voluntario, donando, o asistiendo a nuestros eventos. Visita nuetra sección de eventos para obtener más detalles y opciones de participación.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion sx={{
-                border: '1px solid #60ad26',
-                marginBottom: '10px',
-              }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-                  }}
-                >
-                  <Typography>¿Cómo dono a CreaVida?</Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color: '#fff',
-                }}>
-                  <Typography>
-                  Donar es fácil. Puedes hacerlo en línea a través de nuestra página de donaciones. También aceptamos donaciones en especie dirigiendote a nuestra iglesia. ¡Cada contribución cuenta!
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion sx={{
-                border: '1px solid #60ad26',
-                marginBottom: '10px',
-              }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-                  }}
-                >
-                  <Typography>¿Cómo puedo ser voluntario en CreaVida?</Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color: '#fff',
-                }}>
-                  <Typography>
-                  Nos encantaría que te unas como voluntario. Visita nuestra sección de voluntariado para obtener información sobre oportunidades actuales y cómo registrarte.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion sx={{
-                border: '1px solid #60ad26',
-                marginBottom: '10px',
-              }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-                  }}
-                >
-                  <Typography>¿Cuál es el impacto de mi donación?</Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color: '#fff',
-                }}>
-                  <Typography>
-                  Tu donación tiene un impacto significativo en la obra de CreaVida, reflejando el llamado cristiano a amar y servir a los demás. Al contribuir, te unes a nosotros en la misión de manifestar el amor de Cristo en la práctica, llevando esperanza, consuelo y oportunidades a aquellos que más lo necesitan. 
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-
-
-
-              <Accordion sx={{
-                border: '1px solid #60ad26',
-                marginBottom: '10px',
-              }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                  sx={{
-                    background: '#1f201f',
-                    color: '#fff',
-                  }}
-                >
-                  <Typography>¿Cómo puedo participar en los eventos de CreaVida?</Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{
-                  background: '#1f201f',
-                  color: '#fff',
-                }}>
-                  <Typography>
-                  Puedes participar de varias maneras: registrándote como voluntario, donando, o asistiendo a nuestros eventos. Visita nuetra sección de eventos para obtener más detalles y opciones de participación.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            </div>
-          </ThemeProvider>
         </div>
+      </section>
 
-      </div>
+      {/* PREGUNTAS FRECUENTES */}
+      <section className="events__faq" id="faq">
+        <div className="ev-container">
+          <header className="section-head">
+            <h2 className="title-sections">PREGUNTAS FRECUENTES</h2>
+          </header>
+
+          <div className="faq">
+            <details className="faq-item" open>
+              <summary>
+                <span>¿Qué es CreaVida?</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="chev">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </summary>
+              <div className="faq-body">
+                <p>
+                  CreaVida es una fundación sin fines de lucro que impulsa
+                  acciones y programas para fortalecer la compasión, la
+                  generosidad y el servicio en comunidad.
+                </p>
+              </div>
+            </details>
+
+            <details className="faq-item">
+              <summary>
+                <span>¿Cómo puedo participar en los eventos?</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="chev">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </summary>
+              <div className="faq-body">
+                <p>
+                  Puedes inscribirte como voluntario, donar o asistir. Revisa los
+                  próximos eventos para conocer fechas y formas de participar.
+                </p>
+              </div>
+            </details>
+
+            <details className="faq-item">
+              <summary>
+                <span>¿Cómo dono?</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="chev">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </summary>
+              <div className="faq-body">
+                <p>
+                  Puedes donar online desde nuestra web o realizar una transferencia.
+                  Cada aporte tiene un impacto real en los proyectos.
+                </p>
+              </div>
+            </details>
+
+            <details className="faq-item">
+              <summary>
+                <span>¿Cómo ser voluntario?</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="chev">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </summary>
+              <div className="faq-body">
+                <p>
+                  En la sección de voluntariado encontrarás oportunidades
+                  disponibles y el formulario de registro.
+                </p>
+              </div>
+            </details>
+
+            <details className="faq-item">
+              <summary>
+                <span>¿Cuál es el impacto de mi donación?</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="chev">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </summary>
+              <div className="faq-body">
+                <p>
+                  Financia actividades, materiales y acompañamiento en terreno.
+                  Te mantenemos al tanto del avance e impacto de los proyectos.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
     </div>
-
-
-
-
-
-
-
-  )
-}
+  );
+};

@@ -1,41 +1,36 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+// src/Components/formsComponents/InputForTextComponent.jsx
+export const InputForTextComponent = ({
+  nameInput,
+  nameLabel = "Mensaje",
+  form,
+  changed,
+  setForm,
+  placeholder = "Escribe tu mensaje…",
+  rows = 4,
+}) => {
+  const id = `fld_${nameInput}`;
 
+  const handleChange = (e) => {
+    if (typeof changed === "function") changed(e);
+    else setForm?.((prev) => ({ ...prev, [nameInput]: e.target.value }));
+  };
 
-export const InputForTextComponent = ({nameInput, form, changed, setForm}) => {
-  
-
-  
   return (
-    <Box
-    component="form"
-    sx={{width: '20vw', minWidth: 200, margin: '0 auto',
-      '& .MuiTextField-root': { m: 1 , },
-      '& .MuiInputBase-input': {
-        fontSize: '16px', 
-      },
-      '& .MuiInputLabel-root': {
-        fontSize: '16px',
-      },
-      
-    }}
-    noValidate
-    autoComplete="off"
-  >
-      <TextField
-        id="standard-multiline-static"
-        label="Mensaje"
-        multiline
-        rows={4}
+    <div className="pm-field">
+      {nameLabel && (
+        <label htmlFor={id} className="pm-label">
+          {nameLabel}
+        </label>
+      )}
+      <textarea
+        id={id}
+        className="pm-input pm-textarea"
         name={nameInput}
-        variant="standard"
-        color="success"
-        onChange={(e) => {
-          changed(e);
-          setForm((prevForm) => ({ ...prevForm, [nameInput]: e.target.value }));
-        }}
-
+        rows={rows}
+        value={form?.[nameInput] ?? ""}
+        onChange={handleChange}
+        placeholder={placeholder}
       />
-  </Box>
-  )
-}
+    </div>
+  );
+};

@@ -4,7 +4,7 @@ import imagen1 from '../../../assets/img/babaraInicio.png'
 import imagen2 from '../../../assets/img/rutAlvarez.png'
 import { NavLink } from 'react-router-dom';
 import { Global } from '../../../Helpers/Global';
-
+import '../../../assets/css/acercaDe.css'
 export const AcercaDe = () => {
   const [loaded, setLoaded] = useState(false);
   const [elementoAbierto, setElementoAbierto] = useState(null);

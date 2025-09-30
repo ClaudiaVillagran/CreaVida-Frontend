@@ -5,18 +5,11 @@ export const useForm = (initialObj = {}) => {
 
   const changed = ({ target }) => {
     const { name, value } = target;
-    console.log(name);
-    const numericValue = name == "number" ? parseFloat(value) : value;
-    console.log(numericValue);
-    setForm({
-      ...form,
-      [name]: numericValue,
-    });
-    console.log(form);
+    setForm(prev => ({
+      ...prev,
+      [name]: value,   // <-- siempre string, sin parsear
+    }));
   };
-  return {
-    form,
-    changed,
-    setForm,
-  };
+
+  return { form, changed, setForm };
 };

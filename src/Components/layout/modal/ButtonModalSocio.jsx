@@ -1,127 +1,184 @@
-import Dialog from '@mui/material/Dialog';
-import { SelectComponent } from '../../formsComponents/SelectComponent';
-import { InputComponent } from '../../formsComponents/InputComponent';
-import { InputNumberComponent } from '../../formsComponents/InputNumberComponent';
-import { InputForTextComponent } from '../../formsComponents/InputForTextComponent';
-import { Global } from '../../../Helpers/Global';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Global } from "../../../Helpers/Global";
 import { useForm } from "../../../Hooks/useForm";
+import { toBackendPhone } from "../../../Utils/phone"; // ajusta ruta
+// Inputs “vanilla” (los que te pasé antes)
+import { InputComponent } from "../../formsComponents/InputComponent";
+import { InputNumberComponent } from "../../formsComponents/InputNumberComponent";
+import { SelectComponent } from "../../formsComponents/SelectComponent";
+import { InputForTextComponent } from "../../formsComponents/InputForTextComponent";
+import '../../../assets/css/socioModal.css'
+export const ButtonModalSocio = ({ setModalOpenSocio, modalOpenSocio }) => {
+  const { form, changed, setForm } = useForm({});
+  const [saved, setSaved] = useState("notSaved");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const dialogRef = useRef(null);
 
-export const ButtonModalSocio = ({setModalOpenSocio, modalOpenSocio}) => {
+  const handleClose = () => setModalOpenSocio(false);
 
+  // Cerrar con ESC
+  useEffect(() => {
+    if (!modalOpenSocio) return;
+    const onKey = (e) => e.key === "Escape" && handleClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [modalOpenSocio]);
 
-    const { form, changed, setForm } = useForm({});
-    const [saved, setSaved] = useState("notSaved");
-    const [loading, setLoading] = useState(false);
-  
-  
-    console.log(form)
-  
-    const handleClose = () => {
-      setModalOpenSocio(false);
-    };
-  
-    const saveSocio = async (e) => {
-      try {
-        setLoading(true)
-        e.preventDefault();
-        let newSocio = form;
-        console.log(newSocio);
+  // Cerrar al click fuera
+  const onOverlayClick = (e) => {
+    if (dialogRef.current && !dialogRef.current.contains(e.target)) handleClose();
+  };
+const saveSocio = async (e) => {
+  e.preventDefault();
+  setErrorMsg("");
+  try {
+    setLoading(true);
 
-        const request = await fetch(Global.url + 'socio/register', {
-          method: 'POST',
-          body: JSON.stringify(newSocio),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        const data = await request.json();
-  
-        if (data.status == 'success') {
-          setTimeout(() => {
-            setLoading(false)
-          }, 20000);
-          setSaved("saved")
-        }
-  
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      }
-  
+    // 1) Normaliza a solo dígitos (ya lo tienes como "569...", pero por si acaso)
+    const phoneDigits = toBackendPhone(form?.number || "", { defaultCountry: "56", assumeCLMobile: true });
+
+    // 2) Valida largo razonable (E.164 máx 15)
+    if (!/^\d{9,15}$/.test(phoneDigits)) {
+      setErrorMsg("Revisa tu teléfono. Debe tener entre 9 y 15 dígitos.");
+      setLoading(false);
+      return;
     }
 
+    // 3) Si tu backend SOLO acepta número, conviértelo aquí:
+    const phoneNumber = Number(phoneDigits);
+    if (!Number.isFinite(phoneNumber)) {
+      setErrorMsg("El teléfono no es válido.");
+      setLoading(false);
+      return;
+    }
+
+    const payload = {
+      ...form,
+      number: phoneNumber, // 👈 va como número (no string)
+    };
+    console.log(payload);
+
+    const req = await fetch(`${Global.url}socio/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await req.json();
+
+    if (data?.status === "success") setSaved("saved");
+    else setErrorMsg("No pudimos registrar tu solicitud. Intenta nuevamente.");
+  } catch (err) {
+    setErrorMsg("Ocurrió un error de conexión. Intenta más tarde.");
+  } finally {
+    setLoading(false);
+  }
+};
+  if (!modalOpenSocio) return null;
+
   return (
-    <>
-      {saved != "saved" ?
-        <Dialog
-          open={modalOpenSocio}
-          onClose={handleClose}
+    <div className="pm-overlay" onMouseDown={onOverlayClick}>
+      {saved !== "saved" ? (
+        <section
+          ref={dialogRef}
+          className="pm-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="pm-title-socio"
         >
-          <div className="modal">
-            <div className="participation-box">
-              <h6>Gracias por querer ser parte</h6>
-              <div className='container__form-participate'>
-                <InputComponent
-                  nameLabel='Nombre'
-                  nameInput='name'
-                  form={form}
-                  changed={changed}
-                  setForm={setForm} />
-                <InputComponent
-                  nameLabel='Apellido'
-                  nameInput='lastname'
-                  form={form}
-                  changed={changed}
-                  setForm={setForm} />
-                <br />
-                <SelectComponent
-                  nameInput='age'
-                  form={form}
-                  changed={changed}
-                  setForm={setForm}
-                />
-                <InputComponent
-                  nameLabel='Email'
-                  nameInput='email'
-                  form={form}
-                  changed={changed}
-                  setForm={setForm} />
-                <InputNumberComponent
-                  nameLabel='Teléfono'
-                  nameType='number'
-                  nameInput='number'
-                  form={form}
-                  changed={changed}
-                  setForm={setForm}
-                />
+          <button className="pm-close" onClick={handleClose} aria-label="Cerrar">×</button>
+
+          <header className="pm-head">
+            <h3 id="pm-title-socio" className="pm-title">Gracias por querer ser parte</h3>
+            <p className="pm-subtitle">Completa tus datos para inscribirte como socio/a.</p>
+          </header>
+
+          {!!errorMsg && <div className="pm-error">{errorMsg}</div>}
+
+          <form className="pm-form" onSubmit={saveSocio}>
+            <div className="pm-grid">
+              <InputComponent
+                nameLabel="Nombre"
+                nameInput="name"
+                form={form}
+                changed={changed}
+                setForm={setForm}
+                required
+              />
+              <InputComponent
+                nameLabel="Apellido"
+                nameInput="lastname"
+                form={form}
+                changed={changed}
+                setForm={setForm}
+                required
+              />
+
+              <SelectComponent
+                nameInput="age"
+                nameLabel="Generación"
+                form={form}
+                changed={changed}
+                setForm={setForm}
+                required
+              />
+              <InputComponent
+                nameLabel="Email"
+                nameInput="email"
+                type="email"
+                autoComplete="email"
+                form={form}
+                changed={changed}
+                setForm={setForm}
+                required
+              />
+
+              <InputNumberComponent
+                nameLabel="Teléfono"
+                nameInput="number"
+                form={form}
+                changed={changed}
+                setForm={setForm}
+                placeholder="+56 9 1234 5678"
+
+                required
+              />
+
+              <div className="pm-col-full">
                 <InputForTextComponent
-                  nameInput='message'
+                  nameInput="message"
+                  nameLabel="Mensaje (opcional)"
                   form={form}
                   changed={changed}
                   setForm={setForm}
+                  rows={5}
+                  placeholder="Cuéntanos cómo te gustaría apoyar…"
                 />
-
-                <div className="buttons-form">
-                  <button type="submit" className="button-submit" onClick={saveSocio}>Enviar</button>
-                  <button className="button-close" onClick={handleClose}>Cerrar</button>
-                </div>
-
               </div>
             </div>
+
+            <div className="pm-actions">
+              <button type="button" className="pm-btn pm-btn--ghost" onClick={handleClose}>
+                Cerrar
+              </button>
+              <button type="submit" className="pm-btn" disabled={loading}>
+                {loading ? "Enviando…" : "Enviar"}
+              </button>
+            </div>
+          </form>
+        </section>
+      ) : (
+        <section ref={dialogRef} className="pm-dialog" role="alertdialog" aria-modal="true">
+          <button className="pm-close" onClick={handleClose} aria-label="Cerrar">×</button>
+          <header className="pm-head">
+            <h3 className="pm-title">¡Gracias por inscribirte! 🥳</h3>
+            <p className="pm-subtitle">Pronto nos pondremos en contacto contigo.</p>
+          </header>
+          <div className="pm-actions" style={{ justifyContent: "center" }}>
+            <button className="pm-btn" onClick={handleClose}>Aceptar</button>
           </div>
-
-        </Dialog>
-        :
-        <div className="modal">
-          <div className="participation-box">
-
-            <span className="modal__close" onClick={handleClose}>&times;</span>
-            <h6>Gracias por inscribirte! 🥳</h6>
-          </div>
-
-        </div>
-      }
-    </>
-  )
-}
+        </section>
+      )}
+    </div>
+  );
+};

@@ -1,0 +1,154 @@
+/* =========================
+   PAST EVENTS — estilo limpio y moderno
+   (No se tocan las tipografías globales)
+   ========================= */
+.pe-slider{
+  --pe-max: 1120px;
+  --pe-card-bg:#fff;
+  --pe-ink:#101112;
+  --pe-sub:#6b7280;
+  --pe-brd:rgba(0,0,0,.08);
+  --pe-shadow: 0 10px 28px rgba(0,0,0,.08);
+  --pe-shadow-hover: 0 18px 46px rgba(0,0,0,.12);
+  --pe-radius: 14px;
+  --pe-accent:#5aa934;
+  --pe-accent-2:#3f7d1f;
+
+  width: min(var(--pe-max), 100%);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Centrado y padding interno de cada slide */
+.pe-slider .slick-slide > div{
+  display: flex; justify-content: center; padding: 8px;
+}
+.pe-slider .slick-list{ overflow: visible; }
+
+/* Modo single: evita tarjeta gigante */
+.pe-slider.is-single .pe-card{
+  width: min(560px, 92vw);
+}
+
+/* Tarjeta */
+.pe-card{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--pe-card-bg);
+  border: 1px solid var(--pe-brd);
+  border-radius: var(--pe-radius);
+  overflow: hidden;
+  color: var(--pe-ink);
+  box-shadow: var(--pe-shadow);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  width: 100%;
+  max-width: 420px; /* tope de ancho por tarjeta */
+}
+.pe-card:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--pe-shadow-hover);
+  border-color: rgba(0,0,0,.12);
+}
+
+/* Media con proporción */
+.pe-media{
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #f2f2f2;
+  overflow: hidden;
+}
+.pe-media img{
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .35s ease;
+}
+.pe-card:hover .pe-media img{ transform: scale(1.03); }
+
+/* Cuerpo */
+.pe-body{
+  padding: 14px 14px 16px 14px;
+  display: grid; gap: 10px;
+}
+.pe-title{
+  margin: 0;
+  font-weight: 800;             /* no cambiamos font-family */
+  letter-spacing: .2px;
+  font-size: clamp(16px, 2.4vw, 18px);
+  color: var(--pe-ink);
+}
+.pe-desc{
+  margin: 0;
+  color: var(--pe-sub);
+  line-height: 1.7;
+  font-size: clamp(14px, 2vw, 15.5px);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;        /* recorte a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Meta (fecha/hora) */
+.pe-meta{
+  display: flex; align-items: center; gap: 8px;
+  color: var(--pe-sub);
+}
+.pe-icon{
+  width: 18px; height: 18px;
+  color: var(--pe-accent);
+  flex: 0 0 auto;
+}
+.pe-date{
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--pe-accent);
+}
+
+/* Botón como link “ghost” */
+.pe-btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #f9fafb;
+  color: var(--pe-ink);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background .2s ease, border-color .2s ease, transform .05s ease;
+  margin-top: 2px;
+}
+.pe-btn:hover{
+  background: #f3f4f6;
+  border-color: rgba(0,0,0,.18);
+}
+.pe-btn:active{ transform: translateY(1px); }
+
+/* Flechas y dots del slick (neutros) */
+.pe-slider .slick-prev, .pe-slider .slick-next{
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; border: 1px solid var(--pe-brd);
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+  z-index: 2;
+}
+.pe-slider .slick-prev:hover, .pe-slider .slick-next:hover{
+  background: #fff; border-color: rgba(0,0,0,.12);
+}
+.pe-slider .slick-prev:before, .pe-slider .slick-next:before{
+  color: var(--pe-accent);
+  font-size: 22px; opacity: .95;
+}
+
+.pe-slider .slick-dots{
+  bottom: -26px;
+}
+.pe-slider .slick-dots li button:before{
+  color: #c7cbd1; opacity: .8; font-size: 10px;
+}
+.pe-slider .slick-dots li.slick-active button:before{
+  color: var(--pe-accent); opacity: 1;
+}
+
+/* Responsive pequeños ajustes */
+@media (max-width: 575.98px){
+  .pe-card{ max-width: 520px; }
+}

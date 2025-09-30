@@ -28,3 +28,10 @@ body {
 /* Box model consistente + sin scroll lateral */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { max-width: 100%; overflow-x: hidden; }
+
+.webpay input[type="number"], .webpay input[type="text"], .webpay input{
+  background: none;
+}
+.webpay .field, .webpay label{
+  margin-left: 10px;
+}

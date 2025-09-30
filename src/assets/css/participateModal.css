@@ -1,0 +1,228 @@
+/* =========================
+   PARTICIPATE MODAL (sin MUI)
+   ========================= */
+.pm{
+  /* Colores marca (respetando tu var global si existe) */
+  --pm-green: var(--cv-green, #60AD26);
+  --pm-green-700: #3E7C15;
+  --pm-ink: #1A1D1A;
+  --pm-muted: #5F665F;
+  --pm-brd: #E7EFE2;
+  --pm-cream: #F3FAEE;
+  --pm-focus: rgba(96,173,38,.22);
+
+  --pm-card-bg: #fff;
+  --pm-shadow: 0 18px 60px rgba(16,24,16,.18);
+}
+
+/* Overlay */
+.pm-overlay{
+  position: fixed; inset: 0;
+  background: rgba(16,24,16,.55);
+  backdrop-filter: saturate(140%) blur(4px);
+  display: grid; place-items: center;
+  padding: 16px;
+  z-index: 1400;
+}
+
+/* Card */
+.pm-card{
+  width: min(760px, 96vw);
+  background: var(--pm-card-bg);
+  color: var(--pm-ink);
+  border: 1px solid var(--pm-brd);
+  border-radius: 16px;
+  box-shadow: var(--pm-shadow);
+  position: relative;
+  padding: clamp(16px, 2.2vw, 24px);
+}
+
+/* Éxito */
+.pm-card--success{
+  text-align: center;
+  padding-top: 40px;
+}
+.pm-success{ display: grid; gap: 10px; justify-items: center; }
+.pm-check{ width: 36px; height: 36px; color: var(--pm-green); }
+
+/* Close */
+.pm-close{
+  position: absolute; top: 10px; right: 10px;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--pm-brd);
+  background: #fff; color: #333;
+  font-size: 20px; line-height: 1; cursor: pointer;
+  display: grid; place-items: center;
+  transition: background .2s, border-color .2s, transform .05s;
+}
+.pm-close:hover{ background: #f7f9f6; border-color: #dfe9d9; }
+.pm-close:active{ transform: translateY(1px); }
+
+/* Header */
+.pm-head h6{
+  font-size: clamp(18px, 2.2vw, 22px);
+  margin: 0 0 4px;
+  font-weight: 800;
+}
+.pm-sub{
+  margin: 0 0 8px;
+  color: var(--pm-muted);
+  font-size: 14px;
+}
+
+/* Form layout (2 columnas en desktop) */
+.pm-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+}
+.pm-full{ grid-column: 1 / -1; }
+
+/* Ajuste suave a inputs base si tus componentes no traen estilos fuertes */
+.pm-form input[type="text"],
+.pm-form input[type="email"],
+.pm-form input[type="number"],
+.pm-form textarea,
+.pm-form select{
+  width: 100%;
+  border: 1px solid #E6EAE3;
+  background: #fff;
+  color: #141614;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.pm-form textarea{ min-height: 96px; resize: vertical; }
+.pm-form input:focus,
+.pm-form textarea:focus,
+.pm-form select:focus{
+  border-color: var(--pm-green);
+  box-shadow: 0 0 0 3px var(--pm-focus);
+}
+
+/* Actions */
+.pm-actions{
+  grid-column: 1 / -1;
+  display: flex; gap: 10px; justify-content: flex-end;
+  margin-top: 4px;
+}
+.pm-btn{
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .05s, color .2s;
+}
+.pm-btn:active{ transform: translateY(1px); }
+.pm-btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+.pm-btn--solid{
+  background: var(--pm-green);
+  color: #fff;
+  border: 1px solid var(--pm-green);
+  box-shadow: 0 8px 24px rgba(96,173,38,.30);
+}
+.pm-btn--solid:hover{ background: var(--pm-green-700); border-color: var(--pm-green-700); }
+
+.pm-btn--ghost{
+  background: transparent;
+  border: 1.5px solid #D9E5D3;
+  color: #2a2d2a;
+}
+.pm-btn--ghost:hover{
+  background: var(--pm-cream);
+  border-color: var(--pm-green);
+}
+
+/* Responsive */
+@media (max-width: 767.98px){
+  .pm-form{ grid-template-columns: 1fr; }
+  .pm-actions{ justify-content: stretch; }
+  .pm-actions .pm-btn{ flex: 1; }
+}
+
+/* =========================
+   FIX: labels y contraste de campos
+   ========================= */
+
+/* Asegura que la tarjeta use tinta oscura aunque el <body> sea blanco */
+.pm-card{ color:#1A1D1A; }
+
+/* Contenedor por campo (da espacio y alinea) */
+.pm-field{ display:flex; flex-direction:column; gap:6px; }
+
+/* Fuerza que cualquier label dentro del modal sea visible y oscuro */
+.pm-card label,
+.pm-card .label,
+.pm-form label,
+.pm-form .input__label,
+.pm-field > label{
+  color:#1A1D1A !important;
+  font-weight: 700;
+  font-size: 13.5px;
+  line-height: 1.2;
+  display:inline-block;
+}
+
+/* Si tus componentes usan <span> como etiqueta, cúbrelos también */
+.pm-card .field-label,
+.pm-card .pm-label{ 
+  color:#1A1D1A !important;
+  font-weight:700;
+}
+
+/* Mejora contraste y foco de inputs/select/textarea dentro del modal */
+.pm-form input[type="text"],
+.pm-form input[type="email"],
+.pm-form input[type="number"],
+.pm-form textarea,
+.pm-form select{
+  background:#fff;
+  color:#171917;
+  border:1px solid #D7E2D0;   /* un poco más oscuro para que se vea en pantallas brillantes */
+  border-radius:12px;
+  padding:10px 12px;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+
+.pm-form input::placeholder,
+.pm-form textarea::placeholder{
+  color:#9aa39a;
+}
+
+/* Foco accesible en verde CreaVida */
+.pm-form input:focus,
+.pm-form textarea:focus,
+.pm-form select:focus{
+  border-color:#60AD26;
+  box-shadow:0 0 0 3px rgba(96,173,38,.22);
+  background:#fff;
+}
+
+/* Select: oculta opacidad rara que a veces trae estilos globales */
+.pm-form select{ color:#171917 !important; }
+
+/* Espaciado general del grid para que no se “pierda” el label */
+.pm-form{ row-gap:14px; column-gap:12px; }
+
+/* Botones abajo no se peguen a los campos */
+.pm-actions{ margin-top: 6px; }
+.pm-field{ display:flex; flex-direction:column; gap:6px; }
+.pm-label{ color:#1A1D1A; font-weight:700; font-size:13.5px; }
+.pm-input{
+  background:#fff; color:#171917;
+  border:1px solid #D7E2D0; border-radius:12px;
+  padding:10px 12px; outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.pm-input:focus{
+  border-color:#60AD26;
+  box-shadow:0 0 0 3px rgba(96,173,38,.22);
+}
+.pm-select{ appearance:none; background-image: none; }
+.pm-textarea{ resize: vertical; min-height: 120px; }

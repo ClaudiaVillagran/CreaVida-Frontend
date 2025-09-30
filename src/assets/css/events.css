@@ -1,0 +1,221 @@
+/* =========================================
+   EVENTS PAGE (colores seccionados)
+   ========================================= */
+.events{
+  --ev-max: 1120px;
+  --ev-pad: 16px;
+
+  --ev-ink: #202020;
+  --ev-sub: #5e5e5e;
+  --ev-accent: #60AD26;
+
+  --ev-bg-hero: linear-gradient(180deg, #f7f9fb 0%, #ffffff 60%);
+  --ev-bg-upcoming: #ffffff;
+  --ev-bg-past: #f6f7f8;
+  --ev-bg-faq: #101010;
+  --ev-ink-light: #ffffff;
+}
+
+/* contenedor centrado */
+.ev-container{
+  width: min(var(--ev-max), 100%);
+  margin-inline: auto;
+  padding-inline: var(--ev-pad);
+}
+
+/* ---------- HERO ---------- */
+.events__hero{
+  background: var(--ev-bg-hero);
+  color: var(--ev-ink);
+  padding: clamp(36px, 7vw, 72px) 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.events__hero-inner{
+  text-align: center;
+}
+.events__hero .eyebrow{
+  display:inline-block;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ev-accent);
+  background: rgba(96,173,38,.12);
+  border: 1px solid rgba(96,173,38,.22);
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.events__hero h1{
+  margin: 6px 0 8px;
+  font-size: clamp(26px, 4.6vw, 40px);
+  font-weight: 800;
+  color: var(--ev-ink);
+}
+.events__hero p{
+  margin: 0 auto;
+  max-width: 68ch;
+  color: var(--ev-sub);
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.7;
+}
+
+/* ---------- HEADERS por sección ---------- */
+.section-head{
+  text-align: center;
+  margin: 0 auto 18px;
+}
+.section-head .title-sections{
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(22px, 3.6vw, 32px);
+  color: var(--ev-ink);
+}
+.section-sub{
+  margin: 8px auto 0;
+  max-width: 68ch;
+  color: var(--ev-sub);
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.7;
+}
+.empty{
+  text-align:center;
+  color: var(--ev-sub);
+  padding: 24px 0 8px;
+}
+/* ---------- PRÓXIMOS EVENTOS (oscuro) ---------- */
+.events__upcoming{
+  background: linear-gradient(180deg, #111 0%, #161616 100%);
+  color: #fff;
+  padding: clamp(28px, 6vw, 56px) 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* títulos y subtítulos en claro dentro de la sección oscura */
+.events__upcoming .section-head .title-sections{ color:#fff; }
+.events__upcoming .section-sub{ color:#cfcfcf; }
+
+/* Usa NearEventsInicio “tal cual” pero sin su fondo para que tome este negro */
+.events__upcoming .nearInicio{
+  background: transparent;        /* anula el fondo del componente */
+  /* variables para mantener su skin en dark, a juego con la sección */
+  --ne-bg: transparent;
+  --ne-ink: #ffffff;
+  --ne-sub: #cfcfcf;
+  --ne-green: #60AD26;
+  --ne-green-2: #3b7c18;
+  --ne-card: #0f0f0f;
+  --ne-brd: rgba(255,255,255,.08);
+  --ne-shadow: 0 10px 30px rgba(0,0,0,.28);
+  padding-top: 8px;
+}
+
+/* (opcional) si dentro de NearEventsInicio no quieres subrayado del h2
+   porque ya tienes el de la sección:
+   .events__upcoming .nearInicio .events__title .title-sections::after{ display:none; } */
+
+/* botones en tema claro */
+.events__upcoming .nearInicio .button-donar,
+.events__upcoming .nearInicio .button-participar{
+  color: var(--ev-ink);
+  border-color: rgba(96,173,38,.45);
+}
+.events__upcoming .nearInicio .button-participar.part{
+  background: #f5f5f5;
+}
+
+/* ---------- EVENTOS REALIZADOS (gris muy suave) ---------- */
+.events__past{
+  background: var(--ev-bg-past);
+  padding: clamp(28px, 6vw, 56px) 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.events__past .events__past-slider{
+  margin-top: 8px;
+}
+/* ---------- FAQ (claro) ---------- */
+.events__faq{
+  background: #ffffff;
+  color: #202020;
+  padding: clamp(28px, 6vw, 56px) 0 clamp(40px, 7vw, 72px);
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+.events__faq .section-head .title-sections{ color:#202020; }
+
+/* ============== FAQ — CLARO (blanco) ============== */
+.events__faq{
+  background: #ffffff;
+  color: #202020;
+  padding: clamp(28px, 6vw, 56px) 0 clamp(40px, 7vw, 72px);
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+.events__faq .section-head .title-sections{ color:#202020; }
+
+.faq{
+  max-width: var(--ev-max, 1120px);
+  margin: 0 auto;
+  padding-inline: var(--ev-pad, 16px);
+}
+
+/* Card del acordeón */
+.faq-item{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 12px;
+  margin: 12px 0;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,.04);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.faq-item[open]{
+  border-color: rgba(0,0,0,.16);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+/* Encabezado (summary) */
+.faq-item summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  color: #202020;
+  font-weight: 700;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary:hover{ background: rgba(0,0,0,.02); }
+
+/* Chevron */
+.faq-item .chev{
+  width: 20px; height: 20px; flex: 0 0 auto;
+  color: #60AD26;                 /* verde CreaVida */
+  opacity: .9;
+  transition: transform .2s ease;
+}
+.faq-item[open] .chev{ transform: rotate(180deg); }
+
+/* Contenido */
+.faq-body{
+  border-top: 1px solid rgba(0,0,0,.08);
+  padding: 12px 16px 16px;
+  color: #4a4a4a;
+  line-height: 1.75;
+  font-size: 15px;               /* sin cambiar tipografías globales */
+}
+
+/* Accesibilidad */
+.faq-item summary:focus-visible{
+  outline: none;
+  box-shadow: inset 0 0 0 3px rgba(96,173,38,.22);
+  border-radius: 8px;
+}
+
+/* Respeta preferencias de movimiento */
+@media (prefers-reduced-motion: reduce){
+  .faq-item, .faq-item .chev{ transition: none; }
+}
+
+/* ---------- Responsive pequeños ajustes ---------- */
+@media (max-width: 575.98px){
+  .events__hero p{ font-size: 15px; }
+  .section-sub{ font-size: 15px; }
+}

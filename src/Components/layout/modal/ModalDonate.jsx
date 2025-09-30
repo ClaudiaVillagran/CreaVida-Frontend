@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FormPaymentTransbank } from '../inicio/FormPaymentTransbank'
+import '../../../assets/css/modalDonate.css';
 
 export const ModalDonate = ({ setModalOpenDonate }) => {
 
@@ -11,7 +12,7 @@ export const ModalDonate = ({ setModalOpenDonate }) => {
 
 
   return (
-    <div className="modal">
+    <div className="modal modal--donate">
       <div className="participation-box">
 
         {selectedMethod ? (

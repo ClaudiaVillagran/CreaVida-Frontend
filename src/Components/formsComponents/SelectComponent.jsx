@@ -1,64 +1,46 @@
+// src/Components/formsComponents/SelectComponent.jsx
+export const SelectComponent = ({
+  nameInput,
+  nameLabel = "Generación",
+  options = [
+    { value: "joven", label: "Joven (14–24)" },
+    { value: "adulto", label: "Adulto (25–59)" },
+    { value: "mayor", label: "Adulto mayor (60+)" },
+  ],
+  form,
+  changed,
+  setForm,
+  required = false,
+}) => {
+  const id = `fld_${nameInput}`;
 
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+  const handleChange = (e) => {
+    if (typeof changed === "function") changed(e);
+    else setForm?.((prev) => ({ ...prev, [nameInput]: e.target.value }));
+  };
 
-export const SelectComponent = ({ nameInput, form, changed, setForm }) => {
-    const [age, setAge] = React.useState('');
-    const [ageArray, setAgeArray] = React.useState([]);
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-        changed(event);
-        setForm((prevForm) => ({ ...prevForm, [nameInput]: event.target.value }));
-
-    };
-
-    React.useEffect(() => {
-        agesIteration()
-    }, [])
-
-    const agesIteration = () => {
-
-        let newArray = [{ label: 'milenials', value: 1 }];
-        for (let index = 0; index < 10; index++) {
-            newArray = [
-                ...newArray,
-                {
-                    label: `${index * 10}-${index * 10 + 9}`,
-                    value: (index + 1) * 10
-                },
-            ];
-        }
-        setAgeArray(newArray);
-        console.log('a', ageArray);
-
-    }
-    return (
-        <div>
-            <FormControl sx={{ m: 1, width: '20vw', minWidth: 200, margin: '0 auto' }}>
-                <InputLabel sx={{fontSize: 17}} htmlFor="grouped-native-select">Generación</InputLabel>
-                <Select  sx={{ fontSize: 16 }} native defaultValue='' name='age' id="grouped-native-select" label="Grouping" value={age}  onChange={handleChange}>
-                    <option aria-label="None" value="" />
-                    <optgroup label="1946-1964" >
-                        <option value={80}>Baby Bommers</option>
-                    </optgroup>
-                    <optgroup label="1965-1980">
-                        <option value={60}>Generación X</option>
-                    </optgroup>
-                    <optgroup label="1981-1996">
-                        <option value={40}>Milenials Y</option>
-                    </optgroup>
-                    <optgroup label="1997-2012">
-                        <option value={20}>Centenials Z</option>
-                    </optgroup>
-                    <optgroup label="2013-2025">
-                        <option value={0}>Generación Alfa T</option>
-                    </optgroup>
-                </Select>
-            </FormControl>
-            
-        </div>
-    )
-}
+  return (
+    <div className="pm-field">
+      {nameLabel && (
+        <label htmlFor={id} className="pm-label">
+          {nameLabel}
+        </label>
+      )}
+      <select
+        id={id}
+        className="pm-input pm-select"
+        name={nameInput}
+        value={form?.[nameInput] ?? ""}
+        onChange={handleChange}
+        required={required}
+      >
+        <option value="" disabled>Selecciona…</option>
+        {options.map((op) => (
+          <option key={op.value} value={op.value}>
+            {op.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
